@@ -190,7 +190,7 @@
   .scroll-hint:hover{color:var(--accent);}
   .scroll-hint svg{animation:bounce 1.8s ease-in-out infinite;}
   @keyframes bounce{0%,100%{transform:translateY(0);} 50%{transform:translateY(4px);}}
-  header.hero{min-height:calc(100vh - 68px); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
+  header.hero{min-height:calc(72vh - 68px); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
   header.hero .hero-actions{justify-content:center;}
   header.hero h1.title{max-width:none;}
   #resume-mini{padding:80px 0 40px; scroll-margin-top:24px;}
@@ -568,13 +568,14 @@
   .contact-detail .detail-row{margin-bottom:10px; font-size:15px; color:var(--text-muted);}
   .contact-detail .detail-row b{color:var(--text); font-weight:600;}
 
-  .resume-preview{max-width:360px; margin:0 auto;}
+  .resume-preview{max-width:480px; margin:0 auto;}
   .resume-frame{
     border:1px solid var(--border-soft); border-radius:12px; background:rgba(17,23,28,0.55);
     aspect-ratio:3/4; display:flex; align-items:center; justify-content:center;
     margin-bottom:16px; overflow:hidden;
   }
   .resume-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  .resume-frame iframe{width:100%; height:100%; border:none; display:block; background:#fff;}
   .resume-frame .placeholder-note{font-family:var(--sans); font-size:13px; color:var(--text-dim); padding:20px; text-align:center;}
   .resume-actions{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
   .foot-meta{
@@ -631,7 +632,7 @@
   <section id="resume-mini">
     <div class="resume-preview">
       <div class="resume-frame">
-        <span class="placeholder-note">Resume preview (EDIT ME: add a preview image filename, or leave blank)</span>
+        <iframe src="Armaans Resume 2026.pdf" title="Resume preview" loading="lazy"></iframe>
       </div>
       <div class="resume-actions">
         <a href="Armaans Resume 2026.pdf" class="btn btn-primary" download>Download PDF</a>
@@ -837,7 +838,7 @@
          preview image of its first page — set the preview filename below. -->
     <div class="resume-preview">
       <div class="resume-frame">
-        <span class="placeholder-note">Resume preview (EDIT ME: add a preview image filename, or leave blank)</span>
+        <iframe src="Armaans Resume 2026.pdf" title="Resume preview" loading="lazy"></iframe>
       </div>
       <div class="resume-actions">
         <a href="Armaans Resume 2026.pdf" class="btn btn-primary" download>Download PDF</a>
@@ -1165,7 +1166,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'EDIT ME: closing thoughts on the throttle body project — what you took away from it.'
+          text:
+            'This project gave me a much better intuitive understanding of what a throttle body actually does \u2014 enough that I can now recognize warning signs while driving. If an engine feels like it\u2019s overworking or gasping for air, a throttle body issue is one of the first things I\u2019d suspect.\n\nOn the engineering side, I came away with a clearer sense of when plastic is actually the right material choice. The main body and the cold air intake don\u2019t see much thermal expansion or mechanical stress, so 3D-printed plastic works fine there. But anything mechanically loaded \u2014 the butterfly valve, the return spring, and the lever the accelerator cable pulls on \u2014 has to stay rigid. If that lever flexed or wore down over repeated cable pulls, it would eventually fail, so those parts needed to stay metal.\n\nWe also made a point of not just copying an existing throttle body outright. Instead, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold for an easy swap, while still reusing components from the cheaper throttle body we\u2019d sourced. Combined with 3D printing instead of machining or laser-cutting metal, that kept the whole thing cheap and quick to manufacture in-house.\n\nA lot of the detail work came out of talking to other subteams. Driveline and aerodynamics seniors weighed in on whether a cold air intake was feasible from an airflow standpoint and flagged how tight the tolerance needed to be around the intake filter opening \u2014 that\u2019s actually why our final design has a lip at the intake opening that earlier iterations didn\u2019t, since the filter needs something to clamp onto. We also rounded off the intake bore to improve airflow and reduce pressure loss, so the engine isn\u2019t starved for air under load.\n\nWhat started as a low-priority backup part ended up mattering a lot more once we were in regular contact with other subsystems about our deliverables. It became clear the electric throttle body carried a real failure risk that could be a safety hazard and potentially fail tech inspection, which meant we needed a working mechanical backup ready to go. From what I understand, it did end up getting used during testing \u2014 though I don\u2019t have footage of that, since my colleague and I were on co-op by that point.'
         },
         {
           type: 'mediaText',
@@ -1731,6 +1733,39 @@
     }
   });
   syncRoute();
+
+  // ---------------------------------------------------------------------
+  // Scroll-to-play for videos that live directly on a site-page (e.g. the
+  // About page's soccer video), separate from the project-overlay handler
+  // above since these pages aren't rebuilt on open/close like the overlay
+  // is — each page's own scroll container is the observer root, and
+  // playback only happens while that page is actually open.
+  // ---------------------------------------------------------------------
+  document.querySelectorAll('.site-page').forEach((page) => {
+    const videos = page.querySelectorAll('video');
+    if (!videos.length) return;
+
+    videos.forEach((v) => {
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.playsInline = true;
+      v.loop = true;
+    });
+
+    const pageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const v = entry.target;
+        if (entry.isIntersecting && page.classList.contains('open')) {
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+    }, { root: page, rootMargin: '-30% 0px -30% 0px', threshold: 0 });
+
+    videos.forEach((v) => pageObserver.observe(v));
+  });
 </script>
 
 </body>
