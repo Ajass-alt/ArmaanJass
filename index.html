@@ -331,40 +331,6 @@
   }
   .proj-card:hover .view-hint{opacity:1;}
 
-  /* ---------- FLAT RESUME-STYLE BULLET CARD (Work Experience) ---------- */
-  .flat-card{
-    position:relative;
-    border:1px solid var(--border-soft);
-    background:rgba(17,23,28,0.55);
-    border-radius:14px;
-    padding:30px 32px 30px 38px;
-    margin-bottom:24px;
-    overflow:hidden;
-  }
-  .flat-card::before{
-    content:''; position:absolute; left:0; top:18px; bottom:18px; width:3px;
-    background:var(--accent); border-radius:2px;
-  }
-  .flat-card:not(.is-static){cursor:pointer; transition:border-color 0.2s ease, transform 0.2s ease;}
-  .flat-card:not(.is-static):hover{border-color:var(--accent-dim); transform:translateY(-2px);}
-  .flat-title{font-family:var(--display); font-weight:700; font-size:22px; margin-bottom:8px;}
-  .flat-company{font-family:var(--sans); font-size:14.5px; color:var(--text-muted); margin-bottom:4px;}
-  .flat-company .company-name{color:var(--accent); font-weight:600;}
-  .flat-company .company-loc{color:var(--text-muted);}
-  .flat-dates{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); margin-bottom:20px;}
-  .flat-bullets{list-style:none; display:flex; flex-direction:column; gap:12px; margin:0; padding:0;}
-  .flat-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:14.5px; line-height:1.6;}
-  .flat-bullets li::before{
-    content:''; position:absolute; left:0; top:8px; width:6px; height:6px;
-    background:var(--accent); border-radius:1px;
-  }
-  .flat-cta{
-    display:inline-flex; align-items:center; gap:7px;
-    font-family:var(--sans); font-size:11.5px; font-weight:700; letter-spacing:0.06em;
-    color:var(--bg); background:var(--accent); padding:8px 14px; border-radius:20px;
-    margin-top:22px; text-transform:uppercase; transition:background 0.15s ease;
-  }
-  .flat-card:not(.is-static):hover .flat-cta{background:#79c1e5;}
   .work-subdivider{
     font-family:var(--sans); font-size:13px; font-weight:600; color:var(--text-dim);
     text-transform:uppercase; letter-spacing:0.06em; text-align:center;
@@ -432,7 +398,10 @@
   .flat-card.is-static{cursor:default;}
   .flat-card:not(.is-static){cursor:pointer;}
   .flat-card:not(.is-static):hover{transform:translateY(-2px); border-color:var(--border-soft); border-left-color:var(--accent);}
-  .flat-card-head{margin-bottom:18px;}
+  .flat-card-head{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:16px; margin-bottom:18px; flex-wrap:wrap;
+  }
   .flat-title{font-family:var(--display); font-weight:700; font-size:20px; color:var(--text); margin-bottom:6px;}
   .flat-company{font-family:var(--sans); font-size:14px; margin-bottom:4px;}
   .flat-company .company-name{color:var(--accent); font-weight:700;}
@@ -442,12 +411,13 @@
   .flat-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:14.5px; line-height:1.55;}
   .flat-bullets li::before{content:''; position:absolute; left:0; top:7px; width:6px; height:6px; background:var(--accent);}
   .flat-cta{
-    margin-top:24px; text-align:center; font-family:var(--sans); font-weight:700; font-size:12.5px;
-    letter-spacing:0.06em; text-transform:uppercase; color:var(--accent);
-    border:1px dashed var(--accent-dim); border-radius:8px; padding:11px;
-    transition:background 0.15s ease, color 0.15s ease;
+    flex:0 0 auto; align-self:flex-start;
+    font-family:var(--sans); font-weight:700; font-size:11px; white-space:nowrap;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--accent);
+    border:1px dashed var(--accent-dim); border-radius:20px; padding:8px 14px;
+    transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
-  .flat-card:hover .flat-cta{background:rgba(90,176,219,0.1); color:#fff; border-color:var(--accent);}
+  .flat-card:hover .flat-cta{background:rgba(90,176,219,0.14); color:#fff; border-color:var(--accent);}
 
   /* ---------- PROJECT DETAIL OVERLAY ---------- */
   .proj-overlay{
@@ -570,7 +540,7 @@
     background:rgba(17,23,28,0.55); border:1px solid var(--border-soft);
     border-radius:12px; padding:28px 32px;
   }
-  .text-panel-full p{color:var(--text-muted); font-size:15px; white-space:pre-line;}
+  .text-panel-full p{color:var(--text-muted); font-size:15px; white-space:pre-line; text-align:justify;}
   .triptych-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
   .triptych-center{max-width:360px; margin:0 auto;}
   @media (max-width:600px){ .triptych-row{grid-template-columns:1fr;} }
@@ -1340,7 +1310,7 @@
       cover: 'final piping system dripline.jpg',
       company: 'Angus Irrigation',
       location: 'Ontario, Canada', // EDIT ME: confirm the exact location
-      dateRange: 'EDIT ME: start – end dates',
+      dateRange: 'May 2026 – August 2026',
       bullets: [
         'Troubleshoot, install, repair, and modify irrigation systems involving mechanical, hydraulic, electrical, and automated control components.',
         'Diagnose system failures by systematically isolating faults in controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings, including intermittent issues requiring repeated testing and logical elimination.',
@@ -1492,16 +1462,18 @@
 
       const bulletsHtml = p.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('');
       const locationHtml = p.location ? ` — <span class="company-loc">${escapeHtml(p.location)}</span>` : '';
-      const ctaHtml = isClickable ? `<div class="flat-cta">CLICK FOR MORE →</div>` : '';
+      const ctaHtml = isClickable ? `<div class="flat-cta">CLICK FOR MORE VISUALS →</div>` : '';
 
       card.innerHTML = `
         <div class="flat-card-head">
-          <div class="flat-title">${escapeHtml(p.name)}</div>
-          <div class="flat-company"><span class="company-name">${escapeHtml(p.company || '')}</span>${locationHtml}</div>
-          <div class="flat-dates">${escapeHtml(p.dateRange || '')}</div>
+          <div>
+            <div class="flat-title">${escapeHtml(p.name)}</div>
+            <div class="flat-company"><span class="company-name">${escapeHtml(p.company || '')}</span>${locationHtml}</div>
+            <div class="flat-dates">${escapeHtml(p.dateRange || '')}</div>
+          </div>
+          ${ctaHtml}
         </div>
         <ul class="flat-bullets">${bulletsHtml}</ul>
-        ${ctaHtml}
       `;
 
       if (isClickable) {
