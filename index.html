@@ -331,6 +331,46 @@
   }
   .proj-card:hover .view-hint{opacity:1;}
 
+  /* ---------- FLAT RESUME-STYLE BULLET CARD (Work Experience) ---------- */
+  .flat-card{
+    position:relative;
+    border:1px solid var(--border-soft);
+    background:rgba(17,23,28,0.55);
+    border-radius:14px;
+    padding:30px 32px 30px 38px;
+    margin-bottom:24px;
+    overflow:hidden;
+  }
+  .flat-card::before{
+    content:''; position:absolute; left:0; top:18px; bottom:18px; width:3px;
+    background:var(--accent); border-radius:2px;
+  }
+  .flat-card:not(.is-static){cursor:pointer; transition:border-color 0.2s ease, transform 0.2s ease;}
+  .flat-card:not(.is-static):hover{border-color:var(--accent-dim); transform:translateY(-2px);}
+  .flat-title{font-family:var(--display); font-weight:700; font-size:22px; margin-bottom:8px;}
+  .flat-company{font-family:var(--sans); font-size:14.5px; color:var(--text-muted); margin-bottom:4px;}
+  .flat-company .company-name{color:var(--accent); font-weight:600;}
+  .flat-company .company-loc{color:var(--text-muted);}
+  .flat-dates{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); margin-bottom:20px;}
+  .flat-bullets{list-style:none; display:flex; flex-direction:column; gap:12px; margin:0; padding:0;}
+  .flat-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:14.5px; line-height:1.6;}
+  .flat-bullets li::before{
+    content:''; position:absolute; left:0; top:8px; width:6px; height:6px;
+    background:var(--accent); border-radius:1px;
+  }
+  .flat-cta{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--sans); font-size:11.5px; font-weight:700; letter-spacing:0.06em;
+    color:var(--bg); background:var(--accent); padding:8px 14px; border-radius:20px;
+    margin-top:22px; text-transform:uppercase; transition:background 0.15s ease;
+  }
+  .flat-card:not(.is-static):hover .flat-cta{background:#79c1e5;}
+  .work-subdivider{
+    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--text-dim);
+    text-transform:uppercase; letter-spacing:0.06em; text-align:center;
+    margin:36px 0 22px;
+  }
+
   /* EDIT ME: project photo/render — replace the background-image url on
      each .proj-photo below (or swap in an <img> tag) with your own shot,
      e.g. images/quadrotor.jpg, images/rover.jpg, images/arm.jpg */
@@ -381,6 +421,33 @@
   }
   .proj-links a:hover{opacity:0.7;}
   @media (max-width:720px){ .proj-list{grid-template-columns:1fr;} }
+
+  /* ---------- FLAT RESUME-STYLE CARD (work experience entries) ---------- */
+  .flat-card{
+    border:1px solid var(--border-soft); border-left:3px solid var(--accent);
+    background:rgba(17,23,28,0.55); border-radius:12px;
+    padding:30px 32px;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .flat-card.is-static{cursor:default;}
+  .flat-card:not(.is-static){cursor:pointer;}
+  .flat-card:not(.is-static):hover{transform:translateY(-2px); border-color:var(--border-soft); border-left-color:var(--accent);}
+  .flat-card-head{margin-bottom:18px;}
+  .flat-title{font-family:var(--display); font-weight:700; font-size:20px; color:var(--text); margin-bottom:6px;}
+  .flat-company{font-family:var(--sans); font-size:14px; margin-bottom:4px;}
+  .flat-company .company-name{color:var(--accent); font-weight:700;}
+  .flat-company .company-loc{color:var(--text-muted);}
+  .flat-dates{font-family:var(--mono); font-size:12px; color:var(--text-dim); letter-spacing:0.03em;}
+  .flat-bullets{list-style:none; display:flex; flex-direction:column; gap:11px; margin:0; padding:0;}
+  .flat-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:14.5px; line-height:1.55;}
+  .flat-bullets li::before{content:''; position:absolute; left:0; top:7px; width:6px; height:6px; background:var(--accent);}
+  .flat-cta{
+    margin-top:24px; text-align:center; font-family:var(--sans); font-weight:700; font-size:12.5px;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--accent);
+    border:1px dashed var(--accent-dim); border-radius:8px; padding:11px;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .flat-card:hover .flat-cta{background:rgba(90,176,219,0.1); color:#fff; border-color:var(--accent);}
 
   /* ---------- PROJECT DETAIL OVERLAY ---------- */
   .proj-overlay{
@@ -1271,6 +1338,26 @@
       name: 'Hydraulic/Electrical Technician',
       tag: 'Experience · Technician',
       cover: 'final piping system dripline.jpg',
+      company: 'Angus Irrigation',
+      location: 'Ontario, Canada', // EDIT ME: confirm the exact location
+      dateRange: 'EDIT ME: start – end dates',
+      bullets: [
+        'Troubleshoot, install, repair, and modify irrigation systems involving mechanical, hydraulic, electrical, and automated control components.',
+        'Diagnose system failures by systematically isolating faults in controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings, including intermittent issues requiring repeated testing and logical elimination.',
+        'Install and repair underground piping, valves, sprinkler assemblies, controllers, and electrical control wiring while adapting to existing infrastructure and site constraints.',
+        'Operate trenching equipment to create underground pathways for new piping, working through varying soil conditions, confined spaces, difficult terrain, and changing field conditions.',
+        'Identify and repair leaks by tracing water loss through interconnected piping, valves, fittings, and sprinkler networks to determine practical repair solutions.',
+        'Calculate water requirements for properties and individual irrigation zones to develop appropriate watering schedules and system configurations.',
+        'Interpret blueprints, site plans, sketches, and existing system layouts to identify piping routes, valve locations, control zones, and system configurations.',
+        'Produce field sketches and updated layouts for existing and newly installed irrigation systems to document modifications and support future troubleshooting.',
+        'Apply mechanical reasoning, electrical troubleshooting, hydraulic understanding, and practical problem-solving when diagnosing systems with incomplete information or non-obvious failures.',
+        'Work independently in physically demanding outdoor environments while managing tools, equipment, materials, and changing conditions to complete installations and repairs efficiently.',
+        'Demonstrate persistence and adaptability when solving repetitive or difficult problems, using observation, testing, and logical elimination rather than relying solely on trial and error.',
+        'Balanced diagnostic speed with thoroughness, understanding that every additional half-hour on-site adds directly to the customer\u2019s bill \u2014 prioritized efficient, accurate troubleshooting to protect customer trust and repeat business.',
+        'Selected controllers and wiring sized to the exact number of zones required (e.g. an 8-zone controller for 8 zones) to avoid unnecessary equipment costs.',
+        'Planned practical piping routes between valve boxes, controllers, and water sources to minimize material use and labor time.',
+        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging, protecting both project timelines and customer costs.'
+      ],
       summary: 'Hands-on troubleshooting and installation across mechanical, electrical, and hydraulic irrigation systems.',
       description:
         'Hands-on experience troubleshooting and installing irrigation systems \u2014 real exposure to mechanical, electrical, and hydraulic systems working outside of a CAD screen.',
@@ -1342,6 +1429,30 @@
         }
       ],
       links: []
+    },
+    {
+      id: 'enable-talent',
+      category: 'experience',
+      sectionLabel: 'Additional Experience',
+      name: 'Market Expansion / Project Manager',
+      company: 'Enable Talent',
+      location: 'Remote', // EDIT ME: confirm location
+      dateRange: 'November 2025 – January 2026',
+      bullets: [
+        'Conducted a market feasibility study for expanding Enable Talent\u2019s job-placement platform into a target city in Ghana, identifying underserved populations including individuals with disabilities and out-of-school youth.',
+        'Researched local labor market demand across large companies, startups, universities, and community organizations to identify viable partnership and outreach targets.',
+        'Designed an outreach strategy that accounted for limited technology access, including in-person community stations and iPad-based application collection as an alternative to app-based sign-up.',
+        'Built a phased project timeline (Gantt-style) outlining search, outreach, and onboarding phases, along with staffing and resource requirements for each.',
+        'Evaluated cost and time feasibility for field operations, weighing staffing, travel, and equipment costs against expected reach and impact.',
+        'Delivered a 70+ page feasibility and scope report directly to the CEO and leadership, informing the company\u2019s approach to international market expansion.'
+      ],
+      summary: 'A market feasibility study for expanding a job-placement platform into an underserved region of Ghana.',
+      description: '',
+      specs: [],
+      gallery: [],
+      video: null,
+      blocks: [],
+      links: []
     }
   ];
 
@@ -1358,7 +1469,59 @@
   }
 
   PROJECTS.forEach((p) => {
+    const targetList = p.category === 'experience' ? workList : projList;
+    if (!targetList) return;
+
+    if (p.sectionLabel) {
+      const label = document.createElement('div');
+      label.className = 'dim-divider';
+      label.style.gridColumn = '1 / -1';
+      label.style.paddingTop = '8px';
+      label.innerHTML = `<span class="dim-label">${escapeHtml(p.sectionLabel)}</span><span class="rule"></span>`;
+      targetList.appendChild(label);
+    }
+
+    const isClickable = !!(p.blocks && p.blocks.length);
     const card = document.createElement('article');
+
+    if (p.bullets && p.bullets.length) {
+      // Flat resume-style card: title, company, dates, bullet list — no photo.
+      card.className = 'proj-card flat-card' + (isClickable ? '' : ' is-static');
+      card.style.gridColumn = '1 / -1';
+      card.setAttribute('data-id', p.id);
+
+      const bulletsHtml = p.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('');
+      const locationHtml = p.location ? ` — <span class="company-loc">${escapeHtml(p.location)}</span>` : '';
+      const ctaHtml = isClickable ? `<div class="flat-cta">CLICK FOR MORE →</div>` : '';
+
+      card.innerHTML = `
+        <div class="flat-card-head">
+          <div class="flat-title">${escapeHtml(p.name)}</div>
+          <div class="flat-company"><span class="company-name">${escapeHtml(p.company || '')}</span>${locationHtml}</div>
+          <div class="flat-dates">${escapeHtml(p.dateRange || '')}</div>
+        </div>
+        <ul class="flat-bullets">${bulletsHtml}</ul>
+        ${ctaHtml}
+      `;
+
+      if (isClickable) {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'View details for ' + p.name);
+        card.addEventListener('click', () => { location.hash = 'project-' + p.id; });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            location.hash = 'project-' + p.id;
+          }
+        });
+      }
+
+      targetList.appendChild(card);
+      return;
+    }
+
+    // Default photo-card template (Quadcopter, FSAE, Design Project, etc.)
     card.className = 'proj-card';
     card.setAttribute('data-id', p.id);
     card.setAttribute('tabindex', '0');
@@ -1403,8 +1566,7 @@
       }
     });
 
-    const targetList = p.category === 'experience' ? workList : projList;
-    if (targetList) targetList.appendChild(card);
+    targetList.appendChild(card);
   });
 
   // ---------------------------------------------------------------------
