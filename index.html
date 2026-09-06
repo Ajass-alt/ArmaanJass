@@ -490,6 +490,14 @@
   .block-title{font-family:var(--display); font-weight:600; font-size:19px; color:var(--text); margin-bottom:16px;}
   .block-text p{color:var(--text-muted); font-size:15.5px; max-width:70ch; white-space:pre-line;}
   .block-text.is-full-width p{max-width:none;}
+  .prose-bullets{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .prose-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:15px; line-height:1.6;}
+  .prose-bullets li::before{
+    content:''; position:absolute; left:0; top:8px; width:6px; height:6px;
+    background:var(--accent); border-radius:1px;
+  }
+  .prose-bullets li strong{color:var(--text);}
+  .block-text.is-full-width .prose-bullets li{max-width:none;}
   .block-pair{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
   .block-media-text{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;}
   .block-grid{display:flex; flex-wrap:wrap; gap:16px;}
@@ -713,25 +721,14 @@
     <!-- Staggered second row: extracurriculars text + a second photo underneath everything above -->
     <div class="about-grid" style="margin-top:8px;">
       <div>
-        <p>
-          Outside of engineering, soccer has been a constant — I've played for
-          most of my life and currently serve as team captain, staying closely
-          involved with the sport across Cambridge, Guelph, and Waterloo. In my
-          graduating year of high school, I was awarded the <strong>Colin Hood
-          Award</strong>, given to one student-athlete who shows real commitment
-          to both their schoolwork and their sport.
-        </p>
-        <p>
-          I've also played basketball, football, and ran track for a stretch —
-          but soccer and basketball have always been my two main sports. I won
-          the Coaches' Award for soccer three years running, made it to an
-          OFSAA final, and won a championship final in football.
-        </p>
-        <p>
-          For me, school comes first, then family, then sport — and soccer is
-          where that third priority lives. Staying committed across all three
-          is something I take seriously, on and off the field.
-        </p>
+        <p>Outside of engineering, soccer has been a constant — I've played for most of my life and currently serve as team captain across the Cambridge, Guelph, and Waterloo area.</p>
+        <ul class="prose-bullets" style="margin-top:16px;">
+          <li><strong>Colin Hood Award</strong> — given to one student-athlete per graduating class who shows real commitment to both schoolwork and sport.</li>
+          <li>Coaches' Award for soccer, three years running.</li>
+          <li>OFSAA finalist (soccer); championship final win (football).</li>
+          <li>Also competed in basketball, football, and track — soccer and basketball remain my two main sports.</li>
+        </ul>
+        <p style="margin-top:16px;">School comes first, then family, then sport — and I take that commitment seriously on and off the field.</p>
       </div>
 
       <div>
@@ -1036,16 +1033,28 @@
         {
           type: 'text',
           fullWidth: true,
-          text:
-            'The main goal behind this project was to build an autonomous, self-swappable, multi-tool drone controlled through an app or controller. The idea was for the drone to take on different jobs depending on the tool payload attached — drilling holes, planting trees, or running in a surveillance mode while camping, for example mapping an area and identifying fire-safe routes. The potential applications are broad, and we\u2019re seeing more autonomous systems built for similar purposes every day. We weren\u2019t the first to have this idea, but we believed in its potential impact enough to keep developing it.\n\nDuring the summer of 2026, a three-person team began building this drone from scratch. My contributions focused on CAD design, manufacturing, machining, and simulation troubleshooting. Below are the videos, photos, and write-ups documenting the development process from my perspective.'
+          text: 'The goal was an autonomous, self-swappable, multi-tool drone controlled through an app or controller — the payload attached would decide the job:',
+          bullets: [
+            'Drilling holes',
+            'Planting trees',
+            'Surveillance mode while camping — e.g. mapping an area and identifying fire-safe routes'
+          ]
+        },
+        {
+          type: 'text',
+          fullWidth: true,
+          text: 'We weren\u2019t the first to have this idea, but we believed in its potential enough to keep developing it. During summer 2026, a three-person team built this drone from scratch — my focus was CAD design, manufacturing, machining, and simulation troubleshooting. Below are the videos, photos, and write-ups documenting that process from my perspective.'
         },
         {
           type: 'stackPair',
           title: 'MARK ONE Motor Mounts',
           left: {
             media: { type: 'video', src: 'old motor mounts cad file video.mp4', label: 'CAD file — old motor mount' },
-            text:
-              'After the first motor mount design, screwing the motors in from underneath was tight and time-consuming — there just wasn\u2019t enough clearance to work with. We redesigned the mount to open up more room to reach those screws.\n\nWe were also seeing repeated stress cracks in testing with the original mounts. Tolerances were tight, but any flex let the propellers clip the mounts themselves, so we reduced the mount height and opened up more clearance around the screws — mainly a fix for accessibility and durability.\n\nWe also switched the print material from PLA to PA6, which is significantly stronger and let us cut roughly 8% of the weight anywhere PLA had previously been used.'
+            bullets: [
+              'Screwing the motors in from underneath was tight and slow — redesigned the mount to open up clearance for the screws.',
+              'Repeated stress cracks appeared under flex, letting propellers clip the mounts — reduced mount height and added more clearance for durability.',
+              'Switched print material from PLA to PA6, cutting roughly 8% of the weight anywhere PLA had previously been used.'
+            ]
           },
           right: { type: 'video', src: 'Old motor mounts video.mp4', label: 'Old motor mounts' }
         },
@@ -1073,8 +1082,13 @@
           type: 'mediaText',
           title: 'MARK I Drone',
           media: { type: 'video', src: 'prototype drone.mp4', label: 'Prototype drone' },
-          text:
-            'After the first flight test, we ran into a handful of issues: the motors seemed to be spinning at different rates, and the drone was too heavy for the thrust the propellers were producing — it wasn\u2019t gaining any height and we couldn\u2019t immediately tell why. As a last resort, we even checked whether the propellers were mounted upside down. It turned out the real fix was upgrading to a 6S battery.',
+          text: 'Issues after the first flight test:',
+          bullets: [
+            'Motors spinning at different rates',
+            'Drone too heavy for the propeller thrust — wasn\u2019t gaining height',
+            'Checked, as a last resort, whether propellers were mounted upside down',
+            'Real fix: upgrading to a 6S battery'
+          ],
           mediaSide: 'right'
         },
         {
@@ -1093,8 +1107,12 @@
         {
           type: 'text',
           fullWidth: true,
-          text:
-            'The graph on the left shows all four motors — each a different coloured signal — receiving different amounts of voltage, which resulted in different motor speeds. Based on this, instead of buying differently KV-rated motors as we\u2019d originally considered, we determined the issue could be solved by increasing battery voltage. We upgraded from a 4S to a 6S LiPo battery and reran the simulation, shown on the right — the response curves came back synchronized, confirming the higher-voltage battery resolved the mismatch.'
+          bullets: [
+            'Left graph: all four motors — each a different coloured signal — were receiving different amounts of voltage, resulting in different speeds.',
+            'Considered buying differently KV-rated motors, but determined the real fix was simpler: more battery voltage.',
+            'Upgraded from a 4S to a 6S LiPo battery and reran the simulation.',
+            'Right graph: response curves came back synchronized, confirming the fix.'
+          ]
         },
         {
           type: 'mediaTextPair',
@@ -1102,11 +1120,11 @@
           items: [
             {
               media: { type: 'video', src: '3d printing lapse video left.mp4', label: '3D Printing — Left' },
-              text: 'Originally, the drone\u2019s components were printed in PLA. After our first test, disassembling the middle frame caused warping around the joints and small cracks forming around the heat-set inserts. We reprinted the components in PA6-CF (carbon-fibre-reinforced nylon) instead, which cut the printed frame\u2019s weight by roughly 8% compared to PLA while improving stiffness and heat resistance — resolving the warping and cracking we\u2019d seen in testing.'
+              text: 'Originally printed in PLA. After our first test, disassembling the middle frame caused warping around the joints and small cracks near the heat-set inserts. Reprinting in PA6-CF (carbon-fibre-reinforced nylon) cut the frame\u2019s weight by roughly 8% versus PLA while improving stiffness and heat resistance — resolving the warping and cracking.'
             },
             {
               media: { type: 'video', src: '3d printing lapse video right.mp4', label: '3D Printing — Right' },
-              text: 'The motor mounts were designed to match the bolt pattern and geometry of the T-Motor 2812 motors, letting them sit securely, stay parallel to the ground, and remain properly aligned with the airframe.'
+              text: 'Motor mounts designed to match the bolt pattern and geometry of the T-Motor 2812 motors, so they sit securely, stay parallel to the ground, and remain properly aligned with the airframe.'
             }
           ]
         },
@@ -1121,8 +1139,12 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text:
-            'MARK II flies on full GPS. Jaskaran Pabla and Iknoor Braich handled the simulation testing, so it\u2019s capable of autonomous flight, though so far I\u2019ve only run controller testing myself.\n\nAfter all these adjustments, the drone finally lifted off — this is the first successful flight, recorded above. The weight reduction from switching to PA6 came out to more than 8%, and the 6S battery finally gave every motor enough voltage to spin in sync, which was enough to get it off the ground.\n\nPassing this flight test and starting to build what I hope becomes a larger system taught me a lot about troubleshooting — through simulation, testing, and plain trial and error. More than anything, it taught me how to approach engineering problems from multiple angles: when we hit a failure, we learned from it and tried again, and when we weren\u2019t sure of the cause, we researched, explored different approaches, and tested multiple solutions rather than betting everything on one fix.'
+          bullets: [
+            'Flies on full GPS — Jaskaran Pabla and Iknoor Braich handled simulation testing; I\u2019ve run controller testing myself so far.',
+            'First successful flight, recorded above.',
+            'PA6 cut overall weight by 8%+; the 6S battery finally gave every motor enough voltage to spin in sync — enough for liftoff.'
+          ],
+          text: 'Building this taught me how to troubleshoot through simulation, testing, and plain trial and error — and, more than anything, how to approach a problem from multiple angles instead of betting everything on one fix.'
         }
       ],
       links: []
@@ -1591,7 +1613,11 @@
 
       if (b.type === 'text') {
         const cls = 'block block-text' + (b.fullWidth ? ' is-full-width' : '');
-        return `<div class="${cls}">${titleHtml}<p>${escapeHtml(b.text)}</p></div>`;
+        const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
+        const bullets = b.bullets && b.bullets.length
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
+        return `<div class="${cls}">${titleHtml}${lead}${bullets}</div>`;
       }
       // A single full-width photo or video (e.g. one big demo video, or one final "finished shot").
       if (b.type === 'media') {
@@ -1601,7 +1627,11 @@
       // to have it span the whole page instead.
       if (b.type === 'textPanel') {
         const cls = b.fullWidth ? 'text-panel-full' : 'text-panel-centered';
-        return `<div class="block"><div class="${cls}">${titleHtml}<p>${escapeHtml(b.text)}</p></div></div>`;
+        const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
+        const bullets = b.bullets && b.bullets.length
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
+        return `<div class="block"><div class="${cls}">${titleHtml}${lead}${bullets}</div></div>`;
       }
       if (b.type === 'pair') {
         const widgets = b.items.map(renderItem).join('');
@@ -1609,7 +1639,11 @@
       }
       if (b.type === 'mediaText') {
         const mediaHtml = renderItem(b.media);
-        const textHtml = `<div class="block-text-panel"><p>${escapeHtml(b.text)}</p></div>`;
+        const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
+        const bullets = b.bullets && b.bullets.length
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
+        const textHtml = `<div class="block-text-panel"><div>${lead}${bullets}</div></div>`;
         const parts = b.mediaSide === 'right' ? [textHtml, mediaHtml] : [mediaHtml, textHtml];
         return `<div class="block">${titleHtml}<div class="block-media-text">${parts.join('')}</div></div>`;
       }
@@ -1622,7 +1656,11 @@
       // Left column: a photo with its own write-up stacked directly underneath it.
       // Right column: one media item (e.g. a video) spanning the full height beside it.
       if (b.type === 'stackPair') {
-        const leftCol = `<div class="stack-col">${renderItem(b.left.media)}<div class="block-text-panel" style="margin-top:14px;"><p>${escapeHtml(b.left.text)}</p></div></div>`;
+        const leftLead = b.left.text ? `<p>${escapeHtml(b.left.text)}</p>` : '';
+        const leftBullets = b.left.bullets && b.left.bullets.length
+          ? `<ul class="prose-bullets"${leftLead ? ' style="margin-top:12px;"' : ''}>${b.left.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
+        const leftCol = `<div class="stack-col">${renderItem(b.left.media)}<div class="block-text-panel" style="margin-top:14px;"><div>${leftLead}${leftBullets}</div></div></div>`;
         const rightCol = `<div class="stack-col">${renderItem(b.right)}</div>`;
         return `<div class="block">${titleHtml}<div class="block-stack-pair">${leftCol}${rightCol}</div></div>`;
       }
