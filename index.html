@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en"><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,21 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* =====================================================================
-     HOW TO ADD YOUR OWN PHOTOS / CAD RENDERS / RESUME
-     ---------------------------------------------------------------------
-     Current setup: photos are uploaded straight to the repo root (no
-     "images" folder), so paths below are just the filename, e.g.
-     url('drone in air.jpg'). Quotes around the filename mean spaces in
-     the name are fine — you don't need to rename anything.
-     1) Upload more photos/renders the same way, at the repo root.
-     2) Search this file for "EDIT ME" comments — every image, name,
-        link and background still needing a real file is flagged with
-        one and tells you exactly what to change.
-     3) For your resume, upload the PDF to the repo root as resume.pdf
-        (the "Resume" button near the nav already points there).
-     ===================================================================== */
-
   :root{
     --bg:#0B0F12;
     --bg-panel:#11171C;
@@ -34,16 +20,12 @@
     --text:#E9EDEF;
     --text-muted:#8B98A3;
     --text-dim:#57646D;
-
     --display: 'Space Grotesk', 'Inter', sans-serif;
     --sans: 'Inter', sans-serif;
     --mono: 'JetBrains Mono', monospace;
   }
-
   *{box-sizing:border-box; margin:0; padding:0;}
-
   html{scroll-behavior:smooth;}
-
   body{
     background:var(--bg);
     color:var(--text);
@@ -52,36 +34,14 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
   }
-
   a{color:inherit;}
   ::selection{background:var(--accent-dim); color:#fff;}
-
-  :focus-visible{
-    outline:2px solid var(--accent);
-    outline-offset:3px;
-  }
-
-  .wrap{
-    max-width:1120px;
-    margin:0 auto;
-    padding:0 32px;
-  }
-
-  /* =====================================================================
-     SCROLLING BACKGROUND — crossfades between images as you move through
-     sections. Two stacked layers swap opacity so the transition is smooth
-     instead of a hard cut.
-
-     EDIT ME: replace the four URLs below (in the JS at the bottom of the
-     file, under BACKGROUND_IMAGES) with your own photos — a portrait,
-     a workshop/CAD shot, a project photo, etc. Until you add real images
-     this just shows a soft gradient so nothing looks broken.
-     ===================================================================== */
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
   .bg-stage{
     position:fixed; inset:0; z-index:-2; overflow:hidden;
     background:
@@ -102,14 +62,9 @@
   .bg-layer.active{opacity:1;}
   .bg-scrim{
     position:absolute; inset:0;
-    /* This gradient controls how visible the background photo is.
-       Lower the numbers (0.0–1.0) to show more of the photo,
-       raise them to darken it for text readability. */
     background:
       linear-gradient(180deg, rgba(11,15,18,0.88) 0%, rgba(11,15,18,0.8) 40%, rgba(11,15,18,0.9) 100%);
   }
-
-  /* ---------- NAV ---------- */
   nav{
     position:sticky; top:0; z-index:160;
     background:rgba(11,15,18,0.82);
@@ -121,10 +76,7 @@
     opacity:0; pointer-events:none; transform:translateY(-100%);
     position:fixed; width:100%;
   }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:68px;
-  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:68px;}
   .nav-mark{
     font-family:var(--display); font-weight:600; font-size:16px;
     letter-spacing:-0.01em; color:var(--text);
@@ -146,41 +98,16 @@
   }
   .nav-links .btn-resume:hover{background:#79c1e5; transform:translateY(-1px);}
   @media (max-width:640px){ .nav-links{gap:14px;} .nav-links a{font-size:12.5px;} .nav-links .btn-resume{padding:7px 12px;} }
-
-  /* ---------- HERO ---------- */
-  header.hero{
-    padding:110px 0 0;
-    position:relative;
-    scroll-margin-top:68px;
-  }
-  .eyebrow{
-    font-family:var(--sans); font-size:14px; font-weight:600; color:var(--accent);
-    display:flex; align-items:center; gap:10px; margin-bottom:22px;
-  }
-  .eyebrow::before{
-    content:''; width:22px; height:1px; background:var(--accent);
-  }
+  header.hero{padding:110px 0 0; position:relative; scroll-margin-top:68px;}
   h1.title{
     font-family:var(--display); font-weight:700;
     font-size:clamp(38px, 6.6vw, 64px);
     line-height:1.08; letter-spacing:-0.02em;
     max-width:900px;
   }
-  h1.title .line2{color:var(--text-muted); font-weight:500;}
-  .hero-sub{
-    font-family:var(--sans); font-size:18px; font-weight:500;
-    color:var(--text-muted); margin-top:16px;
-  }
-  .hero-interest{
-    font-family:var(--sans); font-size:16px; color:var(--text-muted); margin-top:8px;
-  }
+  .hero-sub{font-family:var(--sans); font-size:18px; font-weight:500; color:var(--text-muted); margin-top:16px;}
+  .hero-interest{font-family:var(--sans); font-size:16px; color:var(--text-muted); margin-top:8px;}
   .hero-interest span{color:var(--accent); font-weight:600;}
-  .hero-desc{
-    max-width:560px; margin-top:26px;
-    font-size:17.5px; color:var(--text-muted);
-  }
-  .hero-desc strong{color:var(--text); font-weight:600;}
-
   .hero-actions{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
   .scroll-hint{
     display:inline-flex; align-items:center; gap:8px; margin-top:56px;
@@ -194,8 +121,6 @@
   header.hero .hero-actions{justify-content:center;}
   header.hero h1.title{max-width:none;}
   #resume-mini{padding:80px 0 40px; scroll-margin-top:24px;}
-
-  /* ---------- FULL-SCREEN SITE PAGES (About / Projects / Work / Contact) ---------- */
   .site-page{
     position:fixed; inset:0; z-index:150; overflow-y:auto;
     background:var(--bg);
@@ -217,53 +142,6 @@
   .btn-primary:hover{background:#79c1e5; transform:translateY(-1px);}
   .btn-ghost{border:1px solid var(--border); color:var(--text);}
   .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
-
-  /* title block — a nod to a real drawing title block, kept subtle */
-  .title-block{
-    margin-top:64px;
-    border:1px solid var(--border-soft);
-    border-bottom:none;
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    background:rgba(17,23,28,0.55);
-    border-radius:10px 10px 0 0;
-    overflow:hidden;
-  }
-  .tb-cell{
-    padding:16px 20px;
-    border-right:1px solid var(--border-soft);
-    border-bottom:1px solid var(--border-soft);
-  }
-  .tb-cell:last-child{border-right:none;}
-  .tb-label{
-    font-family:var(--sans); font-size:12px; font-weight:500; color:var(--text-dim); margin-bottom:6px;
-  }
-  .tb-value{
-    font-family:var(--sans); font-size:14.5px; color:var(--text); font-weight:600;
-  }
-  @media (max-width:720px){
-    .title-block{grid-template-columns:repeat(2, 1fr); border-radius:10px;}
-  }
-
-  /* ---------- SECTION DIVIDER ---------- */
-  .dim-divider{
-    display:flex; align-items:center; gap:14px;
-    margin:0 0 44px; padding-top:96px;
-  }
-  .dim-divider .rule{flex:1; height:1px; background:var(--border-soft);}
-  .dim-label{
-    font-family:var(--sans); font-size:13px; font-weight:600;
-    color:var(--text-dim); white-space:nowrap;
-  }
-  .dim-label b{color:var(--accent); font-weight:600;}
-
-  section{padding:0 0 8px; scroll-margin-top:84px;}
-
-  h2.section-title{
-    font-family:var(--display); font-weight:600; font-size:clamp(24px,3vw,32px);
-    letter-spacing:-0.01em; margin-bottom:8px;
-  }
-
   .page-header{text-align:center; max-width:640px; margin:0 auto 48px;}
   .page-header h2{
     font-family:var(--display); font-weight:700; font-size:clamp(30px,4vw,42px);
@@ -274,17 +152,9 @@
     color:var(--accent); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:14px;
   }
   .page-header p{color:var(--text-muted); font-size:15.5px;}
-
-  /* ---------- ABOUT ---------- */
-  .about-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px;
-    padding-bottom:24px;
-  }
+  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; padding-bottom:24px;}
   .about-grid p{color:var(--text-muted); font-size:16px; margin-bottom:18px; max-width:62ch;}
   .about-grid p strong{color:var(--text); font-weight:600;}
-
-  /* EDIT ME: portrait photo slot — put images/portrait.jpg in your images
-     folder and this will show instead of the placeholder frame. */
   .portrait-frame{
     width:100%; aspect-ratio:4/5; border-radius:12px;
     border:1px solid var(--border); overflow:hidden;
@@ -296,7 +166,6 @@
   .portrait-frame .placeholder-note{
     font-family:var(--sans); font-size:13px; color:var(--text-dim); text-align:center; padding:24px;
   }
-
   .stat-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--border-soft);}
   .stat-row{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -305,14 +174,7 @@
   .stat-row .k{font-family:var(--sans); font-size:13.5px; color:var(--text-dim); font-weight:500;}
   .stat-row .v{font-family:var(--display); font-size:19px; color:var(--accent); font-weight:600;}
   @media (max-width:800px){ .about-grid{grid-template-columns:1fr; gap:32px;} }
-
-  /* ---------- PROJECTS ---------- */
-  .proj-list{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
-    gap:18px;
-    padding-bottom:24px;
-  }
+  .proj-list{display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:18px; padding-bottom:24px;}
   .proj-card{
     border:1px solid var(--border-soft);
     background:rgba(17,23,28,0.55);
@@ -330,16 +192,6 @@
     font-family:var(--sans); font-size:13px; font-weight:600; color:#fff;
   }
   .proj-card:hover .view-hint{opacity:1;}
-
-  .work-subdivider{
-    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--text-dim);
-    text-transform:uppercase; letter-spacing:0.06em; text-align:center;
-    margin:36px 0 22px;
-  }
-
-  /* EDIT ME: project photo/render — replace the background-image url on
-     each .proj-photo below (or swap in an <img> tag) with your own shot,
-     e.g. images/quadrotor.jpg, images/rover.jpg, images/arm.jpg */
   .proj-photo{
     width:100%; aspect-ratio:4/3;
     background-size:cover; background-position:center;
@@ -347,23 +199,13 @@
     border-bottom:1px solid var(--border-soft);
     display:flex; align-items:flex-end;
   }
-  .proj-photo .placeholder-note{
-    font-family:var(--sans); font-size:11.5px; color:var(--text-dim);
-    padding:8px 12px;
-  }
-
   .proj-head{
     display:flex; justify-content:space-between; align-items:flex-start;
     gap:14px; padding:18px 20px 12px;
     flex-wrap:wrap;
   }
-  .proj-num{
-    font-family:var(--mono); font-size:11px; color:var(--text-dim); letter-spacing:0.04em;
-  }
-  .proj-name{
-    font-family:var(--display); font-size:17px; font-weight:600; color:var(--text);
-    margin-top:5px;
-  }
+  .proj-num{font-family:var(--mono); font-size:11px; color:var(--text-dim); letter-spacing:0.04em;}
+  .proj-name{font-family:var(--display); font-size:17px; font-weight:600; color:var(--text); margin-top:5px;}
   .proj-tag{
     font-family:var(--sans); font-size:11px; font-weight:600;
     color:var(--caution); border:1px solid rgba(232,163,61,0.4); padding:4px 9px; border-radius:20px;
@@ -379,16 +221,7 @@
   .spec-row:last-child{border-bottom:none;}
   .spec-row .k{color:var(--text-dim); flex:0 0 auto; white-space:nowrap;}
   .spec-row .v{color:var(--text); flex:1 1 auto; text-align:right; white-space:normal; word-break:break-word;}
-  .proj-links{margin-top:2px; display:flex; gap:16px; flex-wrap:wrap;}
-  .proj-links a{
-    font-family:var(--sans); font-size:12.5px; font-weight:600;
-    text-decoration:none; color:var(--accent); border-bottom:1px solid var(--accent-dim);
-    padding-bottom:2px; transition:opacity 0.15s ease;
-  }
-  .proj-links a:hover{opacity:0.7;}
   @media (max-width:720px){ .proj-list{grid-template-columns:1fr;} }
-
-  /* ---------- FLAT RESUME-STYLE CARD (work experience entries) ---------- */
   .flat-card{
     border:1px solid var(--border-soft); border-left:3px solid var(--accent);
     background:rgba(17,23,28,0.55); border-radius:12px;
@@ -418,8 +251,6 @@
     transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
   .flat-card:hover .flat-cta{background:rgba(90,176,219,0.14); color:#fff; border-color:var(--accent);}
-
-  /* ---------- PROJECT DETAIL OVERLAY ---------- */
   .proj-overlay{
     position:fixed; z-index:200; overflow:hidden;
     border-radius:12px;
@@ -472,24 +303,8 @@
   .overlay-specs .spec-cell{background:rgba(17,23,28,0.75); padding:14px 16px;}
   .overlay-specs .spec-cell .k{font-family:var(--sans); font-size:11.5px; color:var(--text-dim); margin-bottom:4px;}
   .overlay-specs .spec-cell .v{font-family:var(--display); font-size:15px; font-weight:600; color:var(--text);}
-  .overlay-section-label{font-family:var(--sans); font-size:13px; font-weight:600; color:var(--text-dim); margin-bottom:14px;}
-  .overlay-gallery{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:14px; margin-bottom:40px;}
-  .overlay-gallery img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px; border:1px solid var(--border-soft); display:block;}
-  .overlay-video{margin-bottom:40px;}
-  .overlay-video video, .overlay-video iframe{width:100%; aspect-ratio:16/9; border-radius:10px; border:1px solid var(--border-soft); display:block;}
-  .overlay-links{display:flex; gap:16px; flex-wrap:wrap;}
-  .overlay-links a{
-    font-family:var(--sans); font-size:14px; font-weight:600; text-decoration:none;
-    color:var(--bg); background:var(--accent); padding:11px 18px; border-radius:7px;
-    transition:background 0.15s ease;
-  }
-  .overlay-links a:hover{background:#79c1e5;}
-
-  /* ---------- FLEXIBLE CONTENT BLOCKS (per-project custom sections) ---------- */
   .block{margin-bottom:46px;}
   .block-title{font-family:var(--display); font-weight:600; font-size:19px; color:var(--text); margin-bottom:16px;}
-  .block-text p{color:var(--text-muted); font-size:15.5px; max-width:70ch; white-space:pre-line;}
-  .block-text.is-full-width p{max-width:none;}
   .prose-bullets{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
   .prose-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:15px; line-height:1.6;}
   .prose-bullets li::before{
@@ -497,12 +312,8 @@
     background:var(--accent); border-radius:1px;
   }
   .prose-bullets li strong{color:var(--text);}
-  .block-text.is-full-width .prose-bullets li{max-width:none;}
   .block-pair{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
   .block-media-text{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;}
-  .block-grid{display:flex; flex-wrap:wrap; gap:16px;}
-  .block-grid .media-widget{flex:1 1 260px;}
-  .block-caption{margin-top:14px; color:var(--text-muted); font-size:14.5px; max-width:70ch; white-space:pre-line;}
   .block-text-panel{
     background:rgba(17,23,28,0.55); border:1px solid var(--border-soft); border-radius:10px;
     padding:22px; display:flex; align-items:center; min-height:100%;
@@ -549,14 +360,9 @@
     border-radius:12px; padding:28px 32px;
   }
   .text-panel-full p{color:var(--text-muted); font-size:15px; white-space:pre-line; text-align:justify;}
-  .triptych-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
-  .triptych-center{max-width:360px; margin:0 auto;}
-  @media (max-width:600px){ .triptych-row{grid-template-columns:1fr;} }
   .block-stack-pair{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start;}
   .block-stack-pair .stack-col{display:flex; flex-direction:column;}
   @media (max-width:720px){ .block-stack-pair{grid-template-columns:1fr;} }
-
-  /* ---------- SKILLS ---------- */
   .skill-grid{
     display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
     background:var(--border-soft); border:1px solid var(--border-soft);
@@ -572,32 +378,9 @@
   .skill-cat li{font-size:14px; color:var(--text-muted);}
   @media (max-width:860px){ .skill-grid{grid-template-columns:repeat(2, 1fr);} }
   @media (max-width:480px){ .skill-grid{grid-template-columns:1fr;} }
-
-  /* ---------- CONTACT / FOOTER ---------- */
   footer{padding:96px 0 48px;}
-  .contact-box{
-    border:1px solid var(--border-soft); padding:52px 44px;
-    border-radius:16px;
-    background:rgba(17,23,28,0.55);
-    display:flex; justify-content:space-between; align-items:flex-end; gap:32px;
-    flex-wrap:wrap;
-  }
-  .contact-box h2{
-    font-family:var(--display); font-size:clamp(24px,4vw,32px); font-weight:600;
-    max-width:480px; line-height:1.2; letter-spacing:-0.01em;
-  }
-  .contact-links{display:flex; flex-direction:column; gap:11px;}
-  .contact-links a{
-    font-family:var(--sans); font-size:14.5px; font-weight:500; text-decoration:none;
-    color:var(--text-muted); display:flex; align-items:center; gap:8px;
-    transition:color 0.15s ease;
-  }
-  .contact-links a:hover{color:var(--accent);}
-  .contact-links a::before{content:'→'; color:var(--accent);}
-
   .contact-avail{max-width:600px; margin:0 auto 40px; text-align:center; color:var(--text-muted); font-size:15.5px;}
   .contact-avail strong{color:var(--text);}
-
   .contact-widgets{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-bottom:44px;}
   .contact-widget{border:1px solid var(--border-soft); background:rgba(17,23,28,0.55); border-radius:12px; padding:18px 20px;}
   .contact-widget .widget-label{
@@ -608,11 +391,9 @@
   .contact-widget .widget-value a{color:var(--text); text-decoration:none;}
   .contact-widget .widget-value a:hover{color:var(--accent);}
   .contact-widget .widget-note{margin-top:8px; font-size:13px; color:var(--text-muted);}
-
   .contact-detail{max-width:640px; margin:0 auto 44px; text-align:center;}
   .contact-detail .detail-row{margin-bottom:10px; font-size:15px; color:var(--text-muted);}
   .contact-detail .detail-row b{color:var(--text); font-weight:600;}
-
   .resume-preview{max-width:480px; margin:0 auto;}
   .resume-frame{
     border:1px solid var(--border-soft); border-radius:12px; background:rgba(17,23,28,0.55);
@@ -632,7 +413,6 @@
 </head>
 <body>
 
-<!-- Fixed background stage: two layers crossfade as you scroll between sections -->
 <div class="bg-stage" aria-hidden="true">
   <div class="bg-layer" id="bgLayerA"></div>
   <div class="bg-layer" id="bgLayerB"></div>
@@ -648,7 +428,6 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Work</a></li>
       <li><a href="#contact">Contact</a></li>
-      <!-- EDIT ME: point this at your actual resume file once it's in the project folder -->
       <li><a href="Armaans Resume 2026.pdf" class="btn-resume" download>Resume</a></li>
     </ul>
   </div>
@@ -691,23 +470,17 @@
     <div class="page-header">
       <h2>About</h2>
     </div>
-
-    <!-- EDIT ME: your background/story. Typos from the draft are
-         cleaned up below — edit the copy itself freely. -->
     <div class="text-panel-full" style="margin-bottom:32px;">
       <p>If I could put into words the feeling I get when I solve a problem I couldn't at first, I probably wouldn't be an <strong>engineer</strong>. It's right up there with bombing a drive down the fairway or scoring a goal in front of the people you love.</p>
       <p style="margin-top:14px;">My recent work centres on <strong>designing</strong>, <strong>simulating</strong>, and <strong>fabricating parts</strong> for drones and cars, alongside hands-on experience as an irrigation technician working directly with <strong>mechanical, electrical, and hydraulic systems</strong> outside of a CAD screen.</p>
       <p style="margin-top:14px;">My interest in engineering traces back to watching Iron Man for the first time. Since then I've chased the same loop: learn something, apply it, then go learn more.</p>
     </div>
-
     <div class="about-grid">
       <div>
-        <!-- portrait.jpg is loaded automatically from the repo root (see JS at bottom) -->
         <div class="portrait-frame" id="portraitFrame">
           <span class="placeholder-note">Loading portrait.jpg…</span>
         </div>
       </div>
-
       <div>
         <div class="stat-list">
           <div class="stat-row"><span class="k">CAD hours logged</span><span class="v">300+</span></div>
@@ -717,8 +490,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Staggered second row: extracurriculars text + a second photo underneath everything above -->
     <div class="about-grid" style="margin-top:8px;">
       <div>
         <p>Outside of engineering, soccer has been a constant. I've played for most of my life and currently serve as team captain across the Cambridge, Guelph, and Waterloo area.</p>
@@ -730,7 +501,6 @@
         </ul>
         <p style="margin-top:16px;">School comes first, then family, then sport, and I take that commitment seriously on and off the field.</p>
       </div>
-
       <div>
         <div class="portrait-frame">
           <video src="soccer video for website.mp4" controls playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video>
@@ -747,19 +517,11 @@
       <div class="page-subtitle">Mechanical and autonomous projects</div>
       <p>Personal and school projects. This is how I built, documented, failed, and diagnosed each problem along the way.</p>
     </div>
-
-    <!-- Cards are built from the PROJECTS array near the bottom of this file
-         (filtered to category: 'project'). Click a card (anywhere except its
-         links) and it grows into a full detail page using that project's own
-         photo as the background — see PROJECTS below to edit names, photos,
-         galleries, video, specs. -->
     <div class="proj-list" id="projList"></div>
-
     <div class="dim-divider" style="padding-top:64px;">
       <span class="dim-label">Tools &amp; systems</span>
       <span class="rule"></span>
     </div>
-
     <div class="skill-grid">
       <div class="skill-cat">
         <h3>CAD / Design</h3>
@@ -806,8 +568,6 @@
     <div class="page-header">
       <h2>Work Experience</h2>
     </div>
-
-    <!-- Same PROJECTS array, filtered to category: 'experience'. -->
     <div class="proj-list" id="workList"></div>
    </div>
   </section>
@@ -817,14 +577,10 @@
     <div class="page-header">
       <h2>Contact</h2>
     </div>
-
     <p class="contact-avail">
       Seeking a <strong>Fall 2026 / Winter 2027 co-op</strong> in robotics: anything mechanical,
       mechatronics, or autonomy. I'm happy to discuss opportunities, so please feel free to reach out and connect.
     </p>
-
-    <!-- EDIT ME: double-check the school email — I've used ajass@uoguelph.ca based on
-         typical first-initial + last-name format, but confirm the exact address. -->
     <div class="contact-widgets">
       <div class="contact-widget">
         <div class="widget-label">Email</div>
@@ -844,14 +600,10 @@
         <div class="widget-value"><a href="tel:+16473277650">647-327-7650</a></div>
       </div>
     </div>
-
     <div class="contact-detail">
       <div class="detail-row"><b>Location:</b> Guelph, Ontario, Canada</div>
       <div class="detail-row"><b>Focus areas:</b> Autonomous Software, Mechanical Systems, Robotic Systems, Systems Integration</div>
     </div>
-
-    <!-- EDIT ME: upload resume.pdf to the repo root, and (optionally) a JPEG/PNG
-         preview image of its first page — set the preview filename below. -->
     <div class="resume-preview">
       <div class="resume-frame">
         <iframe src="Armaans Resume 2026.pdf" title="Resume preview" loading="lazy"></iframe>
@@ -861,7 +613,6 @@
         <a href="Armaans Resume 2026.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Open in new tab</a>
       </div>
     </div>
-
     <div class="foot-meta">
       <span>© 2026 Armaan Jass</span>
       <span>Drawn digitally. No scale.</span>
@@ -871,8 +622,6 @@
 
 </div>
 
-<!-- Full-screen project detail overlay: hidden until a card is clicked.
-     Populated entirely by JS from the PROJECTS array below. -->
 <div class="proj-overlay" id="projOverlay" aria-hidden="true">
   <div class="overlay-bg" id="overlayBg"></div>
   <div class="overlay-scrim"></div>
@@ -899,11 +648,6 @@
 </div>
 
 <script>
-  // ===========================================================================
-  // Background crossfade — two stacked layers swap opacity for a smooth
-  // transition. Which image shows is now decided by the page router below
-  // (each page section can carry its own data-bg attribute).
-  // ===========================================================================
   const bgLayers = [document.getElementById('bgLayerA'), document.getElementById('bgLayerB')];
   let bgActiveIndex = 0;
   let bgCurrentSrc = null;
@@ -919,16 +663,10 @@
     bgActiveIndex = 1 - bgActiveIndex;
   }
 
-  // ===========================================================================
-  // Parallax: the background drifts slightly slower than the page scrolls,
-  // instead of staying perfectly still. Movement is capped so the enlarged
-  // background layer (see .bg-layer CSS) never reveals its edges.
-  // ===========================================================================
   (function () {
     const layers = document.querySelectorAll('.bg-layer');
     if (!layers.length) return;
     let ticking = false;
-
     function applyParallax() {
       const bufferPx = window.innerHeight * 0.12;
       const offset = Math.max(-bufferPx, Math.min(bufferPx, window.scrollY * 0.12));
@@ -937,21 +675,15 @@
       });
       ticking = false;
     }
-
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(applyParallax);
         ticking = true;
       }
     }, { passive: true });
-
     applyParallax();
   })();
 
-  // ===========================================================================
-  // Portrait photo — shows images/portrait.jpg automatically if it exists,
-  // otherwise keeps the placeholder note visible.
-  // ===========================================================================
   (function () {
     const frame = document.getElementById('portraitFrame');
     const img = new Image();
@@ -960,17 +692,11 @@
     img.onload = () => { frame.innerHTML = ''; frame.appendChild(img); };
   })();
 
-  // ===========================================================================
-  // Smooth, offset-aware in-page navigation (accounts for the sticky nav bar).
-  // Page-route links (#about, #projects, #experience, #contact, and plain #
-  // for home) are excluded here — those need a real hash change so the page
-  // router below can see them via the hashchange event.
-  // ===========================================================================
   const ROUTE_IDS = ['about', 'projects', 'experience', 'contact'];
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
       const id = link.getAttribute('href').slice(1);
-      if (id === '' || ROUTE_IDS.includes(id)) return; // let the router handle it
+      if (id === '' || ROUTE_IDS.includes(id)) return;
       const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
@@ -980,29 +706,6 @@
     });
   });
 
-  // ===========================================================================
-  // PROJECTS — this is the single source of truth for every project card AND
-  // its full detail page. To edit a project (text, photos, video, links),
-  // just edit its object below. To add a new project, copy one whole object
-  // (from the opening { to the closing },) and change its fields.
-  //
-  //   id        — short, unique, no spaces (used internally, e.g. in the URL)
-  //   num       — small label shown top-left of the card, e.g. "PRJ—001"
-  //   name      — project/role title
-  //   tag       — small pill label, e.g. "UAV · Flight-tested"
-  //   cover     — filename shown on the card AND as the full-screen
-  //               background once you click into it
-  //   summary   — 1–3 sentences shown on the collapsed card
-  //   description — longer text shown on the detail page (can be several
-  //               sentences; use \n\n between paragraphs)
-  //   specs     — array of { k: label, v: value } shown as a small stat grid
-  //   gallery   — array of extra photo filenames shown on the detail page.
-  //               Leave as [] if you don't have extra photos yet.
-  //   video     — { src: 'yourfile.mp4' } for a file you've uploaded, or
-  //               { embed: 'https://www.youtube.com/embed/VIDEO_ID' } for a
-  //               YouTube/Vimeo link, or null if there's no video yet.
-  //   links     — array of { label, href } buttons, e.g. CAD files, write-up
-  // ===========================================================================
   const PROJECTS = [
     {
       id: 'quadcopter',
@@ -1021,10 +724,6 @@
       ],
       gallery: [],
       video: null,
-      // Custom sections for this project's detail page, top to bottom.
-      // See the renderMediaWidget/renderBlocks functions below for how
-      // each block type works. Fill in "src" once you've uploaded the
-      // matching photo/video with the same filename shown as "label".
       blocks: [
         {
           type: 'media',
@@ -1101,19 +800,18 @@
         {
           type: 'text',
           title: 'Motor Testing',
-          text:
-            'After flight-testing the MARK I prototype, we noticed, both in the video and in testing, that some motors appeared to be spinning faster than others. To dig into this, we reviewed the actual flight logs collected while the drone was armed, using the recorded motor signals to compare the response of each motor.'
+          text: 'After flight-testing the MARK I prototype, we noticed, both in the video and in testing, that some motors appeared to be spinning faster than others. To dig into this, we reviewed the actual flight logs collected while the drone was armed, using the recorded motor signals to compare the response of each motor.'
         },
         {
           type: 'mediaTextPair',
           items: [
             {
               media: { type: 'image', src: 'out of sync motor tests.jpg', label: 'Motor response, before' },
-              text: 'The graph shows the actual **flight log** from the MARK I test. Each coloured signal represents one of the four motors and its recorded response while the drone was armed. The signals were not synchronized, with the motors responding at different levels. This gave us a measurable way to compare the motor behaviour and identify the **voltage issue**.'
+              text: 'The graph shows the actual flight log from the MARK I test. Each coloured signal represents one of the four motors and its recorded response while the drone was armed. The signals were not synchronized, with the motors responding at different levels. This gave us a measurable way to compare the motor behaviour and identify the voltage issue.'
             },
             {
               media: { type: 'image', src: 'in sync motor tests.png', label: 'Motor response, after' },
-              text: 'We considered buying different **KV-rated motors**, but determined the simpler fix was more voltage. After upgrading from a 4S to a **6S LiPo battery**, the response curves came back synchronized, confirming the voltage fix worked.'
+              text: 'We considered buying different KV-rated motors, but determined the simpler fix was more voltage. After upgrading from a 4S to a 6S LiPo battery, the response curves came back synchronized, confirming the voltage fix worked.'
             }
           ]
         },
@@ -1163,8 +861,7 @@
       tag: 'Motorsports · FSAE',
       cover: 'background for gryphons racing project.jpg',
       summary: 'Reverse-engineered and built a mechanical throttle body as a backup for the team\u2019s electrical system.',
-      description:
-        'I joined Gryphons Racing in 2024 to work alongside other creative engineers and gain more opportunities to develop my engineering skills, recently reverse-engineering and building a mechanical throttle body as a backup for our electrical system.',
+      description: 'I joined Gryphons Racing in 2024 to work alongside other creative engineers and gain more opportunities to develop my engineering skills, recently reverse-engineering and building a mechanical throttle body as a backup for our electrical system.',
       specs: [
         { k: 'Team', v: 'Gryphons Racing FSAE' },
         { k: 'Role', v: 'Member: Design, Fabrication & Documentation' },
@@ -1180,41 +877,34 @@
           item: { type: 'video', src: 'Throttle body cad file vid.mp4', label: 'Throttle body, CAD file' }
         },
         {
-          // EDIT ME: this file isn't showing up — PNG/JPG both work fine in general,
-          // so it's almost certainly a filename mismatch. GitHub truncated the real
-          // filename with "...." in your file list — paste me the exact full name
-          // (and its real extension) and I'll fix the src below.
           type: 'mediaText',
           title: 'Throttle Body — Half View',
           media: { type: 'image', src: 'half view of cad throttle body with intake filter.jpg', label: 'Half view, CAD throttle body with intake filter' },
           text: 'Design process:',
           bullets: [
-            'Recreated the diameter and geometry of the **butterfly valve**, matching the **bolt-hole pattern** required for our intake manifold, so it functions like a mechanical throttle body while staying close to the shape and dimensions of our existing electrical one.',
-            'Kept the same **mounting points** and overall envelope, so we could quickly install or remove the mechanical throttle body without needing significant changes to the intake system.',
-            'Had the design reviewed by multiple senior leads on the team as an added **safety measure**.',
-            'Successfully passed **tech inspection** at FSAE.'
+            'Recreated the diameter and geometry of the butterfly valve, matching the bolt-hole pattern required for our intake manifold, so it functions like a mechanical throttle body while staying close to the shape and dimensions of our existing electrical one.',
+            'Kept the same mounting points and overall envelope, so we could quickly install or remove the mechanical throttle body without needing significant changes to the intake system.',
+            'Had the design reviewed by multiple senior leads on the team as an added safety measure.',
+            'Successfully passed tech inspection at FSAE.'
           ],
           mediaSide: 'left'
         },
         {
           type: 'textPanel',
           fullWidth: true,
-          text:
-            'Originally, the project was meant to be a prototype we\u2019d keep as a backup for future use. After we ran into multiple electrical failures, though, the mechanical throttle body became an important backup in case our electrical throttle body failed or couldn\u2019t pass tech inspection at FSAE. After 3D printing, assembling, and testing the components, we had a fully functional mechanical throttle body.'
+          text: 'Originally, the project was meant to be a prototype we\u2019d keep as a backup for future use. After we ran into multiple electrical failures, though, the mechanical throttle body became an important backup in case our electrical throttle body failed or couldn\u2019t pass tech inspection at FSAE. After 3D printing, assembling, and testing the components, we had a fully functional mechanical throttle body.'
         },
         {
           type: 'textPanel',
           fullWidth: true,
           title: 'Design Process',
-          text:
-            'The throttle body was developed through a **CAD-to-test workflow**. We used the team OneDrive to organize the reference components, then **redesigned each component in SolidWorks** and assembled them digitally to verify the geometry and fit before manufacturing. We then **3D printed** the assembly to check real-world tolerances, geometry, and fit after printing. This was especially important around the butterfly valve, where the clearance had to be tight enough to prevent unwanted air leakage while still leaving enough tolerance that the valve could move freely without catching on surrounding material.\n\nThe process also taught me how much **project management and communication** matter in engineering. Because multiple people were working on different components, keeping the shared files organized and communicating with other team members helped keep the design moving toward a functional assembly.'
+          text: 'The throttle body was developed through a CAD-to-test workflow. We used the team OneDrive to organize the reference components, then redesigned each component in SolidWorks and assembled them digitally to verify the geometry and fit before manufacturing. We then 3D printed the assembly to check real-world tolerances, geometry, and fit after printing. This was especially important around the butterfly valve, where the clearance had to be tight enough to prevent unwanted air leakage while still leaving enough tolerance that the valve could move freely without catching on surrounding material.\n\nThe process also taught me how much project management and communication matter in engineering. Because multiple people were working on different components, keeping the shared files organized and communicating with other team members helped keep the design moving toward a functional assembly.'
         },
         {
           type: 'mediaText',
           title: 'Throttle Body — After Printing',
           media: { type: 'video', src: 'Throttle body after printing.mp4', label: 'Throttle body, after printing' },
-          text:
-            'A throttle body controls how much air reaches the engine\u2019s intake, which directly affects how much power the engine can produce at any given moment. Ours is a mechanical, cable-actuated design. Pressing the pedal pulls a cable that opens a butterfly valve inside the throttle body, letting in more air. Since it doesn\u2019t rely on any electronics, it makes for a simple, reliable backup for whenever our primary electric throttle body isn\u2019t available.',
+          text: 'A throttle body controls how much air reaches the engine\u2019s intake, which directly affects how much power the engine can produce at any given moment. Ours is a mechanical, cable-actuated design. Pressing the pedal pulls a cable that opens a butterfly valve inside the throttle body, letting in more air. Since it doesn\u2019t rely on any electronics, it makes for a simple, reliable backup for whenever our primary electric throttle body isn\u2019t available.',
           mediaSide: 'left'
         },
         {
@@ -1225,10 +915,10 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text:
-            'This project gave me a much better intuitive understanding of what a throttle body actually does, enough that I can now recognize warning signs while driving. If an engine feels like it\u2019s overworking or gasping for air, a throttle body issue is one of the first things I\u2019d suspect.\n\nOn the engineering side, I came away with a clearer sense of when plastic is actually the right material choice. The main body and the cold air intake don\u2019t see much thermal expansion or mechanical stress, so 3D-printed plastic works fine there, and since the air intake operates below the material\u2019s warping temperature, it holds up under the heat too. But anything mechanically loaded, like the butterfly valve, the return spring, and the lever the accelerator cable pulls on, has to stay rigid. If that lever flexed or wore down over repeated cable pulls, it would eventually fail, so those parts needed to stay metal.\n\nWe also made a point of not just copying an existing throttle body outright. Instead, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold for an easy swap, while still reusing components from the cheaper throttle body we\u2019d sourced. Combined with 3D printing instead of machining or laser-cutting metal, that kept the whole thing cheap and quick to manufacture in-house.\n\nA lot of the detail work came out of talking to other subteams. Driveline and aerodynamics seniors weighed in on whether a cold air intake was feasible from an airflow standpoint and flagged how tight the tolerance needed to be around the intake filter opening. That\u2019s actually why our final design has a lip at the intake opening that earlier iterations didn\u2019t, since the filter needs something to clamp onto. We also rounded off the intake bore to improve airflow and reduce pressure loss, so the engine isn\u2019t starved for air under load.\n\nWhat started as a low-priority backup part ended up mattering a lot more once we were in regular contact with other subsystems about our deliverables. It became clear the electric throttle body carried a real failure risk that could be a safety hazard and potentially fail tech inspection, which meant we needed a working mechanical backup ready to go. From what I understand, it did end up getting used during testing, though I don\u2019t have footage of that, since my colleague and I were on co-op by that point.'
-        },
-   links: []
+          text: 'This project gave me a much better intuitive understanding of what a throttle body actually does, enough that I can now recognize warning signs while driving. If an engine feels like it\u2019s overworking or gasping for air, a throttle body issue is one of the first things I\u2019d suspect.\n\nOn the engineering side, I came away with a clearer sense of when plastic is actually the right material choice. The main body and the cold air intake don\u2019t see much thermal expansion or mechanical stress, so 3D-printed plastic works fine there, and since the air intake operates below the material\u2019s warping temperature, it holds up under the heat too. But anything mechanically loaded, like the butterfly valve, the return spring, and the lever the accelerator cable pulls on, has to stay rigid. If that lever flexed or wore down over repeated cable pulls, it would eventually fail, so those parts needed to stay metal.\n\nWe also made a point of not just copying an existing throttle body outright. Instead, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold for an easy swap, while still reusing components from the cheaper throttle body we\u2019d sourced. Combined with 3D printing instead of machining or laser-cutting metal, that kept the whole thing cheap and quick to manufacture in-house.\n\nA lot of the detail work came out of talking to other subteams. Driveline and aerodynamics seniors weighed in on whether a cold air intake was feasible from an airflow standpoint and flagged how tight the tolerance needed to be around the intake filter opening. That\u2019s actually why our final design has a lip at the intake opening that earlier iterations didn\u2019t, since the filter needs something to clamp onto. We also rounded off the intake bore to improve airflow and reduce pressure loss, so the engine isn\u2019t starved for air under load.\n\nWhat started as a low-priority backup part ended up mattering a lot more once we were in regular contact with other subsystems about our deliverables. It became clear the electric throttle body carried a real failure risk that could be a safety hazard and potentially fail tech inspection, which meant we needed a working mechanical backup ready to go. From what I understand, it did end up getting used during testing, though I don\u2019t have footage of that, since my colleague and I were on co-op by that point.'
+        }
+      ],
+      links: []
     },
     {
       id: 'design-project',
@@ -1238,8 +928,7 @@
       tag: 'University Project · Design',
       cover: 'Final assembaly of our toy picture.jpg',
       summary: 'A 3D reverse-engineering project, designing and manufacturing 50+ parts as a team of six.',
-      description:
-        'A 3D reverse-engineering project. As a university group project, we were tasked with picking a variation of a toy from a manual that could be built from a set of mechanical pieces we were given, similar to Lego. We then used calipers to accurately measure and recreate every component, rebuilt the toy as a full assembly in SolidWorks, and finally created a simulation showing the toy exploding, rotating, and so on.',
+      description: 'A 3D reverse-engineering project. As a university group project, we were tasked with picking a variation of a toy from a manual that could be built from a set of mechanical pieces we were given, similar to Lego. We then used calipers to accurately measure and recreate every component, rebuilt the toy as a full assembly in SolidWorks, and finally created a simulation showing the toy exploding, rotating, and so on.',
       specs: [
         { k: 'Scope', v: '3D reverse-engineering, 50+ parts' },
         { k: 'Role', v: 'Designer / Project Organizer' },
@@ -1261,8 +950,7 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text:
-            'Our group was tasked with using calipers to remeasure real-life components and redesign them in SolidWorks. The goal was to recreate more than 50 CAD components and reassemble the toy as a full assembly, then build out simulations including an exploded view and connected components.',
+          text: 'Our group was tasked with using calipers to remeasure real-life components and redesign them in SolidWorks. The goal was to recreate more than 50 CAD components and reassemble the toy as a full assembly, then build out simulations including an exploded view and connected components.',
           bullets: [
             'Team of six, each responsible for six required parts.',
             'I designed 13 parts in total, including some of the most advanced components.',
@@ -1309,25 +997,20 @@
           title: 'Final Assembly of Reverse Engineered Toy',
           item: { type: 'image', src: 'Final assembaly of our toy picture.jpg', label: 'Final assembly of reverse engineered toy' }
         },
-      {
-  type: 'textPanel',
-  fullWidth: true,
-  title: 'Take Aways',
-  text: '',
-  bullets: [
-    '**Assembly & Tolerance Validation:** The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how **tolerances**, dimensions, and simple **coincident mates** work together in a SolidWorks assembly.',
-    '**CAD to Manufacturing Workflow:** This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.',
-    '**Project Management & Coordination:** Before building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location.',
-    '**Scheduling & Deadline Management:** I scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. This taught me that project management, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.',
-    '**Engineering Drawing Communication:** For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added **shaded regions** to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable **engineering drawings** are when communicating a design to someone who has to manufacture it.'
-  ]
-},
         {
-          type: 'media',The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly. This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.
-
-Before building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location. I then scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. The experience taught me that project management, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.
-
-For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added shaded regions to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable engineering drawings are when communicating a design to someone who has to manufacture it.
+          type: 'textPanel',
+          fullWidth: true,
+          title: 'Take Aways',
+          bullets: [
+            'Assembly & Tolerance Validation: The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.',
+            'CAD to Manufacturing Workflow: This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.',
+            'Project Management & Coordination: Before building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location.',
+            'Scheduling & Deadline Management: I scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. This taught me that project management, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.',
+            'Engineering Drawing Communication: For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added shaded regions to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable engineering drawings are when communicating a design to someone who has to manufacture it.'
+          ]
+        },
+        {
+          type: 'media',
           item: { type: 'video', src: '', label: 'Video coming soon (EDIT ME: not uploaded yet)' }
         }
       ],
@@ -1341,28 +1024,27 @@ For the 2D drawings, feedback from engineering peers and TAs was that there were
       tag: 'Experience · Technician',
       cover: 'final piping system dripline.jpg',
       company: 'Angus Irrigation',
-      location: 'Ontario, Canada', // EDIT ME: confirm the exact location
+      location: 'Ontario, Canada',
       dateRange: 'May 2026 – August 2026',
       bullets: [
-        'Troubleshoot, install, repair, and modify irrigation systems involving **mechanical, hydraulic, electrical, and automated control components**.',
-        'Diagnose system failures by systematically isolating faults in **controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings**, including intermittent issues requiring repeated testing and logical elimination.',
+        'Troubleshoot, install, repair, and modify irrigation systems involving mechanical, hydraulic, electrical, and automated control components.',
+        'Diagnose system failures by systematically isolating faults in controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings, including intermittent issues requiring repeated testing and logical elimination.',
         'Install and repair underground piping, valves, sprinkler assemblies, controllers, and electrical control wiring while adapting to existing infrastructure and site constraints.',
         'Operate trenching equipment to create underground pathways for new piping, working through varying soil conditions, confined spaces, difficult terrain, and changing field conditions.',
-        'Identify and repair leaks by tracing water loss through interconnected **piping, valves, fittings, and sprinkler networks** to determine practical repair solutions.',
-        'Calculate **water requirements** for properties and individual irrigation zones to develop appropriate watering schedules and system configurations.',
+        'Identify and repair leaks by tracing water loss through interconnected piping, valves, fittings, and sprinkler networks to determine practical repair solutions.',
+        'Calculate water requirements for properties and individual irrigation zones to develop appropriate watering schedules and system configurations.',
         'Interpret blueprints, site plans, sketches, and existing system layouts to identify piping routes, valve locations, control zones, and system configurations.',
         'Produce field sketches and updated layouts for existing and newly installed irrigation systems to document modifications and support future troubleshooting.',
         'Apply mechanical reasoning, electrical troubleshooting, hydraulic understanding, and practical problem-solving when diagnosing systems with incomplete information or non-obvious failures.',
         'Work independently in physically demanding outdoor environments while managing tools, equipment, materials, and changing conditions to complete installations and repairs efficiently.',
         'Demonstrate persistence and adaptability when solving repetitive or difficult problems, using observation, testing, and logical elimination rather than relying solely on trial and error.',
-        'Balanced diagnostic speed with thoroughness, understanding that every additional half-hour on-site adds directly to the customer\u2019s bill, and prioritized **efficient, accurate troubleshooting** to protect customer trust and repeat business.',
-        'Selected controllers and wiring sized to the exact number of zones required (e.g. an 8-zone controller for 8 zones) to avoid **unnecessary equipment costs**.',
-        'Planned practical piping routes between valve boxes, controllers, and water sources to minimize **material use and labor time**.',
-        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging, protecting both **project timelines and customer costs**.'
+        'Balanced diagnostic speed with thoroughness, understanding that every additional half-hour on-site adds directly to the customer\u2019s bill, and prioritized efficient, accurate troubleshooting to protect customer trust and repeat business.',
+        'Selected controllers and wiring sized to the exact number of zones required (e.g. an 8-zone controller for 8 zones) to avoid unnecessary equipment costs.',
+        'Planned practical piping routes between valve boxes, controllers, and water sources to minimize material use and labor time.',
+        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging, protecting both project timelines and customer costs.'
       ],
       summary: 'Hands-on troubleshooting and installation across mechanical, electrical, and hydraulic irrigation systems.',
-      description:
-        'Hands-on experience troubleshooting and installing irrigation systems \u2014 real exposure to mechanical, electrical, and hydraulic systems working outside of a CAD screen.',
+      description: 'Hands-on experience troubleshooting and installing irrigation systems — real exposure to mechanical, electrical, and hydraulic systems working outside of a CAD screen.',
       specs: [
         { k: 'Role', v: 'Irrigation Technician' },
         { k: 'Systems', v: 'Mechanical / Electrical / Hydraulic' },
@@ -1381,7 +1063,7 @@ For the 2D drawings, feedback from engineering peers and TAs was that there were
           type: 'text',
           fullWidth: true,
           title: 'On the Job',
-          text: 'EDIT ME: add what you picked up about being a technician day to day \u2014 the kind of problems you\u2019d walk into and how you worked through them.'
+          text: 'EDIT ME: add what you picked up about being a technician day to day — the kind of problems you\u2019d walk into and how you worked through them.'
         },
         {
           type: 'pair',
@@ -1394,7 +1076,7 @@ For the 2D drawings, feedback from engineering peers and TAs was that there were
           type: 'text',
           fullWidth: true,
           title: 'Troubleshooting',
-          text: 'Troubleshooting and general fixes \u2014 hands-on repair work across the system.'
+          text: 'Troubleshooting and general fixes — hands-on repair work across the system.'
         },
         {
           type: 'pair',
@@ -1406,8 +1088,7 @@ For the 2D drawings, feedback from engineering peers and TAs was that there were
         {
           type: 'textPanel',
           fullWidth: true,
-          text:
-            'These two photos show a controller I installed that connects to solenoids across a commercial site. Each valve box holds multiple solenoids for different sprinkler zones, and every two sprinklers typically share one wire spliced back to a common line, all routed back to the controller shown here. The left photo shows the wiring before I got to it; the right shows it after I identified and labeled each wire by solenoid and tidied everything up, so the next person can immediately see what connects where.'
+          text: 'These two photos show a controller I installed that connects to solenoids across a commercial site. Each valve box holds multiple solenoids for different sprinkler zones, and every two sprinklers typically share one wire spliced back to a common line, all routed back to the controller shown here. The left photo shows the wiring before I got to it; the right shows it after I identified and labeled each wire by solenoid and tidied everything up, so the next person can immediately see what connects where.'
         },
         {
           type: 'mediaTextPair',
