@@ -1228,7 +1228,31 @@
           text:
             'This project gave me a much better intuitive understanding of what a throttle body actually does, enough that I can now recognize warning signs while driving. If an engine feels like it\u2019s overworking or gasping for air, a throttle body issue is one of the first things I\u2019d suspect.\n\nOn the engineering side, I came away with a clearer sense of when plastic is actually the right material choice. The main body and the cold air intake don\u2019t see much thermal expansion or mechanical stress, so 3D-printed plastic works fine there, and since the air intake operates below the material\u2019s warping temperature, it holds up under the heat too. But anything mechanically loaded, like the butterfly valve, the return spring, and the lever the accelerator cable pulls on, has to stay rigid. If that lever flexed or wore down over repeated cable pulls, it would eventually fail, so those parts needed to stay metal.\n\nWe also made a point of not just copying an existing throttle body outright. Instead, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold for an easy swap, while still reusing components from the cheaper throttle body we\u2019d sourced. Combined with 3D printing instead of machining or laser-cutting metal, that kept the whole thing cheap and quick to manufacture in-house.\n\nA lot of the detail work came out of talking to other subteams. Driveline and aerodynamics seniors weighed in on whether a cold air intake was feasible from an airflow standpoint and flagged how tight the tolerance needed to be around the intake filter opening. That\u2019s actually why our final design has a lip at the intake opening that earlier iterations didn\u2019t, since the filter needs something to clamp onto. We also rounded off the intake bore to improve airflow and reduce pressure loss, so the engine isn\u2019t starved for air under load.\n\nWhat started as a low-priority backup part ended up mattering a lot more once we were in regular contact with other subsystems about our deliverables. It became clear the electric throttle body carried a real failure risk that could be a safety hazard and potentially fail tech inspection, which meant we needed a working mechanical backup ready to go. From what I understand, it did end up getting used during testing, though I don\u2019t have footage of that, since my colleague and I were on co-op by that point.'
         },
-,
+   links: []
+    },
+    {
+      id: 'design-project',
+      category: 'project',
+      num: 'PRJ—003',
+      name: 'Engineering Design Project',
+      tag: 'University Project · Design',
+      cover: 'Final assembaly of our toy picture.jpg',
+      summary: 'A 3D reverse-engineering project, designing and manufacturing 50+ parts as a team of six.',
+      description:
+        'A 3D reverse-engineering project. As a university group project, we were tasked with picking a variation of a toy from a manual that could be built from a set of mechanical pieces we were given, similar to Lego. We then used calipers to accurately measure and recreate every component, rebuilt the toy as a full assembly in SolidWorks, and finally created a simulation showing the toy exploding, rotating, and so on.',
+      specs: [
+        { k: 'Scope', v: '3D reverse-engineering, 50+ parts' },
+        { k: 'Role', v: 'Designer / Project Organizer' },
+        { k: 'Timeline', v: '2.5 months' },
+        { k: 'Tools', v: 'SolidWorks, Calipers, Microsoft 365' }
+      ],
+      gallery: [],
+      video: null,
+      blocks: [
+        {
+          type: 'media',
+          item: { type: 'video', src: '', label: 'The finished build, video (EDIT ME: add your video filename)' }
+        },
         {
           type: 'media',
           title: 'Solar Roof',
@@ -1238,10 +1262,10 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'Our group was tasked with using calipers to remeasure real-life components and redesign them in SolidWorks. The goal was to recreate more than 50 CAD components and reassemble the toy as a full assembly, including an exploded view and connected components.',
+            'Our group was tasked with using calipers to remeasure real-life components and redesign them in SolidWorks. The goal was to recreate more than 50 CAD components and reassemble the toy as a full assembly, then build out simulations including an exploded view and connected components.',
           bullets: [
             'Team of six, each responsible for six required parts.',
-            'I designed **13 parts** in total, including some of the most advanced components.',
+            'I designed 13 parts in total, including some of the most advanced components.',
             'Converted 3 of those into formal 2D engineering drawings, scoring over 90% on them.',
             'Project ran 2.5+ months and produced 50+ parts in total.'
           ]
@@ -1259,11 +1283,6 @@
           ]
         },
         {
-          type: 'textPanel',
-          fullWidth: true,
-          text: 'Feedback from engineering peers and TAs was that the drawing contained too many annotations. I simplified the **2D engineering drawing** so the information is easier for a manufacturer to read and use. I also received a high grade on my drawings, with only minor tolerance-related errors identified during grading.'
-        },
-        {
           type: 'media',
           title: 'Wheel — Part 2',
           item: { type: 'video', src: 'Seconf part of wheel vid.mp4', label: 'Second part of wheel' }
@@ -1276,27 +1295,39 @@
           ]
         },
         {
-          type: 'textPanel',
-          fullWidth: true,
-          text: 'After speaking with TAs, I also used **shaded regions** to clearly identify the specific areas being annotated. This made the drawing easier to interpret and reinforced how visual clarity and controlled annotation improve **manufacturing communication**.'
-        },
-        {
           type: 'media',
           title: 'Assembly of Wheels',
           item: { type: 'video', src: 'Wheels together video.mp4', label: 'Wheels together' }
+        },
+        {
+          type: 'textPanel',
+          fullWidth: true,
+          text: 'Feedback from engineering peers and TAs was that the drawing contained too many annotations. I simplified the 2D engineering drawing so the information is easier for a manufacturer to read and use. I also received a high grade on my drawings, with only minor tolerance-related errors identified during grading.'
         },
         {
           type: 'media',
           title: 'Final Assembly of Reverse Engineered Toy',
           item: { type: 'image', src: 'Final assembaly of our toy picture.jpg', label: 'Final assembly of reverse engineered toy' }
         },
+      {
+  type: 'textPanel',
+  fullWidth: true,
+  title: 'Take Aways',
+  text: '',
+  bullets: [
+    '**Assembly & Tolerance Validation:** The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how **tolerances**, dimensions, and simple **coincident mates** work together in a SolidWorks assembly.',
+    '**CAD to Manufacturing Workflow:** This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.',
+    '**Project Management & Coordination:** Before building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location.',
+    '**Scheduling & Deadline Management:** I scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. This taught me that project management, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.',
+    '**Engineering Drawing Communication:** For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added **shaded regions** to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable **engineering drawings** are when communicating a design to someone who has to manufacture it.'
+  ]
+},
         {
-          type: 'textPanel',
-          fullWidth: true,
-          text: '**Assembly & Project Management:** The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how **tolerances**, dimensions, and simple **coincident mates** work together in a SolidWorks assembly. This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.\n\nBefore building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location. I then scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. The experience taught me that **project management**, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.\n\nFor the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added **shaded regions** to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable **engineering drawings** are when communicating a design to someone who has to manufacture it.'
-        },
-        {
-          type: 'media',
+          type: 'media',The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly. This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.
+
+Before building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location. I then scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. The experience taught me that project management, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.
+
+For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added shaded regions to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable engineering drawings are when communicating a design to someone who has to manufacture it.
           item: { type: 'video', src: '', label: 'Video coming soon (EDIT ME: not uploaded yet)' }
         }
       ],
