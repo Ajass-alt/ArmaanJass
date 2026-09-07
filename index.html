@@ -1044,11 +1044,11 @@
         {
           type: 'text',
           fullWidth: true,
-          text: 'We weren\u2019t the first to have this multi-tool idea, but we believed in its potential enough to keep developing it. During summer 2026, a three-person team built this drone from scratch. My focus was CAD design, manufacturing, machining, and simulation troubleshooting. Below are the videos, photos, and write-ups documenting that process from my perspective.'
+          text: 'We weren\u2019t the first to have this multi-tool idea, but we believed in its potential enough to keep developing it. During summer 2026, a three-person team built this drone from scratch. My focus was CAD design, manufacturing, machining, and troubleshooting. Below are the videos, photos, and write-ups documenting that process from my perspective.'
         },
         {
           type: 'stackPair',
-          title: 'MARK ONE Motor Mounts',
+          title: 'MARK I Motor Mounts',
           left: {
             media: { type: 'video', src: 'old motor mounts cad file video.mp4', label: 'CAD file, old motor mount' },
             bullets: [
@@ -1061,7 +1061,7 @@
         },
         {
           type: 'pair',
-          title: 'MARK TWO Motor Mounts',
+          title: 'MARK II Motor Mounts',
           items: [
             { type: 'video', src: 'new motor mounts cad file video.mp4', label: 'CAD file, new motor mount' },
             { type: 'image', src: 'final concept of drone new motor mounts.jpg', label: 'Final concept, new motor mounts' }
@@ -1081,7 +1081,7 @@
             'Designed so every component within the frame has a defined place to sit, keeping the layout clean and repeatable.',
             'Added clips for the carbon fiber tubes so they can\u2019t rotate or shift. Even a small rotation on one tube throws its propeller out of alignment with the rest, which isn\u2019t acceptable.',
             'Split the frame into a top half and bottom half, mounting the carbon fiber tubes with four screws at each corner.',
-            'Switched from PLA to PA6 after repeated unscrewing and rescrewing for simulation testing caused visible cracking in the PLA and added unnecessary weight.',
+            'Switched from PLA to PA6 after repeated unscrewing and rescrewing during testing caused visible cracking in the PLA and added unnecessary weight.',
             'Routed propeller wiring along the bottom of the frame, away from other wiring and away from any screws, to reduce frequency interference and frequency loss and keep everything organized and easy to trace.'
           ]
         },
@@ -1102,18 +1102,18 @@
           type: 'text',
           title: 'Motor Testing',
           text:
-            'After flight-testing the MARK I prototype, we noticed, both in the video and in testing, that some motors appeared to be spinning faster than others. To dig into this, we ran simulations to generate response curves for each motor.'
+            'After flight-testing the MARK I prototype, we noticed, both in the video and in testing, that some motors appeared to be spinning faster than others. To dig into this, we reviewed the actual flight logs collected while the drone was armed, using the recorded motor signals to compare the response of each motor.'
         },
         {
           type: 'mediaTextPair',
           items: [
             {
               media: { type: 'image', src: 'out of sync motor tests.jpg', label: 'Motor response, before' },
-              text: 'All four motors, each a different coloured signal, were receiving different amounts of voltage, resulting in different speeds. We considered buying differently KV-rated motors, but determined the simpler fix was more voltage.'
+              text: 'The graph shows the actual **flight log** from the MARK I test. Each coloured signal represents one of the four motors and its recorded response while the drone was armed. The signals were not synchronized, with the motors responding at different levels. This gave us a measurable way to compare the motor behaviour and identify the **voltage issue**.'
             },
             {
               media: { type: 'image', src: 'in sync motor tests.png', label: 'Motor response, after' },
-              text: 'After upgrading from a 4S to a 6S LiPo battery, the response curves came back synchronized, confirming the voltage fix worked.'
+              text: 'We considered buying different **KV-rated motors**, but determined the simpler fix was more voltage. After upgrading from a 4S to a **6S LiPo battery**, the response curves came back synchronized, confirming the voltage fix worked.'
             }
           ]
         },
@@ -1133,7 +1133,7 @@
         },
         {
           type: 'pair',
-          title: 'MARK II',
+          title: 'MARK II Drone',
           items: [
             { type: 'image', src: 'final concept of drone new motor mounts.jpg', label: 'Final concept, new motor mounts' },
             { type: 'video', src: 'MARK II first flight.mp4', label: 'MARK II, first flight' }
@@ -1144,13 +1144,13 @@
           fullWidth: true,
           bullets: [
             'Flies on full GPS.',
-            'Jaskaran Pabla ran the simulation testing that made autonomous flight possible. I\u2019ve only run controller testing myself so far.',
+            'Autonomous flight was enabled through the controller and flight testing performed by the team. I focused on the mechanical design, manufacturing, and troubleshooting of the drone.',
             'Iknoor Braich helped with the mechanical side of the build.',
             'First successful flight, recorded above.',
             'Switching to PA6 cut the drone\u2019s overall weight by more than 8%.',
             'The 6S battery finally gave every motor enough voltage to spin in sync, enough thrust for liftoff.'
           ],
-          text: 'Building this taught me how to troubleshoot through simulation, testing, and plain trial and error, and more than anything, how to approach a problem from multiple angles instead of betting everything on one fix.'
+          text: 'Building this taught me how to troubleshoot through testing and plain trial and error, and more than anything, how to approach a problem from multiple angles instead of betting everything on one fix.'
         }
       ],
       links: []
@@ -1169,7 +1169,7 @@
         { k: 'Team', v: 'Gryphons Racing FSAE' },
         { k: 'Role', v: 'Member: Design, Fabrication & Documentation' },
         { k: 'Subsystem', v: 'Driveline, Aerodynamics, Brakes' },
-        { k: 'Tools', v: 'STAR-CCM+, SolidWorks, Microsoft 365' }
+        { k: 'Tools', v: 'SolidWorks, Microsoft 365' }
       ],
       gallery: [],
       video: null,
@@ -1189,10 +1189,10 @@
           media: { type: 'image', src: 'half view of cad throttle body with intake filter.jpg', label: 'Half view, CAD throttle body with intake filter' },
           text: 'Design process:',
           bullets: [
-            'Recreated the diameter and geometry of the butterfly valve, matching the bolt-hole pattern required for our intake manifold, so it functions like a mechanical throttle body while staying close to the shape and dimensions of our existing electrical one.',
-            'Kept the same mounting points and overall envelope, so we could quickly install or remove the mechanical throttle body without needing significant changes to the intake system.',
-            'Had the design reviewed by multiple senior leads on the team as an added safety measure.',
-            'Successfully passed tech inspection at FSAE.'
+            'Recreated the diameter and geometry of the **butterfly valve**, matching the **bolt-hole pattern** required for our intake manifold, so it functions like a mechanical throttle body while staying close to the shape and dimensions of our existing electrical one.',
+            'Kept the same **mounting points** and overall envelope, so we could quickly install or remove the mechanical throttle body without needing significant changes to the intake system.',
+            'Had the design reviewed by multiple senior leads on the team as an added **safety measure**.',
+            'Successfully passed **tech inspection** at FSAE.'
           ],
           mediaSide: 'left'
         },
@@ -1201,6 +1201,13 @@
           fullWidth: true,
           text:
             'Originally, the project was meant to be a prototype we\u2019d keep as a backup for future use. After we ran into multiple electrical failures, though, the mechanical throttle body became an important backup in case our electrical throttle body failed or couldn\u2019t pass tech inspection at FSAE. After 3D printing, assembling, and testing the components, we had a fully functional mechanical throttle body.'
+        },
+        {
+          type: 'textPanel',
+          fullWidth: true,
+          title: 'Design Process',
+          text:
+            'The throttle body was developed through a **CAD-to-test workflow**. We used the team OneDrive to organize the reference components, then **redesigned each component in SolidWorks** and assembled them digitally to verify the geometry and fit before manufacturing. We then **3D printed** the assembly to check real-world tolerances, geometry, and fit after printing. This was especially important around the butterfly valve, where the clearance had to be tight enough to prevent unwanted air leakage while still leaving enough tolerance that the valve could move freely without catching on surrounding material.\n\nThe process also taught me how much **project management and communication** matter in engineering. Because multiple people were working on different components, keeping the shared files organized and communicating with other team members helped keep the design moving toward a functional assembly.'
         },
         {
           type: 'mediaText',
@@ -1221,39 +1228,7 @@
           text:
             'This project gave me a much better intuitive understanding of what a throttle body actually does, enough that I can now recognize warning signs while driving. If an engine feels like it\u2019s overworking or gasping for air, a throttle body issue is one of the first things I\u2019d suspect.\n\nOn the engineering side, I came away with a clearer sense of when plastic is actually the right material choice. The main body and the cold air intake don\u2019t see much thermal expansion or mechanical stress, so 3D-printed plastic works fine there, and since the air intake operates below the material\u2019s warping temperature, it holds up under the heat too. But anything mechanically loaded, like the butterfly valve, the return spring, and the lever the accelerator cable pulls on, has to stay rigid. If that lever flexed or wore down over repeated cable pulls, it would eventually fail, so those parts needed to stay metal.\n\nWe also made a point of not just copying an existing throttle body outright. Instead, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold for an easy swap, while still reusing components from the cheaper throttle body we\u2019d sourced. Combined with 3D printing instead of machining or laser-cutting metal, that kept the whole thing cheap and quick to manufacture in-house.\n\nA lot of the detail work came out of talking to other subteams. Driveline and aerodynamics seniors weighed in on whether a cold air intake was feasible from an airflow standpoint and flagged how tight the tolerance needed to be around the intake filter opening. That\u2019s actually why our final design has a lip at the intake opening that earlier iterations didn\u2019t, since the filter needs something to clamp onto. We also rounded off the intake bore to improve airflow and reduce pressure loss, so the engine isn\u2019t starved for air under load.\n\nWhat started as a low-priority backup part ended up mattering a lot more once we were in regular contact with other subsystems about our deliverables. It became clear the electric throttle body carried a real failure risk that could be a safety hazard and potentially fail tech inspection, which meant we needed a working mechanical backup ready to go. From what I understand, it did end up getting used during testing, though I don\u2019t have footage of that, since my colleague and I were on co-op by that point.'
         },
-        {
-          type: 'mediaText',
-          title: 'Simulation',
-          media: { type: 'image', src: '', label: 'STAR-CCM+ airfoil simulation screenshot (EDIT ME: add filename)' },
-          text: 'EDIT ME: describe the STAR-CCM+ airfoil simulation work, what you were simulating, the steps you took, and what the results showed.',
-          mediaSide: 'left'
-        }
-      ],
-      links: []
-    },
-    {
-      id: 'design-project',
-      category: 'project',
-      num: 'PRJ—003',
-      name: 'Engineering Design Project',
-      tag: 'University Project · Design',
-      cover: 'Final assembaly of our toy picture.jpg',
-      summary: 'A 3D reverse-engineering project, designing and manufacturing 50+ parts as a team of six.',
-      description:
-        'A 3D reverse-engineering project. As a university group project, we were tasked with picking a variation of a toy from a manual that could be built from a set of mechanical pieces we were given, similar to Lego. We then used calipers to accurately measure and recreate every component, rebuilt the toy as a full assembly in SolidWorks, and finally created a simulation showing the toy exploding, rotating, and so on.',
-      specs: [
-        { k: 'Scope', v: '3D reverse-engineering, 50+ parts' },
-        { k: 'Role', v: 'Designer / Project Organizer' },
-        { k: 'Timeline', v: '2.5 months' },
-        { k: 'Tools', v: 'SolidWorks, Calipers, Microsoft 365' }
-      ],
-      gallery: [],
-      video: null,
-      blocks: [
-        {
-          type: 'media',
-          item: { type: 'video', src: '', label: 'The finished build, video (EDIT ME: add your video filename)' }
-        },
+,
         {
           type: 'media',
           title: 'Solar Roof',
@@ -1263,10 +1238,10 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'Our group was tasked with using calipers to remeasure real-life components and redesign them in SolidWorks. The goal was to recreate more than 50 CAD components and reassemble the toy as a full assembly, then build out simulations including an exploded view and connected components.',
+            'Our group was tasked with using calipers to remeasure real-life components and redesign them in SolidWorks. The goal was to recreate more than 50 CAD components and reassemble the toy as a full assembly, including an exploded view and connected components.',
           bullets: [
             'Team of six, each responsible for six required parts.',
-            'I designed 13 parts in total, including some of the most advanced components.',
+            'I designed **13 parts** in total, including some of the most advanced components.',
             'Converted 3 of those into formal 2D engineering drawings, scoring over 90% on them.',
             'Project ran 2.5+ months and produced 50+ parts in total.'
           ]
@@ -1284,6 +1259,11 @@
           ]
         },
         {
+          type: 'textPanel',
+          fullWidth: true,
+          text: 'Feedback from engineering peers and TAs was that the drawing contained too many annotations. I simplified the **2D engineering drawing** so the information is easier for a manufacturer to read and use. I also received a high grade on my drawings, with only minor tolerance-related errors identified during grading.'
+        },
+        {
           type: 'media',
           title: 'Wheel — Part 2',
           item: { type: 'video', src: 'Seconf part of wheel vid.mp4', label: 'Second part of wheel' }
@@ -1296,14 +1276,14 @@
           ]
         },
         {
+          type: 'textPanel',
+          fullWidth: true,
+          text: 'After speaking with TAs, I also used **shaded regions** to clearly identify the specific areas being annotated. This made the drawing easier to interpret and reinforced how visual clarity and controlled annotation improve **manufacturing communication**.'
+        },
+        {
           type: 'media',
           title: 'Assembly of Wheels',
           item: { type: 'video', src: 'Wheels together video.mp4', label: 'Wheels together' }
-        },
-        {
-          type: 'textPanel',
-          fullWidth: true,
-          text: 'EDIT ME: notes on assembling the wheels, how the tolerances held up, any fit issues, and how it came together as a full unit.'
         },
         {
           type: 'media',
@@ -1313,7 +1293,7 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'EDIT ME: closing notes on the finished assembly, how the tolerances turned out, what the 2D drawings were graded on, and how the whole build came together.'
+          text: '**Assembly & Project Management:** The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings, and they did. The parts assembled without requiring adjustment, which gave me an early understanding of how **tolerances**, dimensions, and simple **coincident mates** work together in a SolidWorks assembly. This was the pinnacle of my introduction to SolidWorks assemblies, before applying the same skills later to the throttle body in FSAE and the drone project.\n\nBefore building the gearbox and final toy assembly, our team used a shared OneDrive folder to organize every CAD part. Because communication was becoming a problem, I took responsibility for coordinating with each member, making sure their parts were progressing, and organizing the files into one location. I then scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due. The experience taught me that **project management**, communication, file organization, and scheduling can be just as important as the CAD work when a project depends on multiple people delivering parts on time.\n\nFor the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added **shaded regions** to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable **engineering drawings** are when communicating a design to someone who has to manufacture it.'
         },
         {
           type: 'media',
@@ -1333,21 +1313,21 @@
       location: 'Ontario, Canada', // EDIT ME: confirm the exact location
       dateRange: 'May 2026 – August 2026',
       bullets: [
-        'Troubleshoot, install, repair, and modify irrigation systems involving mechanical, hydraulic, electrical, and automated control components.',
-        'Diagnose system failures by systematically isolating faults in controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings, including intermittent issues requiring repeated testing and logical elimination.',
+        'Troubleshoot, install, repair, and modify irrigation systems involving **mechanical, hydraulic, electrical, and automated control components**.',
+        'Diagnose system failures by systematically isolating faults in **controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings**, including intermittent issues requiring repeated testing and logical elimination.',
         'Install and repair underground piping, valves, sprinkler assemblies, controllers, and electrical control wiring while adapting to existing infrastructure and site constraints.',
         'Operate trenching equipment to create underground pathways for new piping, working through varying soil conditions, confined spaces, difficult terrain, and changing field conditions.',
-        'Identify and repair leaks by tracing water loss through interconnected piping, valves, fittings, and sprinkler networks to determine practical repair solutions.',
-        'Calculate water requirements for properties and individual irrigation zones to develop appropriate watering schedules and system configurations.',
+        'Identify and repair leaks by tracing water loss through interconnected **piping, valves, fittings, and sprinkler networks** to determine practical repair solutions.',
+        'Calculate **water requirements** for properties and individual irrigation zones to develop appropriate watering schedules and system configurations.',
         'Interpret blueprints, site plans, sketches, and existing system layouts to identify piping routes, valve locations, control zones, and system configurations.',
         'Produce field sketches and updated layouts for existing and newly installed irrigation systems to document modifications and support future troubleshooting.',
         'Apply mechanical reasoning, electrical troubleshooting, hydraulic understanding, and practical problem-solving when diagnosing systems with incomplete information or non-obvious failures.',
         'Work independently in physically demanding outdoor environments while managing tools, equipment, materials, and changing conditions to complete installations and repairs efficiently.',
         'Demonstrate persistence and adaptability when solving repetitive or difficult problems, using observation, testing, and logical elimination rather than relying solely on trial and error.',
-        'Balanced diagnostic speed with thoroughness, understanding that every additional half-hour on-site adds directly to the customer\u2019s bill \u2014 prioritized efficient, accurate troubleshooting to protect customer trust and repeat business.',
-        'Selected controllers and wiring sized to the exact number of zones required (e.g. an 8-zone controller for 8 zones) to avoid unnecessary equipment costs.',
-        'Planned practical piping routes between valve boxes, controllers, and water sources to minimize material use and labor time.',
-        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging, protecting both project timelines and customer costs.'
+        'Balanced diagnostic speed with thoroughness, understanding that every additional half-hour on-site adds directly to the customer\u2019s bill, and prioritized **efficient, accurate troubleshooting** to protect customer trust and repeat business.',
+        'Selected controllers and wiring sized to the exact number of zones required (e.g. an 8-zone controller for 8 zones) to avoid **unnecessary equipment costs**.',
+        'Planned practical piping routes between valve boxes, controllers, and water sources to minimize **material use and labor time**.',
+        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging, protecting both **project timelines and customer costs**.'
       ],
       summary: 'Hands-on troubleshooting and installation across mechanical, electrical, and hydraulic irrigation systems.',
       description:
@@ -1457,6 +1437,12 @@
     const d = document.createElement('div');
     d.textContent = str;
     return d.innerHTML;
+  }
+
+  // Allows selected engineering keywords to be bolded in project and experience copy.
+  // Wrap text in **double asterisks** inside PROJECTS to make it stand out.
+  function formatRichText(str) {
+    return escapeHtml(str).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   }
 
   PROJECTS.forEach((p) => {
@@ -1630,9 +1616,9 @@
 
       if (b.type === 'text') {
         const cls = 'block block-text' + (b.fullWidth ? ' is-full-width' : '');
-        const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
+        const lead = b.text ? `<p>${formatRichText(b.text)}</p>` : '';
         const bullets = b.bullets && b.bullets.length
-          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${formatRichText(x)}</li>`).join('')}</ul>`
           : '';
         return `<div class="${cls}">${titleHtml}${lead}${bullets}</div>`;
       }
@@ -1644,9 +1630,9 @@
       // to have it span the whole page instead.
       if (b.type === 'textPanel') {
         const cls = b.fullWidth ? 'text-panel-full' : 'text-panel-centered';
-        const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
+        const lead = b.text ? `<p>${formatRichText(b.text)}</p>` : '';
         const bullets = b.bullets && b.bullets.length
-          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${formatRichText(x)}</li>`).join('')}</ul>`
           : '';
         return `<div class="block"><div class="${cls}">${titleHtml}${lead}${bullets}</div></div>`;
       }
@@ -1656,9 +1642,9 @@
       }
       if (b.type === 'mediaText') {
         const mediaHtml = renderItem(b.media);
-        const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
+        const lead = b.text ? `<p>${formatRichText(b.text)}</p>` : '';
         const bullets = b.bullets && b.bullets.length
-          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${formatRichText(x)}</li>`).join('')}</ul>`
           : '';
         const textHtml = `<div class="block-text-panel"><div>${lead}${bullets}</div></div>`;
         const parts = b.mediaSide === 'right' ? [textHtml, mediaHtml] : [mediaHtml, textHtml];
@@ -1667,15 +1653,15 @@
       // Two columns, each: a photo/video on top with its own widget write-up stacked
       // directly underneath it — e.g. two videos side by side, each with its own caption.
       if (b.type === 'mediaTextPair') {
-        const cols = b.items.map((it) => `<div class="stack-col">${renderItem(it.media)}<div class="block-text-panel" style="margin-top:14px;"><p>${escapeHtml(it.text)}</p></div></div>`).join('');
+        const cols = b.items.map((it) => `<div class="stack-col">${renderItem(it.media)}<div class="block-text-panel" style="margin-top:14px;"><p>${formatRichText(it.text)}</p></div></div>`).join('');
         return `<div class="block">${titleHtml}<div class="block-stack-pair">${cols}</div></div>`;
       }
       // Left column: a photo with its own write-up stacked directly underneath it.
       // Right column: one media item (e.g. a video) spanning the full height beside it.
       if (b.type === 'stackPair') {
-        const leftLead = b.left.text ? `<p>${escapeHtml(b.left.text)}</p>` : '';
+        const leftLead = b.left.text ? `<p>${formatRichText(b.left.text)}</p>` : '';
         const leftBullets = b.left.bullets && b.left.bullets.length
-          ? `<ul class="prose-bullets"${leftLead ? ' style="margin-top:12px;"' : ''}>${b.left.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          ? `<ul class="prose-bullets"${leftLead ? ' style="margin-top:12px;"' : ''}>${b.left.bullets.map((x) => `<li>${formatRichText(x)}</li>`).join('')}</ul>`
           : '';
         const leftCol = `<div class="stack-col">${renderItem(b.left.media)}<div class="block-text-panel" style="margin-top:14px;"><div>${leftLead}${leftBullets}</div></div></div>`;
         const rightCol = `<div class="stack-col">${renderItem(b.right)}</div>`;
