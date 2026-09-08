@@ -721,11 +721,11 @@
     <!-- Staggered second row: extracurriculars text + a second photo underneath everything above -->
     <div class="about-grid" style="margin-top:8px;">
       <div>
-        <p>Outside of engineering, soccer has been a constant. I've played for most of my life and currently serve as team captain across the Cambridge, Guelph, and Waterloo area.</p>
+        <p>Outside of engineering, soccer has been my life. I've played for my whole life and currently serve as team captain for Oriental Sports Club playing across the Province.</p>
         <ul class="prose-bullets" style="margin-top:16px;">
-          <li><strong>Colin Hood Award</strong>, given to one student-athlete per graduating class who shows real commitment to both schoolwork and sport.</li>
-          <li>Coaches' Award for soccer, three years running.</li>
-          <li>OFSAA finalist (soccer); championship final win (football).</li>
+          <li><strong>Colin Hood Award</strong>, given to one student-athlete in there graduating class who shows undeniyable commitment to Success in both coursework and sports.</li>
+          <li> 2x Coaches Award, MVP (Soccer).</li>
+          <li>OFSAA finalist (Football 2nd in province JHSS);; .</li>
           <li>Also competed in basketball, football, and track. Soccer and basketball remain my two main sports.</li>
         </ul>
         <p style="margin-top:16px;">School comes first, then family, then sport, and I take that commitment seriously on and off the field.</p>
@@ -819,8 +819,8 @@
     </div>
 
     <p class="contact-avail">
-      Seeking a <strong>Fall 2026 / Winter 2027 co-op</strong> in robotics: anything mechanical,
-      mechatronics, or autonomy. I'm happy to discuss opportunities, so please feel free to reach out and connect.
+      Seeking a <strong> Winter/summer 2027 co-op</strong> in robotics: mechanical,
+      mechatronics, autonomy or aerospace related. I'm happy to discuss opportunities, so please feel free to reach out and connect.
     </p>
 
     <!-- EDIT ME: double-check the school email — I've used ajass@uoguelph.ca based on
@@ -1012,20 +1012,20 @@
         {
           type: 'text',
           fullWidth: true,
-          text: 'The goal was an autonomous, self-swappable, multi-tool drone controlled through an app or controller. The attached payload determines its task:',
+          text: 'The goal was an autonomous, self-swappable, multi-tool drone controlled through an app or controller. The payload attached would decide the job:',
           bullets: [
             'Drilling holes',
             'Planting trees',
-            'Fire suppression',
-            'Campsite surveillance mode',
+            'Putting out fires',
+            'Surveillance mode while camping',
             'Package delivery',
-            'Modular tool attachments for expanded functionality'
+            'And many more tasks'
           ]
         },
         {
           type: 'text',
           fullWidth: true,
-          text: 'While the multi-tool concept exists elsewhere, we saw strong potential in advancing our own implementation. During summer 2026, a three-person team built this drone from scratch. My role focused on CAD design, manufacturing, machining, and systematic troubleshooting. Below are the videos, photos, and documentation detailing the development process.'
+          text: 'Unfortunetly we were not the first to have this multi-tool idea, but we believed in its potential enough to keep developing it. During summer 2026, a three-person team built this drone from scratch. My focus was CAD design, manufacturing, machining, and troubleshooting. Below are the videos, photos, and write-ups documenting that process from my perspective.'
         },
         {
           type: 'stackPair',
@@ -1033,9 +1033,9 @@
           left: {
             media: { type: 'video', src: 'old motor mounts cad file video.mp4', label: 'CAD file, old motor mount' },
             bullets: [
-              'Redesigned the mount structure to clear tight screw access during assembly.',
-              'Lowered mount height and expanded clearances to stop flex-induced propeller contact.',
-              'Replaced PLA with PA6-CF (carbon-fiber-reinforced nylon), reducing component weight by roughly 8%.'
+              'Screwing the motors in from underneath was tight and slow, so we redesigned the mount to open up clearance for the screws.',
+              'Repeated stress cracks appeared under flex, letting propellers clip the mounts, so we reduced mount height and added more clearance for durability.',
+              'Switched print material from PLA to PA6-CF (carbon-fibre-reinforced nylon), cutting roughly 8% of the weight anywhere PLA had previously been used.'
             ]
           },
           right: { type: 'video', src: 'Old motor mounts video.mp4', label: 'Old motor mounts' }
@@ -1060,23 +1060,23 @@
           type: 'text',
           title: 'Frame',
           bullets: [
-            'Designed designated mounting features for every internal component to ensure a clean layout.',
-            'Integrated locking clips on carbon fiber tubes to prevent rotation and maintain propeller alignment.',
-            'Split the frame into upper and lower assemblies, securing carbon tubes with four corner fasteners.',
-            'Upgraded from PLA to PA6-CF to eliminate cracking and strain from repeated assembly cycles.',
-            'Routed propeller wiring along the frame bottom, isolating it from control logic to reduce interference.'
+            'Designed so every component within the frame has a defined place to sit, keeping the layout clean and repeatable.',
+            'Added clips that lock the carbon fiber tubes in place so they can\u2019t rotate or shift. Even a small rotation on one tube would throw its propeller out of alignment, meaning it wouldn\u2019t be parallel to the ground and the drone wouldn\u2019t fly straight.',
+            'Split the frame into a top half and bottom half, mounting the carbon fiber tubes with four screws at each corner.',
+            'Switched from PLA to PA6-CF after repeated unscrewing and rescrewing during testing caused visible cracking in the PLA and added unnecessary weight.',
+            'Routed propeller wiring along the bottom of the frame, away from other wiring and away from any screws, to reduce frequency interference and keep everything organized and easy to trace.'
           ]
         },
         {
           type: 'mediaText',
           title: 'MARK I Drone',
           media: { type: 'video', src: 'prototype drone.mp4', label: 'Prototype drone' },
-          text: 'Issues identified after initial flight test:',
+          text: 'Issues after the first flight test:',
           bullets: [
-            'Asynchronous motor rotation speeds.',
-            'Insufficient thrust-to-weight ratio preventing lift.',
-            'Verified propeller orientation and mounting direction.',
-            'Evaluated remedies: motor upgrades, 6S battery conversion, or frame weight reduction.'
+            'Motors spinning at different rates',
+            'Drone too heavy for the propeller thrust, so it wasn\u2019t gaining height',
+            'Checked, as a last resort, whether propellers were mounted upside down',
+            'Brainstormed solutions: replacing the motors, upgrading to a 6S battery, or reducing the drone\u2019s overall weight'
           ],
           mediaSide: 'right'
         },
@@ -1084,18 +1084,18 @@
           type: 'text',
           title: 'Motor Testing',
           text:
-            'Following the MARK I prototype flight test, telemetry revealed uneven motor speeds. Flight log data recorded during arming was analyzed to compare the voltage and response curves of each motor.'
+            'After flight-testing the MARK I prototype, we noticed, both in the video and in testing, that some motors appeared to be spinning faster than others. To dig into this, we reviewed the actual flight logs collected while the drone was armed, using the recorded motor signals to compare the response of each motor.'
         },
         {
           type: 'mediaTextPair',
           items: [
             {
               media: { type: 'image', src: 'out of sync motor tests.jpg', label: 'Motor response, before' },
-              text: 'Each motor received varied voltage inputs, leading to uneven RPMs. Increasing system voltage resolved the power distribution imbalance.'
+              text: 'All four motors, each a different coloured signal, were receiving different amounts of voltage, resulting in different speeds. We considered buying different KV-rated motors, but determined the simpler fix was more voltage.'
             },
             {
               media: { type: 'image', src: 'in sync motor tests.png', label: 'Motor response, after' },
-              text: 'Upgrading from a 4S to a 6S LiPo battery synchronized the response curves across all motors.'
+              text: 'After upgrading from a 4S to a 6S LiPo battery, the response curves came back synchronized, confirming the voltage fix worked.'
             }
           ]
         },
@@ -1105,11 +1105,11 @@
           items: [
             {
               media: { type: 'video', src: '3d printing lapse video left.mp4', label: '3D Printing, left' },
-              text: 'Initial PLA parts showed joint warping and cracking around heat-set inserts during teardowns. Switching to PA6-CF reduced frame weight by 8% while raising stiffness and thermal endurance.'
+              text: 'Originally printed in PLA. After our first test, disassembling the middle frame caused warping around the joints and small cracks near the heat-set inserts. Reprinting in PA6-CF (carbon-fibre-reinforced nylon) cut the frame\u2019s weight by roughly 8% versus PLA while improving stiffness and heat resistance, resolving the warping and cracking.'
             },
             {
               media: { type: 'video', src: '3d printing lapse video right.mp4', label: '3D Printing, right' },
-              text: 'Custom motor mounts were profiled to match T-Motor 2812 bolt patterns, holding motors level with the airframe plane.'
+              text: 'Motor mounts designed to match the bolt pattern and geometry of the T-Motor 2812 motors, so they sit securely, stay parallel to the ground, and remain properly aligned with the airframe.'
             }
           ]
         },
@@ -1124,19 +1124,19 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'First successful flight test.'
+          text: 'First successful flight, recorded above.'
         },
         {
           type: 'textPanel',
           fullWidth: true,
           title: 'Takeaways',
           bullets: [
-            'Time Management: Managed engineering development alongside an irrigation co-op, varsity athletics, and personal commitments through structured scheduling.',
-            'Constraint-Based Planning: Adapted weekly meeting limits by organizing CAD tasks and material drying times in advance.',
-            'Iterative Problem Solving: Pivot-tested motor torque and rotation configurations whenever hardware lead times delayed physical frame builds.',
-            'Fabrication & Assembly: Gained practical experience in soldering, heat-set insert installation, carbon fiber machining, and sourcing flight electronics.',
-            'Budgeting & Sourcing: Selected critical components such as 6S batteries and Holybro flight controllers based on safety standards, lead times, and cost efficiency.',
-            'Team Coordination: Maintained active communication through technical reviews and clear task distribution across the build cycle.'
+            'Time Management: This was a side project I worked on while also completing a co-op at Angus Irrigation (40+ hours a week), playing competitive soccer(8 hours a week), training at the gym (3 times a week), and spending time with family. Balancing all of that meant being intentional about how I used my time (Always 110%).',
+            'Planning Around Constraints: We could usually only meet once a week, so learing to plan ahead we could make sure we had enough work lined up for each session. Sometimes we couldn\u2019t meet at all, like when batteries hadn\u2019t arrived yet or the PA6-CF frame was still drying (it needs at least an hour before and after printing to be usable).',
+            'Working Through Setbacks:** When the first motor mounts failed from propeller clipping, we had to wait for new ones to print before we could test again. But when the battery arrived before the frame was done, we pivoted and ran motor tests instead, verifying that opposite motors spun in opposite directions so the torque would cancel out and the drone could hover statically.',
+            'Hands-On Skills: I learned how to solder wires and connectors, install heat-set inserts, and work with carbon fiber tubing. I designed the motor mounts, helped design the frame, and sourced components like propellers, screws, the battery, the battery charger, the flight controller, and the ESCs.',
+            'Budget-Conscious Sourcing: Since this was a self-funded project, every purchase mattered. We bought propellers in packs of two extra in case of breaks, kept the motor source handy in case we needed replacements, and bought the battery from a reputable company (not AliExpress) because batteries are the most dangerous component — we kept it in a fire-safe bag away from sunlight. The flight controller came from a Holybro distributor, the ESCs from a compatible distributor, and the carbon fiber tubes from McMaster-Carr.',
+            'Team Communication: We constantly communicated mainly by video calls to compare motor options for hours, checking in on each other\u2019s progress, and coordinating logistics like whose house to meet at or which park was safe to test at. If we couldn\u2019t find a better part within a reasonable time, we moved forward with what we had and really couldn\u2019t afford to spend days searching when shipping times were already unpredictable (our flight controller took 3 weeks from the US, the ESCs took 2).'
           ]
         }
       ],
@@ -1149,9 +1149,9 @@
       name: 'Gryphons Racing FSAE',
       tag: 'Motorsports · FSAE',
       cover: 'background for gryphons racing project.jpg',
-      summary: 'Reverse-engineered and built a mechanical throttle body as a backup for the team\u2019s electrical system.',
+      summary: 'Reverse-engineered and built a mechanical throttle body as a backup for the team\u2019s electrical throttle body.',
       description:
-        'Joined Gryphons Racing in 2024 to design, fabricate, and test vehicle subsystems. Recently reverse-engineered and built a cable-actuated mechanical throttle body as an direct backup for the electronic throttle system.',
+        'I joined Gryphons Racing in 2024 to work alongside other creative engineers and gain more opportunities to develop my engineering skills, recently reverse-engineering and building a mechanical throttle body as a backup for our electrical system.',
       specs: [
         { k: 'Team', v: 'Gryphons Racing FSAE' },
         { k: 'Role', v: 'Member: Design, Fabrication & Documentation' },
@@ -1170,18 +1170,18 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'The unit was designed through a structured CAD-to-test workflow: reference components were categorized on OneDrive, modeled in SolidWorks, 3D-printed for fit testing, and evaluated under physical assembly tolerances.'
+            'The throttle body was developed through a CAD-to-test workflow. We used the team OneDrive to organize the reference components, then redesigned each component in SolidWorks and assembled them digitally to verify geometry and fit before manufacturing. We then **3D printed** the assembly to check real-world tolerances and fit after printing.'
         },
         {
           type: 'mediaText',
-          title: 'Throttle Body — Half View',
+          title: 'Throttle Body — Section View',
           media: { type: 'image', src: 'half view of cad throttle body with intake filter.jpg', label: 'Half view, CAD throttle body with intake filter' },
           text: 'Design process:',
           bullets: [
-            'Recreated butterfly valve dimensions and matching intake manifold bolt patterns.',
-            'Maintained OEM mounting geometry for fast swaps with the electronic throttle assembly.',
-            'Submitted designs for peer safety reviews with senior subteam leads.',
-            'Passed technical inspection at FSAE competition.'
+            'Recreated the diameter and geometry of the butterfly valve, matching the bolt-hole pattern required for our intake manifold.',
+            'Kept the same **mounting points and overall envelope so we could quickly install or remove the mechanical throttle body without significant changes to the intake system.',
+            'Had the design reviewed by multiple senior leads on the team as an added **safety measure.',
+            'Successfully passed **tech inspection at FSAE.'
           ],
           mediaSide: 'left'
         },
@@ -1190,7 +1190,7 @@
           title: 'Throttle Body — After Printing',
           media: { type: 'video', src: 'Throttle body after printing.mp4', label: 'Throttle body, after printing' },
           text:
-            'The mechanical throttle body controls intake airflow via a direct pedal cable connected to an internal butterfly valve, establishing a reliable mechanical redundancy independent of vehicle electronics.',
+            'A throttle body controls how much air reaches the engine\u2019s intake, which directly affects how much power the engine can produce. Ours is a mechanical, cable-actuated design — pressing the pedal pulls a cable that opens a butterfly valve inside the throttle body, letting in more air. Since it doesn\u2019t rely on any electronics, it makes for a simple, reliable backup.',
           mediaSide: 'left'
         },
         {
@@ -1203,10 +1203,10 @@
           fullWidth: true,
           title: 'Takeaways',
           bullets: [
-            'Material Selection: Used 3D-printed polymers for low-stress intake housing while assigning steel and aluminum to high-cycle mechanical components like the butterfly valve and return spring.',
-            'Design for Manufacturability: Adapted existing throttle geometries to bolt directly to custom intake manifolds while re-using standard hardware.',
-            'Interdisciplinary Collaboration: Coordinated with aerodynamics and driveline subteams to define filter clamping tolerances and smooth intake bore transitions.',
-            'Validation: Deployed the mechanical assembly during vehicle track testing, verifying functional redundancy.'
+            'Material Selection: Learned when plastic is the right choice, because the main body is constantly intaking cold/warm air, there is minimal thermal or mechanical stress, so 3D-printed plastic works fine. But anything mechanically loaded (butterfly valve, return spring, cable lever) stayed metal to prevent flex or wear over repeated use.',
+            'Design for Manufacturability: Instead of copying an existing throttle body, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold while reusing components from a cheaper sourced throttle body. Combined with 3D printing instead of machining metal, this kept costs low and manufacturing quick.',
+            'Cross-Team Communication: A lot of the detail work came from talking to other subteams such as, the driveline and aerodynamics seniors who flagged tolerance requirements around the intake filter opening, which is why the final design has a lip for the filter to clamp onto. We also rounded the intake bore to improve airflow and reduce pressure loss.',
+            'Real-World Relevance: What started as a low-priority backup part became critical once we realized the electric throttle body carried a real failure risk and could fail tech inspection. The mechanical backup was used during testing, validating the design.'
           ]
         }
       ],
@@ -1219,18 +1219,32 @@
       name: 'Engineering Design Project',
       tag: 'University Project · Design',
       cover: 'Final assembaly of our toy picture.jpg',
-      summary: 'A 3D reverse-engineering project, designing and manufacturing 50+ parts as a team of six.',
+      summary: 'A 3D reverse-engineering project, teaching the fundementals of CAD modelling and Designing',
       description:
-        'A university engineering project focused on reverse-engineering a mechanical toy assembly. The team measured physical components using precision calipers, recreated 50+ individual CAD models in SolidWorks, drafted 2D engineering drawings, and performed motion and assembly explosion simulations.',
+        'A 3D reverse-engineering project completed as a university group project. We were given a toy manual with multiple build variations (an Elephant, Monkey, Dragon etc.), the difference was not the complexity of the parts but some had more redundant components which required a more complex assembaly. There for we chose a medium-difficulty build: complex enough to push us, but realistic for our timeline and team expiriance with solidworks.',
       specs: [
         { k: 'Scope', v: '3D reverse-engineering, 50+ parts' },
         { k: 'Role', v: 'Designer / Project Organizer' },
-        { k: 'Timeline', v: '2.5 months' },
+        { k: 'Timeline', v: '2+ months' },
         { k: 'Tools', v: 'SolidWorks, Calipers, Microsoft 365' }
       ],
       gallery: [],
       video: null,
       blocks: [
+         {
+          type: 'textPanel',
+          fullWidth: true,
+          title: 'Project Process',
+          bullets: [
+            'Find a group, 4-6 people',
+            'Get a pair a calipers, and box of buildable components',
+            'While getting to know your new group mates, start to open the building manuel and pick the specific toy you and your group want to build (we chose robot because he looks like WALL-E.',
+            'Find 3 components, 2 of which connect in the manuel. In addition, the components have to have more then 4 feutures (Extrude, Mirror, Circular Pattern etc.) and each member would have to chose a different 3 and would have 2 weeks to finish them.',
+            'After the components were done we would have 1 week to finish 2D drawings for all 3 of the components.',
+            'Then it was our duty for the next 4 weeks to recreate the assembaly for WALL-E and create a simulation (exploded visuals, rotational visuals etc.), this meant amongst our group we had to create 50+ components.',
+            'Overall the project ran for 2+ months and we produced 50+ parts in total along with a simulation.'
+          ]
+        },
         {
           type: 'media',
           item: { type: 'video', src: '', label: 'The finished build, video (EDIT ME: add your video filename)' }
@@ -1244,13 +1258,7 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'The solar roof required multi-axis angled planes and complex surface geometries. Modeling this initial component established the foundational SolidWorks workflow used for subsequent parts across the project.',
-          bullets: [
-            'Organized tasks across a six-person engineering team.',
-            'Personally modeled 13 complex components out of the 50+ total system parts.',
-            'Drafted three standardized 2D production drawings scoring over 90%.',
-            'Completed the modeling, assembly, and motion analysis within 2.5 months.'
-          ]
+            'The solar roof was the most complex part I took on. It had multiple angles, multiple orientations, and multiple planes — features. It took me over four nights and roughly 20 hours to complete, but it taught me most of the harder SolidWorks skills I needed for the rest of the project. Which is why i did it first because after finishing the solar roof, every other Component felt like a piece of cake.',
         },
         {
           type: 'media',
@@ -1268,7 +1276,7 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'Modeled outer wheel profiles and internal structural ribbing patterns to match physical component stiffness and molded wall thickness.'
+            'The exterior of the wheel came together quickly — around 2 to 3 hours. The interior work was where the time went: creating the patterns and extrusions that add structural strength and match the real-life component. That took another 10 hours or so, spread across a day or two around classes.',
         },
         {
           type: 'media',
@@ -1286,7 +1294,7 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'Applied rotational arrays, mirrored features, and shell commands to streamline geometry creation on secondary wheel components.'
+            'After the first wheel and the solar roof, the second wheel part came much faster — around 4 to 5 hours after school. The repetition paid off. I\u2019d learned to use mirror features, circular patterns instead of individual cutouts, and shell features instead of manual hollowing. The same skills carried through to the rest of the project.',
         },
         {
           type: 'media',
@@ -1297,7 +1305,7 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'Verified inter-part mating conditions and dimensional tolerances by assembling separate sub-components within the digital environment.'
+            'The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings — and they did. They assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.',
         },
         {
           type: 'media',
@@ -1307,13 +1315,13 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          title: 'Takeaways',
+          title: 'Take Aways',
           bullets: [
-            'Assembly & Tolerance Validation: Applied coincident mates and tolerance checks to ensure mating features aligned without interference.',
-            'CAD Efficiency: Used mirror tools, circular pattern arrays, and shell operations to optimize complex modeling workflows.',
-            'Project Management & Coordination: Maintained a central CAD repository and coordinated file management across six team members.',
-            'Scheduling & Deadline Management: Structured part completion milestones to allow sufficient buffer time for final assembly and motion simulations.',
-            'Engineering Drawing Communication: Refined 2D drawing callouts, views, and section annotations based on instructor feedback to improve manufacturing readability.'
+            'Assembly & Tolerance Validation: The two wheel parts assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.',
+            'CAD Efficiency: The solar roof took 20+ hours because it was my first time working with complex angles and multiple planes. By the time I reached the second wheel part, I was using mirror features, circular patterns, and shell features to cut design time down to a fraction of what it started at.',
+            'Project Management & Coordination: With 50+ parts to complete and the assembly and simulation dependent on every part being done first, communication was everything. We used a shared OneDrive folder to organize every CAD part, and I took responsibility for coordinating with each member — making sure their parts were progressing and organizing the files into one location.',
+            'Scheduling & Deadline Management: The project had natural dependencies: you couldn\u2019t start the assembly until all parts were finished, and you couldn\u2019t run the simulation until the assembly was complete. I scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due.',
+            'Engineering Drawing Communication: For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added shaded regions to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable engineering drawings are when communicating a design to someone who has to manufacture it.'
           ]
         },
         {
@@ -1327,7 +1335,7 @@
       id: 'angus-irrigation',
       category: 'experience',
       num: 'EXP—001',
-      name: 'Hydraulic/Electrical Technician — Co-op',
+      name: 'Hydraulic/Electrical/Mechanical Technician — Co-op',
       tag: 'Experience · Technician',
       cover: 'final piping system dripline.jpg',
       company: 'Angus Irrigation',
@@ -1366,7 +1374,7 @@
           fullWidth: true,
           title: 'On the Job',
           text:
-            'Fieldwork involved balancing installation projects with service calls. Tasks included trench excavation, underground pipe routing, controller wiring, and electrical troubleshooting across residential and commercial sites.\n\nWork required systematic problem diagnosis, inventory management, and job-site restoration. Projects ranged from routine component replacements to full line repairs following site utility damage.\n\nOperations prioritized high-quality workmanship, efficient labor usage, and site planning—routing lines around root systems and obstacles to simplify future maintenance.'
+            'Every day was different. My employer would tell me the day before what I\u2019d be doing, and he made a point of keeping the work varied — if Monday was a big installation (digging trenches, laying pipe, installing sprinklers, wiring a controller), Tuesday might be hopping between houses troubleshooting electrical problems and replacing controllers.\n\nA lot of the job was showing up to a residence, diagnosing the problem, filing what parts were used, restocking the truck from the storage bay, and moving on to the next call. Some days were lighter — driving from house to house fixing small issues. Other days were physically demanding, like when an aeration tool had punctured nearly every pipe on a property and a new fence install had hit wires and pipelines. We spent the day digging, repairing, re-burying, and restoring the property so it looked the way it did before — cleanup was non-negotiable.\n\nThere was a motto at the company: **treat the job as if you\u2019re doing it for your own house, and treat the customer as if they\u2019re your family**. That mindset stuck with me. You don\u2019t cut corners. You don\u2019t leave a mess. You think about what the customer would want if it were your money, your property, your family.\n\nI also learned to give 110% — not just effort, but thought. Digging as hard as possible for 30 minutes might get the hole done faster, but if you throw dirt everywhere, the cleanup takes four hours instead of one. Working smart and working hard go together. When installing new systems, you\u2019re always thinking about the future: routing pipe away from tree roots, away from big rocks, in ways that make future repairs easier — not harder.'
         },
         {
           type: 'pair',
@@ -1378,14 +1386,14 @@
         {
           type: 'text',
           fullWidth: true,
-          title: 'Troubleshooting Methodology',
-          text: 'Field diagnostics followed structured isolation protocols:',
+          title: 'Troubleshooting',
+          text: 'Troubleshooting was the core of the job. Here\u2019s what that actually looked like:',
           bullets: [
-            'Leak Location: Isolated piping zones, pressurized lines, identified surface moisture points, and performed localized line repairs.',
-            'Circuit Diagnostics: Traced 24VAC control circuits from the main controller to zone solenoids. Applied signal generators and wire locators to trace underground breaks and install sealed splice enclosures.',
-            'Controller Servicing: Tested output terminals, verified transformer voltages, and replaced faulty logic boards or internal relays.',
-            'Complex Circuit Mapping: Traced multi-valve circuits across undocumented junction boxes, mapping spliced color codes back to primary controller terminals.',
-            'Field Efficiency: Evaluated repair trade-offs between component tracing and new wire installation to minimize customer labor costs.'
+            'Finding a pipe leak: If there were no plans for the pipeline, we\u2019d run the zone for a few minutes and let the leak show itself. Then we\u2019d dig it up, fix it, and restore the area so it looked untouched.',
+            'Finding a wire break: Every irrigation system is essentially a series circuit. Each zone has its own colored wire running from the controller to its solenoid, and a common (white) wire connects everything back to the controller. We\u2019d run a signal through the zone wire — if it didn\u2019t reach the controller, there was a break. Using a wire tracker, I\u2019d walk the line until the signal dropped, dig up the break, splice the wires, and bury it again. Multiple breaks meant installing a splice box to protect the connection from ground shifting and plant growth.',
+            'Controller issues: Either replace the controller or replace the faulty components — that part is straightforward once you\u2019ve isolated the problem.',
+            'Real-world complications: Standard practice is one wire per zone. But on one site, we had four solenoids and only one working wire in the valve box. That meant following the circuit all the way back through eight other valve boxes to the controller, tracing faded colors (dark brown spliced to light brown, peach spliced to beige), dealing with multiple breaks, and mapping out what connected where. It was confusing, time-consuming, and there was no manual for it.',
+            'The reality of troubleshooting: In school, you can check the solution manual. In the field, there is no solution manual. You have to find the answer yourself, and time matters — the longer you take, the more the customer pays. That pressure teaches you to be efficient, persistent, and calm under frustration. You can\u2019t give up because there has to be a solution. Sometimes the easier fix (running new wire) costs the customer more than the labor to troubleshoot — so you weigh options practically, not just technically.'
           ]
         },
         {
@@ -1399,29 +1407,29 @@
           type: 'textPanel',
           fullWidth: true,
           text:
-            'Commercial controller rewiring project: organized multi-zone valve wiring, identified common lines, labeled solenoid terminals, and dressed wire looms to streamline future system servicing.'
+            'These two photos show a controller I installed that connects to solenoids across a commercial site. Each valve box holds multiple solenoids for different sprinkler zones, and every two sprinklers typically share one wire spliced back to a common line, all routed back to the controller shown here. The left photo shows the wiring before I got to it; the right shows it after I identified and labeled each wire by solenoid and tidied everything up, so the next person can immediately see what connects where.'
         },
         {
           type: 'mediaTextPair',
           items: [
             {
               media: { type: 'video', src: 'trench and new hydraulic system video.mp4', label: 'Trenching + new hydraulic system' },
-              text: 'Excavating trenches and laying main lateral supply lines.'
+              text: 'Excavating and laying new pipe in the ground.'
             },
             {
               media: { type: 'image', src: 'final piping system dripline.jpg', label: 'Finished drip line' },
-              text: 'Completed subsurface drip irrigation installation.'
+              text: 'What a finished drip line looks like outside a home.'
             }
           ]
         },
         {
           type: 'textPanel',
           fullWidth: true,
-          title: 'Technical Summary',
+          title: 'Looking back',
           bullets: [
-            'Site Constraint Management: Rerouted supply lines to maintain clearance from high-voltage electrical and gas utilities.',
-            'Economic System Design: Optimized pipe runs and wire lengths to minimize pressure drops and material costs.',
-            'Hydraulic Calculations: Computed static and dynamic line pressures to size zone flow rates (GPM) and set appropriate watering schedules.'
+            'Working around constraints: One install required trenching a new sprinkler line, but a gas line ran directly under part of the planned route. We couldn\u2019t use vibrating equipment there, so we rerouted and made careful, deliberate calls about where and how to dig.',
+            'Cost as a design constraint: Less pipe, less wire, less time — cost was always a factor. That trade-off thinking is a big part of what real engineering work looks like day to day.',
+            'Quick math in the field: The drip line photo above ties into calculating gallons per minute based on available water pressure. Pressure depends heavily on the source — a well, a cistern, or municipal line all deliver very different pressures. Drip line has much lower flow than a standard sprinkler head, so a zone running on drip line might need to run for around 10 minutes, two to three times a day, instead of one longer cycle.'
           ]
         }
       ],
@@ -1740,105 +1748,143 @@
   function setupVideoAutoplay() {
     if (videoObserver) { videoObserver.disconnect(); videoObserver = null; }
     const scrollRoot = document.querySelector('.overlay-scroll');
-    const videos = document.querySelectorAll('#overlayBlocks video');
+    const videos = document.querySelectorAll('#overlayBlocks video, #overlayVideoSection video');
     if (!videos.length) return;
+
+    videos.forEach((v) => {
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.playsInline = true;
+      v.loop = true;
+    });
 
     videoObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        const v = entry.target;
         if (entry.isIntersecting) {
-          entry.target.play().catch(() => {});
+          v.play().catch(() => {});
         } else {
-          entry.target.pause();
+          v.pause();
+          v.currentTime = 0;
         }
       });
-    }, { root: scrollRoot, threshold: 0.5 });
+    }, { root: scrollRoot, rootMargin: '-38% 0px -38% 0px', threshold: 0 });
 
     videos.forEach((v) => videoObserver.observe(v));
   }
 
   function closeProject() {
     if (!currentProjectId) return;
+    if (videoObserver) { videoObserver.disconnect(); videoObserver = null; }
+    document.querySelectorAll('#overlayBlocks video, #overlayVideoSection video').forEach((v) => {
+      v.pause();
+      v.currentTime = 0;
+    });
     const rect = getCardRect(currentProjectId);
     overlay.classList.remove('open');
+    overlay.style.top = rect.top + 'px';
+    overlay.style.left = rect.left + 'px';
+    overlay.style.width = rect.width + 'px';
+    overlay.style.height = rect.height + 'px';
     overlay.style.borderRadius = '12px';
-    pxRectStyle(overlay, rect);
-
-    if (videoObserver) { videoObserver.disconnect(); videoObserver = null; }
-
+    currentProjectId = null;
     setTimeout(() => {
-      overlay.style.visibility = 'hidden';
-      document.body.style.overflow = '';
-      currentProjectId = null;
-    }, 550);
+      if (!currentProjectId) overlay.style.visibility = 'hidden';
+    }, 560);
   }
 
-  overlayClose.addEventListener('click', () => {
-    if (location.hash.startsWith('#project-')) {
-      history.back();
-    } else {
-      closeProject();
-    }
-  });
+  const PAGE_IDS = ['about', 'projects', 'experience', 'contact'];
+  const siteNav = document.getElementById('siteNav');
+  const heroEl = document.getElementById('hero');
+  let currentPageId = null;
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) {
-      if (location.hash.startsWith('#project-')) {
-        history.back();
-      } else {
-        closeProject();
-      }
-    }
-  });
+  function pageForProjectId(id) {
+    const p = PROJECTS.find((x) => x.id === id);
+    if (!p) return null;
+    return p.category === 'experience' ? 'experience' : 'projects';
+  }
 
-  // ---------------------------------------------------------------------
-  // Page routing via hash change
-  // ---------------------------------------------------------------------
-  const nav = document.getElementById('siteNav');
-  const pages = {
-    about: document.getElementById('about'),
-    projects: document.getElementById('projects'),
-    experience: document.getElementById('experience'),
-    contact: document.getElementById('contact')
-  };
+  function showPage(pageId) {
+    currentPageId = pageId;
+    PAGE_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('open', id === pageId);
+      if (id === pageId) el.scrollTop = 0;
+    });
+    document.body.style.overflow = pageId ? 'hidden' : '';
+    if (siteNav) siteNav.classList.toggle('nav-hidden', !pageId);
 
-  function handleRoute() {
-    const hash = location.hash.slice(1);
+    const activeEl = pageId ? document.getElementById(pageId) : heroEl;
+    const bg = activeEl && activeEl.getAttribute('data-bg');
+    if (bg) setBackground(bg);
+  }
+
+  function closeToParentPage() {
+    if (!currentProjectId) return;
+    const pageId = pageForProjectId(currentProjectId);
+    location.hash = pageId || '';
+  }
+
+  function syncRoute() {
+    const hash = location.hash.replace('#', '');
 
     if (hash.startsWith('project-')) {
-      const projId = hash.replace('project-', '');
-      openProject(projId);
+      const id = hash.replace('project-', '');
+      const pageId = pageForProjectId(id);
+      if (pageId && pageId !== currentPageId) showPage(pageId);
+      if (id !== currentProjectId) openProject(id);
       return;
     }
 
-    if (overlay.classList.contains('open')) {
-      closeProject();
+    if (currentProjectId) closeProject();
+
+    if (PAGE_IDS.includes(hash)) {
+      showPage(hash);
+    } else {
+      showPage(null);
     }
-
-    if (!hash || !pages[hash]) {
-      Object.values(pages).forEach((p) => p.classList.remove('open'));
-      nav.classList.add('nav-hidden');
-      document.body.style.overflow = '';
-      const hero = document.getElementById('hero');
-      if (hero && hero.dataset.bg) setBackground(hero.dataset.bg);
-      return;
-    }
-
-    Object.entries(pages).forEach(([key, pageEl]) => {
-      if (key === hash) {
-        pageEl.classList.add('open');
-        pageEl.scrollTop = 0;
-        if (pageEl.dataset.bg) setBackground(pageEl.dataset.bg);
-      } else {
-        pageEl.classList.remove('open');
-      }
-    });
-
-    nav.classList.remove('nav-hidden');
-    document.body.style.overflow = 'hidden';
   }
 
-  window.addEventListener('hashchange', handleRoute);
-  window.addEventListener('load', handleRoute);
+  overlayClose.addEventListener('click', closeToParentPage);
+  window.addEventListener('hashchange', syncRoute);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && currentProjectId) closeToParentPage();
+  });
+  window.addEventListener('resize', () => {
+    if (currentProjectId) {
+      overlay.style.width = window.innerWidth + 'px';
+      overlay.style.height = window.innerHeight + 'px';
+    }
+  });
+  syncRoute();
+
+  document.querySelectorAll('.site-page').forEach((page) => {
+    const videos = page.querySelectorAll('video');
+    if (!videos.length) return;
+
+    videos.forEach((v) => {
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.playsInline = true;
+      v.loop = true;
+    });
+
+    const pageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const v = entry.target;
+        if (entry.isIntersecting && page.classList.contains('open')) {
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+    }, { root: page, rootMargin: '-30% 0px -30% 0px', threshold: 0 });
+
+    videos.forEach((v) => pageObserver.observe(v));
+  });
 </script>
+
 </body>
 </html>
