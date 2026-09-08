@@ -8,6 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* =====================================================================
+     HOW TO ADD YOUR OWN PHOTOS / CAD RENDERS / RESUME
+     ---------------------------------------------------------------------
+     Current setup: photos are uploaded straight to the repo root (no
+     "images" folder), so paths below are just the filename, e.g.
+     url('drone in air.jpg'). Quotes around the filename mean spaces in
+     the name are fine — you don't need to rename anything.
+     1) Upload more photos/renders the same way, at the repo root.
+     2) Search this file for "EDIT ME" comments — every image, name,
+        link and background still needing a real file is flagged with
+        one and tells you exactly what to change.
+     3) For your resume, upload the PDF to the repo root as resume.pdf
+        (the "Resume" button near the nav already points there).
+     ===================================================================== */
+
   :root{
     --bg:#0B0F12;
     --bg-panel:#11171C;
@@ -19,12 +34,16 @@
     --text:#E9EDEF;
     --text-muted:#8B98A3;
     --text-dim:#57646D;
+
     --display: 'Space Grotesk', 'Inter', sans-serif;
     --sans: 'Inter', sans-serif;
     --mono: 'JetBrains Mono', monospace;
   }
+
   *{box-sizing:border-box; margin:0; padding:0;}
+
   html{scroll-behavior:smooth;}
+
   body{
     background:var(--bg);
     color:var(--text);
@@ -33,14 +52,36 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
+
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
   }
+
   a{color:inherit;}
   ::selection{background:var(--accent-dim); color:#fff;}
-  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
-  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* =====================================================================
+     SCROLLING BACKGROUND — crossfades between images as you move through
+     sections. Two stacked layers swap opacity so the transition is smooth
+     instead of a hard cut.
+
+     EDIT ME: replace the four URLs below (in the JS at the bottom of the
+     file, under BACKGROUND_IMAGES) with your own photos — a portrait,
+     a workshop/CAD shot, a project photo, etc. Until you add real images
+     this just shows a soft gradient so nothing looks broken.
+     ===================================================================== */
   .bg-stage{
     position:fixed; inset:0; z-index:-2; overflow:hidden;
     background:
@@ -61,9 +102,14 @@
   .bg-layer.active{opacity:1;}
   .bg-scrim{
     position:absolute; inset:0;
+    /* This gradient controls how visible the background photo is.
+       Lower the numbers (0.0–1.0) to show more of the photo,
+       raise them to darken it for text readability. */
     background:
       linear-gradient(180deg, rgba(11,15,18,0.88) 0%, rgba(11,15,18,0.8) 40%, rgba(11,15,18,0.9) 100%);
   }
+
+  /* ---------- NAV ---------- */
   nav{
     position:sticky; top:0; z-index:160;
     background:rgba(11,15,18,0.82);
@@ -75,7 +121,10 @@
     opacity:0; pointer-events:none; transform:translateY(-100%);
     position:fixed; width:100%;
   }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:68px;}
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
   .nav-mark{
     font-family:var(--display); font-weight:600; font-size:16px;
     letter-spacing:-0.01em; color:var(--text);
@@ -97,16 +146,41 @@
   }
   .nav-links .btn-resume:hover{background:#79c1e5; transform:translateY(-1px);}
   @media (max-width:640px){ .nav-links{gap:14px;} .nav-links a{font-size:12.5px;} .nav-links .btn-resume{padding:7px 12px;} }
-  header.hero{padding:110px 0 0; position:relative; scroll-margin-top:68px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:110px 0 0;
+    position:relative;
+    scroll-margin-top:68px;
+  }
+  .eyebrow{
+    font-family:var(--sans); font-size:14px; font-weight:600; color:var(--accent);
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:''; width:22px; height:1px; background:var(--accent);
+  }
   h1.title{
     font-family:var(--display); font-weight:700;
     font-size:clamp(38px, 6.6vw, 64px);
     line-height:1.08; letter-spacing:-0.02em;
     max-width:900px;
   }
-  .hero-sub{font-family:var(--sans); font-size:18px; font-weight:500; color:var(--text-muted); margin-top:16px;}
-  .hero-interest{font-family:var(--sans); font-size:16px; color:var(--text-muted); margin-top:8px;}
+  h1.title .line2{color:var(--text-muted); font-weight:500;}
+  .hero-sub{
+    font-family:var(--sans); font-size:18px; font-weight:500;
+    color:var(--text-muted); margin-top:16px;
+  }
+  .hero-interest{
+    font-family:var(--sans); font-size:16px; color:var(--text-muted); margin-top:8px;
+  }
   .hero-interest span{color:var(--accent); font-weight:600;}
+  .hero-desc{
+    max-width:560px; margin-top:26px;
+    font-size:17.5px; color:var(--text-muted);
+  }
+  .hero-desc strong{color:var(--text); font-weight:600;}
+
   .hero-actions{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
   .scroll-hint{
     display:inline-flex; align-items:center; gap:8px; margin-top:56px;
@@ -120,6 +194,8 @@
   header.hero .hero-actions{justify-content:center;}
   header.hero h1.title{max-width:none;}
   #resume-mini{padding:80px 0 40px; scroll-margin-top:24px;}
+
+  /* ---------- FULL-SCREEN SITE PAGES (About / Projects / Work / Contact) ---------- */
   .site-page{
     position:fixed; inset:0; z-index:150; overflow-y:auto;
     background:var(--bg);
@@ -141,6 +217,53 @@
   .btn-primary:hover{background:#79c1e5; transform:translateY(-1px);}
   .btn-ghost{border:1px solid var(--border); color:var(--text);}
   .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* title block — a nod to a real drawing title block, kept subtle */
+  .title-block{
+    margin-top:64px;
+    border:1px solid var(--border-soft);
+    border-bottom:none;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    background:rgba(17,23,28,0.55);
+    border-radius:10px 10px 0 0;
+    overflow:hidden;
+  }
+  .tb-cell{
+    padding:16px 20px;
+    border-right:1px solid var(--border-soft);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .tb-cell:last-child{border-right:none;}
+  .tb-label{
+    font-family:var(--sans); font-size:12px; font-weight:500; color:var(--text-dim); margin-bottom:6px;
+  }
+  .tb-value{
+    font-family:var(--sans); font-size:14.5px; color:var(--text); font-weight:600;
+  }
+  @media (max-width:720px){
+    .title-block{grid-template-columns:repeat(2, 1fr); border-radius:10px;}
+  }
+
+  /* ---------- SECTION DIVIDER ---------- */
+  .dim-divider{
+    display:flex; align-items:center; gap:14px;
+    margin:0 0 44px; padding-top:96px;
+  }
+  .dim-divider .rule{flex:1; height:1px; background:var(--border-soft);}
+  .dim-label{
+    font-family:var(--sans); font-size:13px; font-weight:600;
+    color:var(--text-dim); white-space:nowrap;
+  }
+  .dim-label b{color:var(--accent); font-weight:600;}
+
+  section{padding:0 0 8px; scroll-margin-top:84px;}
+
+  h2.section-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(24px,3vw,32px);
+    letter-spacing:-0.01em; margin-bottom:8px;
+  }
+
   .page-header{text-align:center; max-width:640px; margin:0 auto 48px;}
   .page-header h2{
     font-family:var(--display); font-weight:700; font-size:clamp(30px,4vw,42px);
@@ -151,9 +274,17 @@
     color:var(--accent); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:14px;
   }
   .page-header p{color:var(--text-muted); font-size:15.5px;}
-  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; padding-bottom:24px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px;
+    padding-bottom:24px;
+  }
   .about-grid p{color:var(--text-muted); font-size:16px; margin-bottom:18px; max-width:62ch;}
   .about-grid p strong{color:var(--text); font-weight:600;}
+
+  /* EDIT ME: portrait photo slot — put images/portrait.jpg in your images
+     folder and this will show instead of the placeholder frame. */
   .portrait-frame{
     width:100%; aspect-ratio:4/5; border-radius:12px;
     border:1px solid var(--border); overflow:hidden;
@@ -165,6 +296,7 @@
   .portrait-frame .placeholder-note{
     font-family:var(--sans); font-size:13px; color:var(--text-dim); text-align:center; padding:24px;
   }
+
   .stat-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--border-soft);}
   .stat-row{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -173,7 +305,14 @@
   .stat-row .k{font-family:var(--sans); font-size:13.5px; color:var(--text-dim); font-weight:500;}
   .stat-row .v{font-family:var(--display); font-size:19px; color:var(--accent); font-weight:600;}
   @media (max-width:800px){ .about-grid{grid-template-columns:1fr; gap:32px;} }
-  .proj-list{display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:18px; padding-bottom:24px;}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+    gap:18px;
+    padding-bottom:24px;
+  }
   .proj-card{
     border:1px solid var(--border-soft);
     background:rgba(17,23,28,0.55);
@@ -191,6 +330,16 @@
     font-family:var(--sans); font-size:13px; font-weight:600; color:#fff;
   }
   .proj-card:hover .view-hint{opacity:1;}
+
+  .work-subdivider{
+    font-family:var(--sans); font-size:13px; font-weight:600; color:var(--text-dim);
+    text-transform:uppercase; letter-spacing:0.06em; text-align:center;
+    margin:36px 0 22px;
+  }
+
+  /* EDIT ME: project photo/render — replace the background-image url on
+     each .proj-photo below (or swap in an <img> tag) with your own shot,
+     e.g. images/quadrotor.jpg, images/rover.jpg, images/arm.jpg */
   .proj-photo{
     width:100%; aspect-ratio:4/3;
     background-size:cover; background-position:center;
@@ -198,13 +347,23 @@
     border-bottom:1px solid var(--border-soft);
     display:flex; align-items:flex-end;
   }
+  .proj-photo .placeholder-note{
+    font-family:var(--sans); font-size:11.5px; color:var(--text-dim);
+    padding:8px 12px;
+  }
+
   .proj-head{
     display:flex; justify-content:space-between; align-items:flex-start;
     gap:14px; padding:18px 20px 12px;
     flex-wrap:wrap;
   }
-  .proj-num{font-family:var(--mono); font-size:11px; color:var(--text-dim); letter-spacing:0.04em;}
-  .proj-name{font-family:var(--display); font-size:17px; font-weight:600; color:var(--text); margin-top:5px;}
+  .proj-num{
+    font-family:var(--mono); font-size:11px; color:var(--text-dim); letter-spacing:0.04em;
+  }
+  .proj-name{
+    font-family:var(--display); font-size:17px; font-weight:600; color:var(--text);
+    margin-top:5px;
+  }
   .proj-tag{
     font-family:var(--sans); font-size:11px; font-weight:600;
     color:var(--caution); border:1px solid rgba(232,163,61,0.4); padding:4px 9px; border-radius:20px;
@@ -220,7 +379,16 @@
   .spec-row:last-child{border-bottom:none;}
   .spec-row .k{color:var(--text-dim); flex:0 0 auto; white-space:nowrap;}
   .spec-row .v{color:var(--text); flex:1 1 auto; text-align:right; white-space:normal; word-break:break-word;}
+  .proj-links{margin-top:2px; display:flex; gap:16px; flex-wrap:wrap;}
+  .proj-links a{
+    font-family:var(--sans); font-size:12.5px; font-weight:600;
+    text-decoration:none; color:var(--accent); border-bottom:1px solid var(--accent-dim);
+    padding-bottom:2px; transition:opacity 0.15s ease;
+  }
+  .proj-links a:hover{opacity:0.7;}
   @media (max-width:720px){ .proj-list{grid-template-columns:1fr;} }
+
+  /* ---------- FLAT RESUME-STYLE CARD (work experience entries) ---------- */
   .flat-card{
     border:1px solid var(--border-soft); border-left:3px solid var(--accent);
     background:rgba(17,23,28,0.55); border-radius:12px;
@@ -250,6 +418,8 @@
     transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
   .flat-card:hover .flat-cta{background:rgba(90,176,219,0.14); color:#fff; border-color:var(--accent);}
+
+  /* ---------- PROJECT DETAIL OVERLAY ---------- */
   .proj-overlay{
     position:fixed; z-index:200; overflow:hidden;
     border-radius:12px;
@@ -302,8 +472,24 @@
   .overlay-specs .spec-cell{background:rgba(17,23,28,0.75); padding:14px 16px;}
   .overlay-specs .spec-cell .k{font-family:var(--sans); font-size:11.5px; color:var(--text-dim); margin-bottom:4px;}
   .overlay-specs .spec-cell .v{font-family:var(--display); font-size:15px; font-weight:600; color:var(--text);}
+  .overlay-section-label{font-family:var(--sans); font-size:13px; font-weight:600; color:var(--text-dim); margin-bottom:14px;}
+  .overlay-gallery{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:14px; margin-bottom:40px;}
+  .overlay-gallery img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px; border:1px solid var(--border-soft); display:block;}
+  .overlay-video{margin-bottom:40px;}
+  .overlay-video video, .overlay-video iframe{width:100%; aspect-ratio:16/9; border-radius:10px; border:1px solid var(--border-soft); display:block;}
+  .overlay-links{display:flex; gap:16px; flex-wrap:wrap;}
+  .overlay-links a{
+    font-family:var(--sans); font-size:14px; font-weight:600; text-decoration:none;
+    color:var(--bg); background:var(--accent); padding:11px 18px; border-radius:7px;
+    transition:background 0.15s ease;
+  }
+  .overlay-links a:hover{background:#79c1e5;}
+
+  /* ---------- FLEXIBLE CONTENT BLOCKS (per-project custom sections) ---------- */
   .block{margin-bottom:46px;}
   .block-title{font-family:var(--display); font-weight:600; font-size:19px; color:var(--text); margin-bottom:16px;}
+  .block-text p{color:var(--text-muted); font-size:15.5px; max-width:70ch; white-space:pre-line;}
+  .block-text.is-full-width p{max-width:none;}
   .prose-bullets{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
   .prose-bullets li{position:relative; padding-left:20px; color:var(--text-muted); font-size:15px; line-height:1.6;}
   .prose-bullets li::before{
@@ -311,8 +497,12 @@
     background:var(--accent); border-radius:1px;
   }
   .prose-bullets li strong{color:var(--text);}
+  .block-text.is-full-width .prose-bullets li{max-width:none;}
   .block-pair{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
   .block-media-text{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;}
+  .block-grid{display:flex; flex-wrap:wrap; gap:16px;}
+  .block-grid .media-widget{flex:1 1 260px;}
+  .block-caption{margin-top:14px; color:var(--text-muted); font-size:14.5px; max-width:70ch; white-space:pre-line;}
   .block-text-panel{
     background:rgba(17,23,28,0.55); border:1px solid var(--border-soft); border-radius:10px;
     padding:22px; display:flex; align-items:center; min-height:100%;
@@ -359,9 +549,14 @@
     border-radius:12px; padding:28px 32px;
   }
   .text-panel-full p{color:var(--text-muted); font-size:15px; white-space:pre-line; text-align:justify;}
+  .triptych-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .triptych-center{max-width:360px; margin:0 auto;}
+  @media (max-width:600px){ .triptych-row{grid-template-columns:1fr;} }
   .block-stack-pair{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start;}
   .block-stack-pair .stack-col{display:flex; flex-direction:column;}
   @media (max-width:720px){ .block-stack-pair{grid-template-columns:1fr;} }
+
+  /* ---------- SKILLS ---------- */
   .skill-grid{
     display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
     background:var(--border-soft); border:1px solid var(--border-soft);
@@ -377,9 +572,32 @@
   .skill-cat li{font-size:14px; color:var(--text-muted);}
   @media (max-width:860px){ .skill-grid{grid-template-columns:repeat(2, 1fr);} }
   @media (max-width:480px){ .skill-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CONTACT / FOOTER ---------- */
   footer{padding:96px 0 48px;}
+  .contact-box{
+    border:1px solid var(--border-soft); padding:52px 44px;
+    border-radius:16px;
+    background:rgba(17,23,28,0.55);
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px;
+    flex-wrap:wrap;
+  }
+  .contact-box h2{
+    font-family:var(--display); font-size:clamp(24px,4vw,32px); font-weight:600;
+    max-width:480px; line-height:1.2; letter-spacing:-0.01em;
+  }
+  .contact-links{display:flex; flex-direction:column; gap:11px;}
+  .contact-links a{
+    font-family:var(--sans); font-size:14.5px; font-weight:500; text-decoration:none;
+    color:var(--text-muted); display:flex; align-items:center; gap:8px;
+    transition:color 0.15s ease;
+  }
+  .contact-links a:hover{color:var(--accent);}
+  .contact-links a::before{content:'→'; color:var(--accent);}
+
   .contact-avail{max-width:600px; margin:0 auto 40px; text-align:center; color:var(--text-muted); font-size:15.5px;}
   .contact-avail strong{color:var(--text);}
+
   .contact-widgets{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-bottom:44px;}
   .contact-widget{border:1px solid var(--border-soft); background:rgba(17,23,28,0.55); border-radius:12px; padding:18px 20px;}
   .contact-widget .widget-label{
@@ -390,9 +608,11 @@
   .contact-widget .widget-value a{color:var(--text); text-decoration:none;}
   .contact-widget .widget-value a:hover{color:var(--accent);}
   .contact-widget .widget-note{margin-top:8px; font-size:13px; color:var(--text-muted);}
+
   .contact-detail{max-width:640px; margin:0 auto 44px; text-align:center;}
   .contact-detail .detail-row{margin-bottom:10px; font-size:15px; color:var(--text-muted);}
   .contact-detail .detail-row b{color:var(--text); font-weight:600;}
+
   .resume-preview{max-width:480px; margin:0 auto;}
   .resume-frame{
     border:1px solid var(--border-soft); border-radius:12px; background:rgba(17,23,28,0.55);
@@ -412,6 +632,7 @@
 </head>
 <body>
 
+<!-- Fixed background stage: two layers crossfade as you scroll between sections -->
 <div class="bg-stage" aria-hidden="true">
   <div class="bg-layer" id="bgLayerA"></div>
   <div class="bg-layer" id="bgLayerB"></div>
@@ -427,6 +648,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Work</a></li>
       <li><a href="#contact">Contact</a></li>
+      <!-- EDIT ME: point this at your actual resume file once it's in the project folder -->
       <li><a href="Armaans Resume 2026.pdf" class="btn-resume" download>Resume</a></li>
     </ul>
   </div>
@@ -469,17 +691,23 @@
     <div class="page-header">
       <h2>About</h2>
     </div>
+
+    <!-- EDIT ME: your background/story. Typos from the draft are
+         cleaned up below — edit the copy itself freely. -->
     <div class="text-panel-full" style="margin-bottom:32px;">
       <p>If I could put into words the feeling I get when I solve a problem I couldn't at first, I probably wouldn't be an <strong>engineer</strong>. It's right up there with bombing a drive down the fairway or scoring a goal in front of the people you love.</p>
       <p style="margin-top:14px;">My recent work centres on <strong>designing</strong>, <strong>simulating</strong>, and <strong>fabricating parts</strong> for drones and cars, alongside hands-on experience as an irrigation technician working directly with <strong>mechanical, electrical, and hydraulic systems</strong> outside of a CAD screen.</p>
       <p style="margin-top:14px;">My interest in engineering traces back to watching Iron Man for the first time. Since then I've chased the same loop: learn something, apply it, then go learn more.</p>
     </div>
+
     <div class="about-grid">
       <div>
+        <!-- portrait.jpg is loaded automatically from the repo root (see JS at bottom) -->
         <div class="portrait-frame" id="portraitFrame">
           <span class="placeholder-note">Loading portrait.jpg…</span>
         </div>
       </div>
+
       <div>
         <div class="stat-list">
           <div class="stat-row"><span class="k">CAD hours logged</span><span class="v">300+</span></div>
@@ -489,6 +717,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Staggered second row: extracurriculars text + a second photo underneath everything above -->
     <div class="about-grid" style="margin-top:8px;">
       <div>
         <p>Outside of engineering, soccer has been a constant. I've played for most of my life and currently serve as team captain across the Cambridge, Guelph, and Waterloo area.</p>
@@ -500,6 +730,7 @@
         </ul>
         <p style="margin-top:16px;">School comes first, then family, then sport, and I take that commitment seriously on and off the field.</p>
       </div>
+
       <div>
         <div class="portrait-frame">
           <video src="soccer video for website.mp4" controls playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video>
@@ -516,11 +747,19 @@
       <div class="page-subtitle">Mechanical and autonomous projects</div>
       <p>Personal and school projects. This is how I built, documented, failed, and diagnosed each problem along the way.</p>
     </div>
+
+    <!-- Cards are built from the PROJECTS array near the bottom of this file
+         (filtered to category: 'project'). Click a card (anywhere except its
+         links) and it grows into a full detail page using that project's own
+         photo as the background — see PROJECTS below to edit names, photos,
+         galleries, video, specs. -->
     <div class="proj-list" id="projList"></div>
+
     <div class="dim-divider" style="padding-top:64px;">
       <span class="dim-label">Tools &amp; systems</span>
       <span class="rule"></span>
     </div>
+
     <div class="skill-grid">
       <div class="skill-cat">
         <h3>CAD / Design</h3>
@@ -567,6 +806,8 @@
     <div class="page-header">
       <h2>Work Experience</h2>
     </div>
+
+    <!-- Same PROJECTS array, filtered to category: 'experience'. -->
     <div class="proj-list" id="workList"></div>
    </div>
   </section>
@@ -576,10 +817,14 @@
     <div class="page-header">
       <h2>Contact</h2>
     </div>
+
     <p class="contact-avail">
       Seeking a <strong>Fall 2026 / Winter 2027 co-op</strong> in robotics: anything mechanical,
       mechatronics, or autonomy. I'm happy to discuss opportunities, so please feel free to reach out and connect.
     </p>
+
+    <!-- EDIT ME: double-check the school email — I've used ajass@uoguelph.ca based on
+         typical first-initial + last-name format, but confirm the exact address. -->
     <div class="contact-widgets">
       <div class="contact-widget">
         <div class="widget-label">Email</div>
@@ -599,10 +844,14 @@
         <div class="widget-value"><a href="tel:+16473277650">647-327-7650</a></div>
       </div>
     </div>
+
     <div class="contact-detail">
       <div class="detail-row"><b>Location:</b> Guelph, Ontario, Canada</div>
       <div class="detail-row"><b>Focus areas:</b> Autonomous Software, Mechanical Systems, Robotic Systems, Systems Integration</div>
     </div>
+
+    <!-- EDIT ME: upload resume.pdf to the repo root, and (optionally) a JPEG/PNG
+         preview image of its first page — set the preview filename below. -->
     <div class="resume-preview">
       <div class="resume-frame">
         <iframe src="Armaans Resume 2026.pdf" title="Resume preview" loading="lazy"></iframe>
@@ -612,6 +861,7 @@
         <a href="Armaans Resume 2026.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Open in new tab</a>
       </div>
     </div>
+
     <div class="foot-meta">
       <span>© 2026 Armaan Jass</span>
       <span>Drawn digitally. No scale.</span>
@@ -621,6 +871,8 @@
 
 </div>
 
+<!-- Full-screen project detail overlay: hidden until a card is clicked.
+     Populated entirely by JS from the PROJECTS array below. -->
 <div class="proj-overlay" id="projOverlay" aria-hidden="true">
   <div class="overlay-bg" id="overlayBg"></div>
   <div class="overlay-scrim"></div>
@@ -647,6 +899,11 @@
 </div>
 
 <script>
+  // ===========================================================================
+  // Background crossfade — two stacked layers swap opacity for a smooth
+  // transition. Which image shows is now decided by the page router below
+  // (each page section can carry its own data-bg attribute).
+  // ===========================================================================
   const bgLayers = [document.getElementById('bgLayerA'), document.getElementById('bgLayerB')];
   let bgActiveIndex = 0;
   let bgCurrentSrc = null;
@@ -662,10 +919,16 @@
     bgActiveIndex = 1 - bgActiveIndex;
   }
 
+  // ===========================================================================
+  // Parallax: the background drifts slightly slower than the page scrolls,
+  // instead of staying perfectly still. Movement is capped so the enlarged
+  // background layer (see .bg-layer CSS) never reveals its edges.
+  // ===========================================================================
   (function () {
     const layers = document.querySelectorAll('.bg-layer');
     if (!layers.length) return;
     let ticking = false;
+
     function applyParallax() {
       const bufferPx = window.innerHeight * 0.12;
       const offset = Math.max(-bufferPx, Math.min(bufferPx, window.scrollY * 0.12));
@@ -674,15 +937,21 @@
       });
       ticking = false;
     }
+
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(applyParallax);
         ticking = true;
       }
     }, { passive: true });
+
     applyParallax();
   })();
 
+  // ===========================================================================
+  // Portrait photo — shows images/portrait.jpg automatically if it exists,
+  // otherwise keeps the placeholder note visible.
+  // ===========================================================================
   (function () {
     const frame = document.getElementById('portraitFrame');
     const img = new Image();
@@ -691,11 +960,17 @@
     img.onload = () => { frame.innerHTML = ''; frame.appendChild(img); };
   })();
 
+  // ===========================================================================
+  // Smooth, offset-aware in-page navigation (accounts for the sticky nav bar).
+  // Page-route links (#about, #projects, #experience, #contact, and plain #
+  // for home) are excluded here — those need a real hash change so the page
+  // router below can see them via the hashchange event.
+  // ===========================================================================
   const ROUTE_IDS = ['about', 'projects', 'experience', 'contact'];
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
       const id = link.getAttribute('href').slice(1);
-      if (id === '' || ROUTE_IDS.includes(id)) return;
+      if (id === '' || ROUTE_IDS.includes(id)) return; // let the router handle it
       const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
@@ -705,6 +980,12 @@
     });
   });
 
+  // ===========================================================================
+  // PROJECTS — this is the single source of truth for every project card AND
+  // its full detail page. To edit a project (text, photos, video, links),
+  // just edit its object below. To add a new project, copy one whole object
+  // (from the opening { to the closing },) and change its fields.
+  // ===========================================================================
   const PROJECTS = [
     {
       id: 'quadcopter',
@@ -802,7 +1083,8 @@
         {
           type: 'text',
           title: 'Motor Testing',
-          text: 'After flight-testing the MARK I prototype, we noticed that some motors appeared to be spinning faster than others. To dig into this, we reviewed the actual flight logs collected while the drone was armed, using the recorded motor signals to compare the response of each motor.'
+          text:
+            'After flight-testing the MARK I prototype, we noticed, both in the video and in testing, that some motors appeared to be spinning faster than others. To dig into this, we reviewed the actual flight logs collected while the drone was armed, using the recorded motor signals to compare the response of each motor.'
         },
         {
           type: 'mediaTextPair',
@@ -849,12 +1131,12 @@
           fullWidth: true,
           title: 'Takeaways',
           bullets: [
-            'Time Management: This was a side project I worked on while also completing a co-op at Angus Irrigation, playing competitive soccer, training at the gym, and spending time with family. Balancing all of that meant being intentional about how I used my time.',
-            'Planning Around Constraints: We could usually only meet once a week, so I learned to plan ahead — making sure we had enough work lined up for each session. Sometimes we couldn\u2019t meet at all, like when batteries hadn\u2019t arrived yet or the PA6-CF frame was still drying (it needs at least an hour before and after printing to be usable).',
-            'Working Through Setbacks: When the first motor mounts failed from propeller clipping, we had to wait for new ones to print before we could test again. But when the battery arrived before the frame was done, we pivoted and ran motor tests instead — verifying that opposite motors spun in opposite directions so the torque would cancel out and the drone could hover statically.',
-            'Hands-On Skills: I learned how to solder wires and connectors, install heat-set inserts, and work with carbon fiber tubing. I designed the motor mounts, helped design the frame, and sourced components like propellers, screws, the battery, the battery charger, the flight controller, and the ESCs.',
-            'Budget-Conscious Sourcing: Since this was a self-funded project, every purchase mattered. We bought propellers in packs of two extra in case of breaks, kept the motor source handy in case we needed replacements, and bought the battery from a reputable company (not AliExpress) because batteries are the most dangerous component — we kept it in a fire-safe bag away from sunlight. The flight controller came from a Holybro distributor, the ESCs from a compatible distributor, and the carbon fiber tubes from McMaster-Carr.',
-            'Team Communication: We constantly communicated — hopping on calls to compare motor options for hours, checking in on each other\u2019s progress, and coordinating logistics like whose house to meet at or which park was safe to test at. If we couldn\u2019t find a better part within a reasonable time, we moved forward with what we had — we couldn\u2019t afford to spend days searching when shipping times were already unpredictable.'
+            '**Time Management:** This was a side project I worked on while also completing a co-op at Angus Irrigation, playing competitive soccer, training at the gym, and spending time with family. Balancing all of that meant being intentional about how I used my time.',
+            '**Planning Around Constraints:** We could usually only meet once a week, so I learned to plan ahead — making sure we had enough work lined up for each session. Sometimes we couldn\u2019t meet at all, like when batteries hadn\u2019t arrived yet or the PA6-CF frame was still drying (it needs at least an hour before and after printing to be usable).',
+            '**Working Through Setbacks:** When the first motor mounts failed from propeller clipping, we had to wait for new ones to print before we could test again. But when the battery arrived before the frame was done, we pivoted and ran motor tests instead — verifying that opposite motors spun in opposite directions so the torque would cancel out and the drone could hover statically.',
+            '**Hands-On Skills:** I learned how to solder wires and connectors, install heat-set inserts, and work with carbon fiber tubing. I designed the motor mounts, helped design the frame, and sourced components like propellers, screws, the battery, the battery charger, the flight controller, and the ESCs.',
+            '**Budget-Conscious Sourcing:** Since this was a self-funded project, every purchase mattered. We bought propellers in packs of two extra in case of breaks, kept the motor source handy in case we needed replacements, and bought the battery from a reputable company (not AliExpress) because batteries are the most dangerous component — we kept it in a fire-safe bag away from sunlight. The flight controller came from a Holybro distributor, the ESCs from a compatible distributor, and the carbon fiber tubes from McMaster-Carr.',
+            '**Team Communication:** We constantly communicated — hopping on calls to compare motor options for hours, checking in on each other\u2019s progress, and coordinating logistics like whose house to meet at or which park was safe to test at. If we couldn\u2019t find a better part within a reasonable time, we moved forward with what we had — we couldn\u2019t afford to spend days searching when shipping times were already unpredictable (our flight controller took 3 weeks from the US, the ESCs took 2).'
           ]
         }
       ],
@@ -868,7 +1150,8 @@
       tag: 'Motorsports · FSAE',
       cover: 'background for gryphons racing project.jpg',
       summary: 'Reverse-engineered and built a mechanical throttle body as a backup for the team\u2019s electrical system.',
-      description: 'I joined Gryphons Racing in 2024 to work alongside other creative engineers and gain more opportunities to develop my engineering skills, recently reverse-engineering and building a mechanical throttle body as a backup for our electrical system.',
+      description:
+        'I joined Gryphons Racing in 2024 to work alongside other creative engineers and gain more opportunities to develop my engineering skills, recently reverse-engineering and building a mechanical throttle body as a backup for our electrical system.',
       specs: [
         { k: 'Team', v: 'Gryphons Racing FSAE' },
         { k: 'Role', v: 'Member: Design, Fabrication & Documentation' },
@@ -886,7 +1169,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'The throttle body was developed through a CAD-to-test workflow. We used the team OneDrive to organize the reference components, then redesigned each component in SolidWorks and assembled them digitally to verify geometry and fit before manufacturing. We then 3D printed the assembly to check real-world tolerances and fit after printing.'
+          text:
+            'The throttle body was developed through a **CAD-to-test workflow**. We used the team OneDrive to organize the reference components, then **redesigned each component in SolidWorks** and assembled them digitally to verify geometry and fit before manufacturing. We then **3D printed** the assembly to check real-world tolerances and fit after printing.'
         },
         {
           type: 'mediaText',
@@ -894,10 +1178,10 @@
           media: { type: 'image', src: 'half view of cad throttle body with intake filter.jpg', label: 'Half view, CAD throttle body with intake filter' },
           text: 'Design process:',
           bullets: [
-            'Recreated the diameter and geometry of the butterfly valve, matching the bolt-hole pattern required for our intake manifold.',
-            'Kept the same mounting points and overall envelope so we could quickly install or remove the mechanical throttle body without significant changes to the intake system.',
-            'Had the design reviewed by multiple senior leads on the team as an added safety measure.',
-            'Successfully passed tech inspection at FSAE.'
+            'Recreated the diameter and geometry of the **butterfly valve**, matching the **bolt-hole pattern** required for our intake manifold.',
+            'Kept the same **mounting points** and overall envelope so we could quickly install or remove the mechanical throttle body without significant changes to the intake system.',
+            'Had the design reviewed by multiple senior leads on the team as an added **safety measure**.',
+            'Successfully passed **tech inspection** at FSAE.'
           ],
           mediaSide: 'left'
         },
@@ -905,7 +1189,8 @@
           type: 'mediaText',
           title: 'Throttle Body — After Printing',
           media: { type: 'video', src: 'Throttle body after printing.mp4', label: 'Throttle body, after printing' },
-          text: 'A throttle body controls how much air reaches the engine\u2019s intake, which directly affects how much power the engine can produce. Ours is a mechanical, cable-actuated design — pressing the pedal pulls a cable that opens a butterfly valve inside the throttle body, letting in more air. Since it doesn\u2019t rely on any electronics, it makes for a simple, reliable backup.',
+          text:
+            'A throttle body controls how much air reaches the engine\u2019s intake, which directly affects how much power the engine can produce. Ours is a mechanical, cable-actuated design — pressing the pedal pulls a cable that opens a butterfly valve inside the throttle body, letting in more air. Since it doesn\u2019t rely on any electronics, it makes for a simple, reliable backup.',
           mediaSide: 'left'
         },
         {
@@ -918,10 +1203,10 @@
           fullWidth: true,
           title: 'Takeaways',
           bullets: [
-            'Material Selection: Learned when plastic is the right choice — the main body and cold air intake see minimal thermal or mechanical stress, so 3D-printed plastic works fine. But anything mechanically loaded (butterfly valve, return spring, cable lever) stayed metal to prevent flex or wear over repeated use.',
-            'Design for Manufacturability: Instead of copying an existing throttle body, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold while reusing components from a cheaper sourced throttle body. Combined with 3D printing instead of machining metal, this kept costs low and manufacturing quick.',
-            'Cross-Team Communication: A lot of the detail work came from talking to other subteams — driveline and aerodynamics seniors flagged tolerance requirements around the intake filter opening, which is why the final design has a lip for the filter to clamp onto. We also rounded the intake bore to improve airflow and reduce pressure loss.',
-            'Real-World Relevance: What started as a low-priority backup part became critical once we realized the electric throttle body carried a real failure risk and could fail tech inspection. The mechanical backup was used during testing, validating the design.'
+            '**Material Selection:** Learned when plastic is the right choice — the main body and cold air intake see minimal thermal or mechanical stress, so 3D-printed plastic works fine. But anything mechanically loaded (butterfly valve, return spring, cable lever) stayed metal to prevent flex or wear over repeated use.',
+            '**Design for Manufacturability:** Instead of copying an existing throttle body, we borrowed the look and functionality, then designed our own version that bolted directly onto our intake manifold while reusing components from a cheaper sourced throttle body. Combined with 3D printing instead of machining metal, this kept costs low and manufacturing quick.',
+            '**Cross-Team Communication:** A lot of the detail work came from talking to other subteams — driveline and aerodynamics seniors flagged tolerance requirements around the intake filter opening, which is why the final design has a lip for the filter to clamp onto. We also rounded the intake bore to improve airflow and reduce pressure loss.',
+            '**Real-World Relevance:** What started as a low-priority backup part became critical once we realized the electric throttle body carried a real failure risk and could fail tech inspection. The mechanical backup was used during testing, validating the design.'
           ]
         }
       ],
@@ -935,7 +1220,8 @@
       tag: 'University Project · Design',
       cover: 'Final assembaly of our toy picture.jpg',
       summary: 'A 3D reverse-engineering project, designing and manufacturing 50+ parts as a team of six.',
-      description: 'A 3D reverse-engineering project completed as a university group project. We were given a toy manual with multiple build variations — from a monkey to a Mars rover to an elephant — each with different part counts and complexity. We chose a medium-difficulty build: complex enough to push us, but realistic for our timeline and team size.\n\nFrom there, the process was: download SolidWorks, receive one caliper per group, and remeasure three connecting components from the physical toy. Each student had to recreate their parts in SolidWorks, produce 2D engineering drawings, and submit everything alongside an assembly showing the parts connected. I picked the solar roof and the two wheel components — some of the harder parts in the build. From there, the real project began: grinding through the remaining 50+ parts as a team, then building the full assembly and running simulations showing the toy exploding, rotating, and reassembling itself.',
+      description:
+        'A 3D reverse-engineering project completed as a university group project. We were given a toy manual with multiple build variations — from a monkey to a Mars rover to an elephant — each with different part counts and complexity. We chose a medium-difficulty build: complex enough to push us, but realistic for our timeline and team size.\n\nFrom there, the process was: download SolidWorks, receive one caliper per group, and remeasure three connecting components from the physical toy. Each student had to recreate their parts in SolidWorks, produce 2D engineering drawings, and submit everything alongside an assembly showing the parts connected. I picked the solar roof and the two wheel components — some of the harder parts in the build. From there, the real project began: grinding through the remaining 50+ parts as a team, then building the full assembly and running simulations showing the toy exploding, rotating, and reassembling itself.',
       specs: [
         { k: 'Scope', v: '3D reverse-engineering, 50+ parts' },
         { k: 'Role', v: 'Designer / Project Organizer' },
@@ -957,7 +1243,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'The solar roof was the most complex part I took on. It had multiple angles, multiple orientations, and multiple planes — features I hadn\u2019t worked with before at this level. It took me over four nights and roughly 20 hours to complete, but it taught me most of the harder SolidWorks skills I needed for the rest of the project. After finishing the solar roof, everything else got easier.',
+          text:
+            'The solar roof was the most complex part I took on. It had multiple angles, multiple orientations, and multiple planes — features I hadn\u2019t worked with before at this level. It took me over four nights and roughly 20 hours to complete, but it taught me most of the harder SolidWorks skills I needed for the rest of the project. After finishing the solar roof, everything else got easier.',
           bullets: [
             'Team of six, each responsible for six required parts.',
             'I designed 13 parts in total, including some of the most advanced components.',
@@ -980,7 +1267,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'The exterior of the wheel came together quickly — around 2 to 3 hours. The interior work was where the time went: creating the patterns and extrusions that add structural strength and match the real-life component. That took another 10 hours or so, spread across a day or two around classes.'
+          text:
+            'The exterior of the wheel came together quickly — around 2 to 3 hours. The interior work was where the time went: creating the patterns and extrusions that add structural strength and match the real-life component. That took another 10 hours or so, spread across a day or two around classes.',
         },
         {
           type: 'media',
@@ -997,7 +1285,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'After the first wheel and the solar roof, the second wheel part came much faster — around 4 to 5 hours after school. The repetition paid off. I\u2019d learned to use mirror features, circular patterns instead of individual cutouts, and shell features instead of manual hollowing. The same skills carried through to the rest of the project.'
+          text:
+            'After the first wheel and the solar roof, the second wheel part came much faster — around 4 to 5 hours after school. The repetition paid off. I\u2019d learned to use mirror features, circular patterns instead of individual cutouts, and shell features instead of manual hollowing. The same skills carried through to the rest of the project.',
         },
         {
           type: 'media',
@@ -1007,7 +1296,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings — and they did. They assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.'
+          text:
+            'The two wheel parts were designed so they should theoretically fit together based on the dimensions and tolerances in the 2D drawings — and they did. They assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.',
         },
         {
           type: 'media',
@@ -1019,11 +1309,11 @@
           fullWidth: true,
           title: 'Take Aways',
           bullets: [
-            'Assembly & Tolerance Validation: The two wheel parts assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.',
-            'CAD Efficiency: The solar roof took 20+ hours because it was my first time working with complex angles and multiple planes. By the time I reached the second wheel part, I was using mirror features, circular patterns, and shell features to cut design time down to a fraction of what it started at.',
-            'Project Management & Coordination: With 50+ parts to complete and the assembly and simulation dependent on every part being done first, communication was everything. We used a shared OneDrive folder to organize every CAD part, and I took responsibility for coordinating with each member — making sure their parts were progressing and organizing the files into one location.',
-            'Scheduling & Deadline Management: The project had natural dependencies: you couldn\u2019t start the assembly until all parts were finished, and you couldn\u2019t run the simulation until the assembly was complete. I scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due.',
-            'Engineering Drawing Communication: For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added shaded regions to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable engineering drawings are when communicating a design to someone who has to manufacture it.'
+            '**Assembly & Tolerance Validation:** The two wheel parts assembled without requiring adjustment, which gave me an early understanding of how tolerances, dimensions, and simple coincident mates work together in a SolidWorks assembly.',
+            '**CAD Efficiency:** The solar roof took 20+ hours because it was my first time working with complex angles and multiple planes. By the time I reached the second wheel part, I was using mirror features, circular patterns, and shell features to cut design time down to a fraction of what it started at.',
+            '**Project Management & Coordination:** With 50+ parts to complete and the assembly and simulation dependent on every part being done first, communication was everything. We used a shared OneDrive folder to organize every CAD part, and I took responsibility for coordinating with each member — making sure their parts were progressing and organizing the files into one location.',
+            '**Scheduling & Deadline Management:** The project had natural dependencies: you couldn\u2019t start the assembly until all parts were finished, and you couldn\u2019t run the simulation until the assembly was complete. I scheduled the team to build the assembly together so we could meet the deadline. We completed the final assembly and simulation the day before it was due.',
+            '**Engineering Drawing Communication:** For the 2D drawings, feedback from engineering peers and TAs was that there were too many annotations, so I simplified the drawings to make them clearer for manufacturers. I also added shaded regions to distinguish the areas being referenced on the drawings. These changes reinforced how important clear, readable engineering drawings are when communicating a design to someone who has to manufacture it.'
           ]
         },
         {
@@ -1045,23 +1335,24 @@
       dateRange: 'May 2026 – August 2026',
       bullets: [
         'Troubleshoot, install, repair, and modify irrigation systems involving mechanical, hydraulic, electrical, and automated control components.',
-        'Diagnose system failures by systematically isolating faults in controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings.',
-        'Install and repair underground piping, valves, sprinkler assemblies, controllers, and electrical control wiring.',
-        'Operate trenching equipment to create underground pathways for new piping.',
-        'Identify and repair leaks by tracing water loss through interconnected piping, valves, fittings, and sprinkler networks.',
-        'Calculate water requirements for properties and individual irrigation zones.',
-        'Interpret blueprints, site plans, sketches, and existing system layouts.',
-        'Produce field sketches and updated layouts for existing and newly installed irrigation systems.',
-        'Apply mechanical reasoning, electrical troubleshooting, and hydraulic understanding when diagnosing systems.',
-        'Work independently in physically demanding outdoor environments.',
-        'Demonstrate persistence and adaptability when solving repetitive or difficult problems.',
-        'Balanced diagnostic speed with thoroughness to protect customer trust and repeat business.',
-        'Selected controllers and wiring sized to the exact number of zones required.',
-        'Planned practical piping routes to minimize material use and labor time.',
-        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging.'
+        'Diagnose system failures by systematically isolating faults in controllers, wiring, solenoids, valves, piping, sprinkler heads, and fittings, including intermittent issues requiring repeated testing and logical elimination.',
+        'Install and repair underground piping, valves, sprinkler assemblies, controllers, and electrical control wiring while adapting to existing infrastructure and site constraints.',
+        'Operate trenching equipment to create underground pathways for new piping, working through varying soil conditions, confined spaces, difficult terrain, and changing field conditions.',
+        'Identify and repair leaks by tracing water loss through interconnected piping, valves, fittings, and sprinkler networks to determine practical repair solutions.',
+        'Calculate water requirements for properties and individual irrigation zones to develop appropriate watering schedules and system configurations.',
+        'Interpret blueprints, site plans, sketches, and existing system layouts to identify piping routes, valve locations, control zones, and system configurations.',
+        'Produce field sketches and updated layouts for existing and newly installed irrigation systems to document modifications and support future troubleshooting.',
+        'Apply mechanical reasoning, electrical troubleshooting, hydraulic understanding, and practical problem-solving when diagnosing systems with incomplete information or non-obvious failures.',
+        'Work independently in physically demanding outdoor environments while managing tools, equipment, materials, and changing conditions to complete installations and repairs efficiently.',
+        'Demonstrate persistence and adaptability when solving repetitive or difficult problems, using observation, testing, and logical elimination rather than relying solely on trial and error.',
+        'Balanced diagnostic speed with thoroughness, understanding that every additional half-hour on-site adds directly to the customer\u2019s bill — prioritized efficient, accurate troubleshooting to protect customer trust and repeat business.',
+        'Selected controllers and wiring sized to the exact number of zones required to avoid unnecessary equipment costs.',
+        'Planned practical piping routes between valve boxes, controllers, and water sources to minimize material use and labor time.',
+        'Avoided unnecessary excavation or part replacement by diagnosing issues precisely before digging, protecting both project timelines and customer costs.'
       ],
       summary: 'Hands-on troubleshooting and installation across mechanical, electrical, and hydraulic irrigation systems.',
-      description: 'Hands-on experience troubleshooting and installing irrigation systems — real exposure to mechanical, electrical, and hydraulic systems working outside of a CAD screen.',
+      description:
+        'Hands-on experience troubleshooting and installing irrigation systems — real exposure to mechanical, electrical, and hydraulic systems working outside of a CAD screen.',
       specs: [
         { k: 'Role', v: 'Irrigation Technician' },
         { k: 'Systems', v: 'Mechanical / Electrical / Hydraulic' },
@@ -1074,16 +1365,8 @@
           type: 'text',
           fullWidth: true,
           title: 'On the Job',
-          text: 'Every day was different. My employer would tell me the day before what I\u2019d be doing, and he made a point of keeping the work varied.',
-          bullets: [
-            'Installation days: digging trenches, laying pipe, installing sprinklers, wiring controllers.',
-            'Troubleshooting days: hopping between houses, diagnosing electrical problems, replacing controllers.',
-            'Repair days: fixing punctured pipes, digging up broken lines, restoring properties so they looked untouched.',
-            'Restocking the truck from the storage bay after each job.',
-            'Following the company motto: treat the job like it\u2019s your own house, and treat the customer like family.',
-            'Giving 110% — not just effort, but thought. Working smart and working hard go together.',
-            'Thinking about the future: routing pipe away from tree roots and big rocks so future repairs are easier, not harder.'
-          ]
+          text:
+            'Every day was different. My employer would tell me the day before what I\u2019d be doing, and he made a point of keeping the work varied — if Monday was a big installation (digging trenches, laying pipe, installing sprinklers, wiring a controller), Tuesday might be hopping between houses troubleshooting electrical problems and replacing controllers.\n\nA lot of the job was showing up to a residence, diagnosing the problem, filing what parts were used, restocking the truck from the storage bay, and moving on to the next call. Some days were lighter — driving from house to house fixing small issues. Other days were physically demanding, like when an aeration tool had punctured nearly every pipe on a property and a new fence install had hit wires and pipelines. We spent the day digging, repairing, re-burying, and restoring the property so it looked the way it did before — cleanup was non-negotiable.\n\nThere was a motto at the company: **treat the job as if you\u2019re doing it for your own house, and treat the customer as if they\u2019re your family**. That mindset stuck with me. You don\u2019t cut corners. You don\u2019t leave a mess. You think about what the customer would want if it were your money, your property, your family.\n\nI also learned to give 110% — not just effort, but thought. Digging as hard as possible for 30 minutes might get the hole done faster, but if you throw dirt everywhere, the cleanup takes four hours instead of one. Working smart and working hard go together. When installing new systems, you\u2019re always thinking about the future: routing pipe away from tree roots, away from big rocks, in ways that make future repairs easier — not harder.'
         },
         {
           type: 'pair',
@@ -1098,12 +1381,11 @@
           title: 'Troubleshooting',
           text: 'Troubleshooting was the core of the job. Here\u2019s what that actually looked like:',
           bullets: [
-            'Finding a pipe leak: Run the zone for a few minutes and let the leak show itself. Then dig it up, fix it, and restore the area so it looked untouched.',
-            'Finding a wire break: Run a signal through the zone wire. If it didn\u2019t reach the controller, there was a break. Use a wire tracker to walk the line until the signal dropped, dig up the break, splice the wires, and bury it again.',
-            'Multiple breaks: Install a splice box to protect the connection from ground shifting and plant growth.',
-            'Controller issues: Either replace the controller or replace the faulty components once you\u2019ve isolated the problem.',
-            'Real-world complications: On one site, we had four solenoids and only one working wire in the valve box. That meant following the circuit back through eight other valve boxes, tracing faded colors, dealing with multiple breaks, and mapping out what connected where. No manual for that.',
-            'The reality of troubleshooting: In school, you can check the solution manual. In the field, there is no solution manual. You have to find the answer yourself, and time matters — the longer you take, the more the customer pays. That pressure teaches you to be efficient, persistent, and calm under frustration.'
+            '**Finding a pipe leak:** If there were no plans for the pipeline, we\u2019d run the zone for a few minutes and let the leak show itself. Then we\u2019d dig it up, fix it, and restore the area so it looked untouched.',
+            '**Finding a wire break:** Every irrigation system is essentially a series circuit. Each zone has its own colored wire running from the controller to its solenoid, and a common (white) wire connects everything back to the controller. We\u2019d run a signal through the zone wire — if it didn\u2019t reach the controller, there was a break. Using a wire tracker, I\u2019d walk the line until the signal dropped, dig up the break, splice the wires, and bury it again. Multiple breaks meant installing a splice box to protect the connection from ground shifting and plant growth.',
+            '**Controller issues:** Either replace the controller or replace the faulty components — that part is straightforward once you\u2019ve isolated the problem.',
+            '**Real-world complications:** Standard practice is one wire per zone. But on one site, we had four solenoids and only one working wire in the valve box. That meant following the circuit all the way back through eight other valve boxes to the controller, tracing faded colors (dark brown spliced to light brown, peach spliced to beige), dealing with multiple breaks, and mapping out what connected where. It was confusing, time-consuming, and there was no manual for it.',
+            '**The reality of troubleshooting:** In school, you can check the solution manual. In the field, there is no solution manual. You have to find the answer yourself, and time matters — the longer you take, the more the customer pays. That pressure teaches you to be efficient, persistent, and calm under frustration. You can\u2019t give up because there has to be a solution. Sometimes the easier fix (running new wire) costs the customer more than the labor to troubleshoot — so you weigh options practically, not just technically.'
           ]
         },
         {
@@ -1116,7 +1398,8 @@
         {
           type: 'textPanel',
           fullWidth: true,
-          text: 'These two photos show a controller I installed that connects to solenoids across a commercial site. Each valve box holds multiple solenoids for different sprinkler zones, and every two sprinklers typically share one wire spliced back to a common line, all routed back to the controller. The left photo shows the wiring before I got to it; the right shows it after I identified and labeled each wire by solenoid and tidied everything up, so the next person can immediately see what connects where.'
+          text:
+            'These two photos show a controller I installed that connects to solenoids across a commercial site. Each valve box holds multiple solenoids for different sprinkler zones, and every two sprinklers typically share one wire spliced back to a common line, all routed back to the controller shown here. The left photo shows the wiring before I got to it; the right shows it after I identified and labeled each wire by solenoid and tidied everything up, so the next person can immediately see what connects where.'
         },
         {
           type: 'mediaTextPair',
@@ -1136,10 +1419,9 @@
           fullWidth: true,
           title: 'Looking back',
           bullets: [
-            'Working around constraints: One install required trenching a new sprinkler line, but a gas line ran directly under part of the planned route. We couldn\u2019t use vibrating equipment there, so we rerouted and made careful, deliberate calls about where and how to dig.',
-            'Cost as a design constraint: Less pipe, less wire, less time — cost was always a factor. That trade-off thinking is a big part of what real engineering work looks like day to day.',
-            'Quick math in the field: The drip line photo above ties into calculating gallons per minute based on available water pressure. Pressure depends heavily on the source — a well, a cistern, or municipal line all deliver very different pressures.',
-            'Drip line has much lower flow than a standard sprinkler head, so a zone running on drip line might need to run for around 10 minutes, two to three times a day, instead of one longer cycle.'
+            '**Working around constraints:** One install required trenching a new sprinkler line, but a gas line ran directly under part of the planned route. We couldn\u2019t use vibrating equipment there, so we rerouted and made careful, deliberate calls about where and how to dig.',
+            '**Cost as a design constraint:** Less pipe, less wire, less time — cost was always a factor. That trade-off thinking is a big part of what real engineering work looks like day to day.',
+            '**Quick math in the field:** The drip line photo above ties into calculating gallons per minute based on available water pressure. Pressure depends heavily on the source — a well, a cistern, or municipal line all deliver very different pressures. Drip line has much lower flow than a standard sprinkler head, so a zone running on drip line might need to run for around 10 minutes, two to three times a day, instead of one longer cycle.'
           ]
         }
       ],
@@ -1154,12 +1436,12 @@
       location: 'Remote',
       dateRange: 'November 2025 – January 2026',
       bullets: [
-        'Conducted a market feasibility study for expanding Enable Talent\u2019s job-placement platform into a target city in Ghana.',
-        'Researched local labor market demand across large companies, startups, universities, and community organizations.',
-        'Designed an outreach strategy that accounted for limited technology access.',
-        'Built a phased project timeline (Gantt-style) outlining search, outreach, and onboarding phases.',
-        'Evaluated cost and time feasibility for field operations.',
-        'Delivered a 70+ page feasibility and scope report directly to the CEO and leadership.'
+        'Conducted a market feasibility study for expanding Enable Talent\u2019s job-placement platform into a target city in Ghana, identifying underserved populations including individuals with disabilities and out-of-school youth.',
+        'Researched local labor market demand across large companies, startups, universities, and community organizations to identify viable partnership and outreach targets.',
+        'Designed an outreach strategy that accounted for limited technology access, including in-person community stations and iPad-based application collection as an alternative to app-based sign-up.',
+        'Built a phased project timeline (Gantt-style) outlining search, outreach, and onboarding phases, along with staffing and resource requirements for each.',
+        'Evaluated cost and time feasibility for field operations, weighing staffing, travel, and equipment costs against expected reach and impact.',
+        'Delivered a 70+ page feasibility and scope report directly to the CEO and leadership, informing the company\u2019s approach to international market expansion.'
       ],
       summary: 'A market feasibility study for expanding a job-placement platform into an underserved region of Ghana.',
       description: '',
@@ -1171,6 +1453,9 @@
     }
   ];
 
+  // ---------------------------------------------------------------------
+  // Render the collapsed cards from PROJECTS
+  // ---------------------------------------------------------------------
   const projList = document.getElementById('projList');
   const workList = document.getElementById('workList');
 
@@ -1200,9 +1485,11 @@
       card.className = 'proj-card flat-card' + (isClickable ? '' : ' is-static');
       card.style.gridColumn = '1 / -1';
       card.setAttribute('data-id', p.id);
+
       const bulletsHtml = p.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('');
       const locationHtml = p.location ? ` · <span class="company-loc">${escapeHtml(p.location)}</span>` : '';
       const ctaHtml = isClickable ? `<div class="flat-cta">CLICK FOR MORE VISUALS →</div>` : '';
+
       card.innerHTML = `
         <div class="flat-card-head">
           <div>
@@ -1214,14 +1501,20 @@
         </div>
         <ul class="flat-bullets">${bulletsHtml}</ul>
       `;
+
       if (isClickable) {
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'View details for ' + p.name);
         card.addEventListener('click', () => { location.hash = 'project-' + p.id; });
         card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); location.hash = 'project-' + p.id; }
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            location.hash = 'project-' + p.id;
+          }
         });
       }
+
       targetList.appendChild(card);
       return;
     }
@@ -1230,20 +1523,52 @@
     card.setAttribute('data-id', p.id);
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
-    const specRows = p.specs.map((s) => `<div class="spec-row"><span class="k">${escapeHtml(s.k)}</span><span class="v">${escapeHtml(s.v)}</span></div>`).join('');
-    const linkEls = p.links.map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`).join('');
+    card.setAttribute('aria-label', 'View details for ' + p.name);
+
+    const specRows = p.specs
+      .map((s) => `<div class="spec-row"><span class="k">${escapeHtml(s.k)}</span><span class="v">${escapeHtml(s.v)}</span></div>`)
+      .join('');
+
+    const linkEls = p.links
+      .map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`)
+      .join('');
     const linksHtml = linkEls ? `<div class="proj-links" style="padding:0 20px 20px;">${linkEls}</div>` : '';
+
     card.innerHTML = `
-      <div class="proj-photo" style="background-image:url('${p.cover}');"><span class="view-hint">Click to view details</span></div>
-      <div class="proj-head"><div><div class="proj-num">${escapeHtml(p.num)}</div><div class="proj-name">${escapeHtml(p.name)}</div></div><span class="proj-tag">${escapeHtml(p.tag)}</span></div>
-      <div class="proj-body"><p>${escapeHtml(p.summary)}</p><div class="spec-table">${specRows}</div></div>
+      <div class="proj-photo" style="background-image:url('${p.cover}');">
+        <span class="view-hint">Click to view details</span>
+      </div>
+      <div class="proj-head">
+        <div>
+          <div class="proj-num">${escapeHtml(p.num)}</div>
+          <div class="proj-name">${escapeHtml(p.name)}</div>
+        </div>
+        <span class="proj-tag">${escapeHtml(p.tag)}</span>
+      </div>
+      <div class="proj-body">
+        <p>${escapeHtml(p.summary)}</p>
+        <div class="spec-table">${specRows}</div>
+      </div>
       ${linksHtml}
     `;
-    card.addEventListener('click', (e) => { if (e.target.closest('a')) return; location.hash = 'project-' + p.id; });
-    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); location.hash = 'project-' + p.id; } });
+
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      location.hash = 'project-' + p.id;
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        location.hash = 'project-' + p.id;
+      }
+    });
+
     targetList.appendChild(card);
   });
 
+  // ---------------------------------------------------------------------
+  // Open/close the full-screen detail overlay
+  // ---------------------------------------------------------------------
   const overlay = document.getElementById('projOverlay');
   const overlayBg = document.getElementById('overlayBg');
   const overlayClose = document.getElementById('overlayClose');
@@ -1256,6 +1581,7 @@
     const h = w * 0.75;
     return { top: window.innerHeight / 2 - h / 2, left: window.innerWidth / 2 - w / 2, width: w, height: h };
   }
+
   function pxRectStyle(el, rect) {
     el.style.top = rect.top + 'px';
     el.style.left = rect.left + 'px';
@@ -1267,11 +1593,18 @@
     if (!item) return '';
     const isVideo = item.type === 'video' || item.type === 'embed';
     const cls = 'media-widget' + (isVideo ? ' is-video' : '');
-    if (item.type === 'image' && item.src) return `<div class="${cls}"><img src="${item.src}" alt="${escapeHtml(item.label || '')}" loading="lazy"></div>`;
-    if (item.type === 'video' && item.src) return `<div class="${cls}"><video src="${item.src}" controls playsinline></video></div>`;
-    if (item.type === 'embed' && item.src) return `<div class="${cls}"><iframe src="${item.src}" title="${escapeHtml(item.label || '')}" allowfullscreen></iframe></div>`;
+    if (item.type === 'image' && item.src) {
+      return `<div class="${cls}"><img src="${item.src}" alt="${escapeHtml(item.label || '')}" loading="lazy"></div>`;
+    }
+    if (item.type === 'video' && item.src) {
+      return `<div class="${cls}"><video src="${item.src}" controls playsinline></video></div>`;
+    }
+    if (item.type === 'embed' && item.src) {
+      return `<div class="${cls}"><iframe src="${item.src}" title="${escapeHtml(item.label || '')}" allowfullscreen></iframe></div>`;
+    }
     return `<div class="${cls}"><div class="media-placeholder">${escapeHtml(item.label || 'Add a photo or video here')}</div></div>`;
   }
+
   function renderItem(item) {
     if (!item) return '';
     const caption = item.caption ? `<div class="media-caption">${escapeHtml(item.caption)}</div>` : '';
@@ -1282,17 +1615,24 @@
     return blocks.map((b) => {
       const titleHtml = b.title ? `<div class="block-title">${escapeHtml(b.title)}</div>` : '';
       const caption = b.caption ? `<p class="block-caption">${escapeHtml(b.caption)}</p>` : '';
+
       if (b.type === 'text') {
         const cls = 'block block-text' + (b.fullWidth ? ' is-full-width' : '');
         const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
-        const bullets = b.bullets && b.bullets.length ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : '';
+        const bullets = b.bullets && b.bullets.length
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
         return `<div class="${cls}">${titleHtml}${lead}${bullets}</div>`;
       }
-      if (b.type === 'media') return `<div class="block">${titleHtml}<div class="block-media-full">${renderItem(b.item)}</div>${caption}</div>`;
+      if (b.type === 'media') {
+        return `<div class="block">${titleHtml}<div class="block-media-full">${renderItem(b.item)}</div>${caption}</div>`;
+      }
       if (b.type === 'textPanel') {
         const cls = b.fullWidth ? 'text-panel-full' : 'text-panel-centered';
         const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
-        const bullets = b.bullets && b.bullets.length ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : '';
+        const bullets = b.bullets && b.bullets.length
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
         return `<div class="block"><div class="${cls}">${titleHtml}${lead}${bullets}</div></div>`;
       }
       if (b.type === 'pair') {
@@ -1302,7 +1642,9 @@
       if (b.type === 'mediaText') {
         const mediaHtml = renderItem(b.media);
         const lead = b.text ? `<p>${escapeHtml(b.text)}</p>` : '';
-        const bullets = b.bullets && b.bullets.length ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : '';
+        const bullets = b.bullets && b.bullets.length
+          ? `<ul class="prose-bullets"${lead ? ' style="margin-top:12px;"' : ''}>${b.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
         const textHtml = `<div class="block-text-panel"><div>${lead}${bullets}</div></div>`;
         const parts = b.mediaSide === 'right' ? [textHtml, mediaHtml] : [mediaHtml, textHtml];
         return `<div class="block">${titleHtml}<div class="block-media-text">${parts.join('')}</div></div>`;
@@ -1313,7 +1655,9 @@
       }
       if (b.type === 'stackPair') {
         const leftLead = b.left.text ? `<p>${escapeHtml(b.left.text)}</p>` : '';
-        const leftBullets = b.left.bullets && b.left.bullets.length ? `<ul class="prose-bullets"${leftLead ? ' style="margin-top:12px;"' : ''}>${b.left.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : '';
+        const leftBullets = b.left.bullets && b.left.bullets.length
+          ? `<ul class="prose-bullets"${leftLead ? ' style="margin-top:12px;"' : ''}>${b.left.bullets.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`
+          : '';
         const leftCol = `<div class="stack-col">${renderItem(b.left.media)}<div class="block-text-panel" style="margin-top:14px;"><div>${leftLead}${leftBullets}</div></div></div>`;
         const rightCol = `<div class="stack-col">${renderItem(b.right)}</div>`;
         return `<div class="block">${titleHtml}<div class="block-stack-pair">${leftCol}${rightCol}</div></div>`;
@@ -1336,6 +1680,7 @@
     const project = PROJECTS.find((p) => p.id === id);
     if (!project) return;
     currentProjectId = id;
+
     const rect = getCardRect(id);
     overlay.style.transition = 'none';
     overlay.style.borderRadius = '12px';
@@ -1343,6 +1688,7 @@
     overlay.style.visibility = 'visible';
     overlay.getBoundingClientRect();
     overlay.style.transition = '';
+
     requestAnimationFrame(() => {
       overlay.style.top = '0px';
       overlay.style.left = '0px';
@@ -1351,15 +1697,21 @@
       overlay.style.borderRadius = '0px';
       overlay.classList.add('open');
     });
+
     overlayBg.style.backgroundImage = `url('${project.cover}')`;
     document.getElementById('overlayNum').textContent = project.num;
     document.getElementById('overlayTitle').textContent = project.name;
     document.getElementById('overlayTag').textContent = project.tag;
     document.getElementById('overlayDesc').textContent = project.description;
-    document.getElementById('overlaySpecs').innerHTML = project.specs.map((s) => `<div class="spec-cell"><div class="k">${escapeHtml(s.k)}</div><div class="v">${escapeHtml(s.v)}</div></div>`).join('');
+
+    document.getElementById('overlaySpecs').innerHTML = project.specs
+      .map((s) => `<div class="spec-cell"><div class="k">${escapeHtml(s.k)}</div><div class="v">${escapeHtml(s.v)}</div></div>`)
+      .join('');
+
     const overlayBlocks = document.getElementById('overlayBlocks');
     const gallerySection = document.getElementById('overlayGallerySection');
     const videoSection = document.getElementById('overlayVideoSection');
+
     if (project.blocks && project.blocks.length) {
       overlayBlocks.style.display = '';
       overlayBlocks.innerHTML = renderBlocks(project.blocks);
@@ -1371,34 +1723,55 @@
       gallerySection.style.display = 'none';
       videoSection.style.display = 'none';
     }
+
     const overlayLinksEl = document.getElementById('overlayLinks');
-    overlayLinksEl.innerHTML = project.links.map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`).join('');
+    overlayLinksEl.innerHTML = project.links
+      .map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`)
+      .join('');
     overlayLinksEl.style.display = project.links.length ? '' : 'none';
+
     document.querySelector('.overlay-scroll').scrollTop = 0;
     document.body.style.overflow = 'hidden';
     setupVideoAutoplay();
   }
 
   let videoObserver = null;
+
   function setupVideoAutoplay() {
     if (videoObserver) { videoObserver.disconnect(); videoObserver = null; }
     const scrollRoot = document.querySelector('.overlay-scroll');
     const videos = document.querySelectorAll('#overlayBlocks video, #overlayVideoSection video');
     if (!videos.length) return;
-    videos.forEach((v) => { v.muted = true; v.setAttribute('muted', ''); v.playsInline = true; v.loop = true; });
+
+    videos.forEach((v) => {
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.playsInline = true;
+      v.loop = true;
+    });
+
     videoObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const v = entry.target;
-        if (entry.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); v.currentTime = 0; }
+        if (entry.isIntersecting) {
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+          v.currentTime = 0;
+        }
       });
     }, { root: scrollRoot, rootMargin: '-38% 0px -38% 0px', threshold: 0 });
+
     videos.forEach((v) => videoObserver.observe(v));
   }
 
   function closeProject() {
     if (!currentProjectId) return;
     if (videoObserver) { videoObserver.disconnect(); videoObserver = null; }
-    document.querySelectorAll('#overlayBlocks video, #overlayVideoSection video').forEach((v) => { v.pause(); v.currentTime = 0; });
+    document.querySelectorAll('#overlayBlocks video, #overlayVideoSection video').forEach((v) => {
+      v.pause();
+      v.currentTime = 0;
+    });
     const rect = getCardRect(currentProjectId);
     overlay.classList.remove('open');
     overlay.style.top = rect.top + 'px';
@@ -1407,18 +1780,22 @@
     overlay.style.height = rect.height + 'px';
     overlay.style.borderRadius = '12px';
     currentProjectId = null;
-    setTimeout(() => { if (!currentProjectId) overlay.style.visibility = 'hidden'; }, 560);
+    setTimeout(() => {
+      if (!currentProjectId) overlay.style.visibility = 'hidden';
+    }, 560);
   }
 
   const PAGE_IDS = ['about', 'projects', 'experience', 'contact'];
   const siteNav = document.getElementById('siteNav');
   const heroEl = document.getElementById('hero');
   let currentPageId = null;
+
   function pageForProjectId(id) {
     const p = PROJECTS.find((x) => x.id === id);
     if (!p) return null;
     return p.category === 'experience' ? 'experience' : 'projects';
   }
+
   function showPage(pageId) {
     currentPageId = pageId;
     PAGE_IDS.forEach((id) => {
@@ -1429,17 +1806,21 @@
     });
     document.body.style.overflow = pageId ? 'hidden' : '';
     if (siteNav) siteNav.classList.toggle('nav-hidden', !pageId);
+
     const activeEl = pageId ? document.getElementById(pageId) : heroEl;
     const bg = activeEl && activeEl.getAttribute('data-bg');
     if (bg) setBackground(bg);
   }
+
   function closeToParentPage() {
     if (!currentProjectId) return;
     const pageId = pageForProjectId(currentProjectId);
     location.hash = pageId || '';
   }
+
   function syncRoute() {
     const hash = location.hash.replace('#', '');
+
     if (hash.startsWith('project-')) {
       const id = hash.replace('project-', '');
       const pageId = pageForProjectId(id);
@@ -1447,24 +1828,52 @@
       if (id !== currentProjectId) openProject(id);
       return;
     }
+
     if (currentProjectId) closeProject();
-    if (PAGE_IDS.includes(hash)) { showPage(hash); } else { showPage(null); }
+
+    if (PAGE_IDS.includes(hash)) {
+      showPage(hash);
+    } else {
+      showPage(null);
+    }
   }
+
   overlayClose.addEventListener('click', closeToParentPage);
   window.addEventListener('hashchange', syncRoute);
-  window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && currentProjectId) closeToParentPage(); });
-  window.addEventListener('resize', () => { if (currentProjectId) { overlay.style.width = window.innerWidth + 'px'; overlay.style.height = window.innerHeight + 'px'; } });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && currentProjectId) closeToParentPage();
+  });
+  window.addEventListener('resize', () => {
+    if (currentProjectId) {
+      overlay.style.width = window.innerWidth + 'px';
+      overlay.style.height = window.innerHeight + 'px';
+    }
+  });
   syncRoute();
+
   document.querySelectorAll('.site-page').forEach((page) => {
     const videos = page.querySelectorAll('video');
     if (!videos.length) return;
-    videos.forEach((v) => { v.muted = true; v.setAttribute('muted', ''); v.playsInline = true; v.loop = true; });
+
+    videos.forEach((v) => {
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.playsInline = true;
+      v.loop = true;
+    });
+
     const pageObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const v = entry.target;
-        if (entry.isIntersecting && page.classList.contains('open')) { v.play().catch(() => {}); } else { v.pause(); v.currentTime = 0; }
+        if (entry.isIntersecting && page.classList.contains('open')) {
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+          v.currentTime = 0;
+        }
       });
     }, { root: page, rootMargin: '-30% 0px -30% 0px', threshold: 0 });
+
     videos.forEach((v) => pageObserver.observe(v));
   });
 </script>
