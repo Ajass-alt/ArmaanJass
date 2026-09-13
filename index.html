@@ -980,12 +980,7 @@
     });
   });
 
-  // ===========================================================================
-  // PROJECTS — this is the single source of truth for every project card AND
-  // its full detail page. To edit a project (text, photos, video, links),
-  // just edit its object below. To add a new project, copy one whole object
-  // (from the opening { to the closing },) and change its fields.
-  // ===========================================================================
+
   const PROJECTS = [
     {
       id: 'quadcopter',
@@ -1052,8 +1047,11 @@
           type: 'pair',
           title: 'Frame',
           items: [
-            { type: 'image', src: 'Old frame.jpg', label: 'Old frame (EDIT ME: add filename)' },
-            { type: 'image', src: 'Frame base with wire management.jpg', label: 'New frame' }
+            { type: 'image', src: 'Old frame.jpg', label: 'Old frame' 
+            text: 'PLA Prototype - 2nd Design iteration '
+            },
+            { type: 'image', src: 'Frame base with wire management.jpg', label: 'New frame' 
+            text: 'PA6 Carbon Fibre - 3rd Design iteration '
           ]
         },
         {
@@ -1061,10 +1059,10 @@
           title: 'Frame',
           bullets: [
             'Designed so every component within the frame has a defined place to sit, keeping the layout clean and repeatable.',
-            'Added clips that lock the carbon fiber tubes in place so they can\u2019t rotate or shift. Even a small rotation on one tube would throw its propeller out of alignment, meaning it wouldn\u2019t be parallel to the ground and the drone wouldn\u2019t fly straight.',
-            'Split the frame into a top half and bottom half, mounting the carbon fiber tubes with four screws at each corner.',
+            'Added mounting brackets that lock the carbon fiber tubes in place so they can\u2019t rotate or shift. Even a small rotation on one tube would throw a propeller out of alignment, meaning it wouldn\u2019t be 100% parallel to the ground leading to improper functionality during a flight',
+            'Split the frame into a top half and bottom half, mounting the carbon fiber tubes with four screws at each corner, and 1 screw through the carbon fibre tubes making sure its parallel to the base/ground.',
             'Switched from PLA to PA6-CF after repeated unscrewing and rescrewing during testing caused visible cracking in the PLA and added unnecessary weight.',
-            'Routed propeller wiring along the bottom of the frame, away from other wiring and away from any screws, to reduce frequency interference and keep everything organized and easy to trace.'
+            'Routed propeller wiring along the bottom of the frame, away from other wiring and away from any screws, also reducing frequency interference and to keep everything organized and easy to trace.'
           ]
         },
         {
